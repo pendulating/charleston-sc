@@ -1,0 +1,12 @@
+# depot is vendored in as its own git checkout for map generation
+depot/
+
+# Map build outputs and inputs -- these ship as GitHub release assets,
+# not as repo contents.
+build/.venv/
+build/data/
+build/dist/
+build/CHS/
+build/CHS_demand/
+build/source/
+build/*.osm.pbf
