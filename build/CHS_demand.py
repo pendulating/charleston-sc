@@ -13,7 +13,7 @@ which the 1.0.0 and 1.1.0 maps never shipped -- without them the game has no
 type information for these points.
 
 Run a single stage:   python CHS_demand.py <stage>
-Stages: seed | special | osrm | routes | config | all
+Stages: seed | special | osrm | routes | routes-new | reschool | config | all
 """
 import json
 import os
@@ -50,20 +50,66 @@ def _load():
     return DemandData(FDEMAND, map_code="CHS", bbox=BBOX, outputdir=OUTDIR)
 
 
+def _base_points(dd):
+    return [p for p in dd["points"] if p["id"].startswith("merged")]
+
+
+def _resident_baseline():
+    """LODES residents per point, before any special demand moved people in."""
+    d = json.load(open(BASE_DEMAND))
+    return {p["id"]: p["residents"] for p in d["points"]}
+
+
 def stage_special():
     dd = _load()
     before_pts, before_pops = len(dd["points"]), len(dd["pops"])
     before_size = sum(p["size"] for p in dd["pops"])
 
-    pois = POIS.all_pois()
-    print(f"adding {len(pois)} special demand points")
-    dd.add_points(pois)
+    # Non-school POIs first: several merge nearby LODES points and delete them,
+    # and school catchments have to be drawn against what survives that.
+    other = POIS.non_school_pois()
+    print(f"adding {len(other)} non-school special demand points")
+    dd.add_points(other)
+
+    sch = POIS.schools(_base_points(dd), _resident_baseline())
+    print(f"adding {len(sch)} school points")
+    dd.add_points(sch)
     dd.save()
 
     after_size = sum(p["size"] for p in dd["pops"])
     print(f"\npoints {before_pts:,} -> {len(dd['points']):,}"
           f"   pops {before_pops:,} -> {len(dd['pops']):,}"
           f"   people {before_size:,} -> {after_size:,}")
+
+
+def stage_reschool():
+    """Replace just the school points, leaving every other point's routes intact."""
+    dd = _load()
+    old = [p["id"] for p in dd["points"] if p["id"].startswith("SCH_")]
+    if old:
+        print(f"removing {len(old)} existing school points")
+        dd.del_points(point_ids=old)
+        # del_points drops the pops but leaves each point's jobs/residents
+        # totals stale, and the catchment allocator sizes against residents.
+        # Without this the old intake still inflates them.
+        dd.update(dd.sanitize(dd))
+    sch = POIS.schools(_base_points(dd), _resident_baseline())
+    print(f"adding {len(sch)} school points on attendance-zone catchments")
+    dd.add_points(sch)
+    dd.save()
+    print(f"points {len(dd['points']):,}  pops {len(dd['pops']):,}  "
+          f"people {sum(p['size'] for p in dd['pops']):,}")
+
+
+def stage_routes_new():
+    """Route only pops that have no route yet -- i.e. the ones just added."""
+    dd = _load()
+    todo = sum(1 for p in dd["pops"] if p.get("drivingSeconds", 0) <= 0)
+    print(f"{todo:,} of {len(dd['pops']):,} pops need routing")
+    dd.calculate_routes(routing_method="osrm", osrm_port=OSRM_PORT,
+                        recalculate_routes=False, include_driving_paths=True)
+    dd.save()
+    dd.print_stats()
 
 
 def stage_osrm():
@@ -93,7 +139,7 @@ def stage_config():
         description="Revive the historic downtown of the oldest city in "
                     "South Carolina",
         creator="PSWBSF",
-        version="1.2.0",
+        version="1.2.1",
         country="US",
         initial_view_state=[-79.9381, 32.7885],
     )
@@ -107,7 +153,8 @@ def stage_config():
 
 
 STAGES = {"seed": stage_seed, "special": stage_special, "osrm": stage_osrm,
-          "routes": stage_routes, "config": stage_config}
+          "routes": stage_routes, "routes-new": stage_routes_new,
+          "reschool": stage_reschool, "config": stage_config}
 STAGES["all"] = lambda: [s() for s in (stage_seed, stage_special, stage_osrm,
                                        stage_routes, stage_config)]
 

@@ -111,9 +111,41 @@ hospitals carry patients and visitors, not nurses. Schools are the deliberate
 exception — they carry students *and* staff without merging, so school
 employment is double-counted by choice.
 
+#### Why schools don't use the gravity model
+
+Every other category lets depot place its people by gravity: the weight of a
+residential node is `residents / distance ** exponent`. For schools that breaks
+down. The distances are in metres and the default school exponent is 2.5, so a
+node 0.5 km from the school outweighs one at 5 km by 316×, and the entire
+intake collapses onto the one or two closest nodes. In the 1.2.0 build that
+left 172 residential nodes sending more children to school than they had
+LODES residents — the worst at 3,990% — because `add_points` credits those
+students back to the node as residents, so a node's population inflates to
+match its own outbound student flow.
+
+Schools are the one category whose destination has a legally defined
+catchment, so they are placed explicitly instead. Every residential node inside
+the attendance zone is passed as a `required_locs` entry, repeated in
+proportion to its residents, which spreads intake across the zone the way
+zoning actually works. Radii are 3 km for primary, 5 km for middle and 8 km
+for high schools, growing only when a zone cannot supply its school.
+
+Two constraints keep it honest. Nodes are allocated whole pops only when they
+have headroom for one, so quantisation cannot push a node past its cap; and
+schools are placed largest-first against a running per-node budget, so a node
+inside several overlapping catchments cannot be oversubscribed by the
+combination. The budget is measured against each node's *LODES* residents, not
+its current count — by the time schools are added, the other special demand has
+already assigned workers to live at these nodes, and one node goes from 8 LODES
+residents to 193.
+
+The result is 19 nodes over 100% rather than 172, a 95th percentile of 81%
+rather than 603%, and a median school fed by 26 residential nodes rather than
+7. Staff are still placed by gravity, since teachers are not zoned.
+
 | Category | Points | Sizing |
 | --- | --- | --- |
-| Schools | 215 | NCES CCD (public) and PSS (private), 2021-22: real per-school enrollment, staff as teacher FTE × 1.9 |
+| Schools | 216 | NCES CCD (public) and PSS (private), 2021-22: real per-school enrollment, staff as teacher FTE × 1.9. Pupils placed by attendance zone, not gravity — see below |
 | Military | 6 | Joint Base Charleston, the Navy nuclear training commands, Coast Guard. Active duty is largely absent from LODES |
 | Universities | 5 | Student bodies carried from the 1.0.0 map |
 | Airport | 1 | Daily passengers, split evenly between departures and arrivals |

@@ -18,7 +18,10 @@ Coordinates are from OpenStreetMap unless they carry over from PSWBSF's
 original 1.0.0 map, which spot-checks clean against OSM.
 """
 import json
+import math
 import os
+
+import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -195,56 +198,176 @@ RESORTS = [
 ]
 
 
-def schools():
+# Attendance-zone radius by NCES school level. Schools are the one category
+# where the destination has a legally defined catchment, and pupils come from
+# inside it in rough proportion to how many people live there.
+CATCHMENT_M = {1: 3000, 2: 5000, 3: 8000}   # primary / middle / high
+CATCHMENT_DEFAULT_M = 5000                  # ungraded, private, "other"
+STUDENT_POP_SIZE = 15
+STAFF_POP_SIZE = 10
+STAFF_EXPONENT = 1.5      # teachers commute in from well beyond the zone
+# Ceiling on the share of a residential node's LODES residents that may be
+# sent to school. LODES counts workers, not people, and school-age children
+# are roughly half a metro's worker count, so anything approaching 1.0 is a
+# node sending more children than it plausibly houses.
+NODE_CAP = 0.75
+
+
+def _haversine_m(lon, lat, lons, lats):
+    r = 6371008.8
+    p1 = math.radians(lat)
+    p2 = np.radians(lats)
+    dphi = p2 - p1
+    dlam = np.radians(lons - lon)
+    h = np.sin(dphi / 2) ** 2 + math.cos(p1) * np.cos(p2) * np.sin(dlam / 2) ** 2
+    return 2 * r * np.arcsin(np.sqrt(h))
+
+
+def _largest_remainder(weights, total):
+    """Apportion `total` whole pops across `weights` without drift."""
+    exact = weights * total
+    alloc = np.floor(exact).astype(int)
+    short = total - int(alloc.sum())
+    if short > 0:
+        for k in np.argsort(-(exact - alloc))[:short]:
+            alloc[k] += 1
+    return alloc
+
+
+def schools(base_points, resident_baseline=None):
     """
     Schools from the NCES Common Core of Data (public) and Private School
     Universe Survey (private), both 2021-22, filtered to the map bbox.
 
-    Capacity is students plus staff. Staff is teacher FTE scaled by 1.9, the
-    national ratio of total school employees to teachers. Note that those staff
-    are already present in LODES as workers at the school's block and this
-    deliberately does not merge them away, so school employment is counted
-    twice by design.
+    Pupils are placed by attendance zone rather than by depot's gravity model.
+    The gravity weight is residents / distance**exponent, and at the default
+    school exponent of 2.5 over metres a node 0.5 km out outweighs one at 5 km
+    by 316x, so the whole school collapses onto its one or two closest
+    residential nodes -- which then ship more children than they have
+    residents. Instead every residential node inside the catchment is passed as
+    a `required_locs` entry, repeated in proportion to its residents, so the
+    intake spreads across the zone the way school zoning actually works.
+
+    Schools are taken largest first against a running per-node capacity, so a
+    node inside several overlapping catchments cannot be oversubscribed by the
+    combination. Where a zone cannot supply its school the radius grows until
+    it can.
+
+    Staff are left to the gravity model: teachers are not zoned, and they
+    commute in from across the metro.
+
+    `resident_baseline` maps point id to its LODES resident count. It matters
+    because by the time schools are added, the other special demand has already
+    assigned workers to live at these nodes -- one node here goes from 8 LODES
+    residents to 193 -- and sizing a catchment against that inflated figure
+    lets a school claim people the neighbourhood does not have. Falls back to
+    the point's current residents when a node is missing from the baseline.
+
+    Capacity is students plus staff, staff being teacher FTE scaled by 1.9 --
+    the national ratio of school employees to teachers. Those staff are already
+    in LODES as workers at the school's block, and this deliberately does not
+    merge them away, so school employment is counted twice by design.
     """
-    raw = json.load(open(os.path.join(HERE, "schools.json")))
+    entries = [s for s in json.load(open(os.path.join(HERE, "schools.json")))
+               if s["students"] + s["staff"] >= 40]
+
+    resident_baseline = resident_baseline or {}
+    locs = np.array([p["location"] for p in base_points], dtype=float)
+    residents = np.array(
+        [float(resident_baseline.get(p["id"], p["residents"])) for p in base_points],
+        dtype=float)
+    remaining = residents * NODE_CAP
+
     out = []
-    for s in raw:
-        cap = s["students"] + s["staff"]
-        if cap < 40:
+    for s in sorted(entries, key=lambda x: -x["students"]):
+        students, staff = s["students"], s["staff"]
+        level = s.get("level")
+        radius = CATCHMENT_M.get(level if level in CATCHMENT_M else None,
+                                 CATCHMENT_DEFAULT_M)
+
+        npops = max(2, round(students / STUDENT_POP_SIZE))
+        psize_req = max(1, round(students / npops))
+
+        # Only nodes with room for a whole pop are eligible, so quantisation
+        # cannot push one past its cap. Grow the zone until enough of them
+        # exist to seat the school.
+        dist = _haversine_m(s["lon"], s["lat"], locs[:, 0], locs[:, 1])
+        mask = None
+        for mult in (1.0, 1.5, 2.0, 3.0, 4.0, 6.0, 8.0, 12.0):
+            mask = (dist <= radius * mult) & (remaining >= psize_req)
+            if int((remaining[mask] // psize_req).sum()) >= npops:
+                break
+        idx = np.flatnonzero(mask)
+        if idx.size == 0:                       # nothing within reach at all
             continue
-        code = None
+
+        # Seats each node can take, then apportion by residents and clamp,
+        # redistributing anything that overflows onto nodes with room left.
+        seats = (remaining[idx] // psize_req).astype(int)
+        npops = min(npops, int(seats.sum()))
+        alloc = np.zeros(idx.size, dtype=int)
+        left = npops
+        while left > 0:
+            room = seats - alloc
+            open_ = room > 0
+            if not open_.any():
+                break
+            w = remaining[idx] * open_
+            if w.sum() <= 0:
+                break
+            give = _largest_remainder(w / w.sum(), left)
+            give = np.minimum(give, room)
+            if give.sum() == 0:                 # rounding stalled; fill directly
+                give[np.flatnonzero(open_)[:left]] = 1
+            alloc += give
+            left -= int(give.sum())
+
+        required_locs = []
+        for i, n in zip(idx, alloc):
+            required_locs.extend([[float(locs[i][0]), float(locs[i][1])]] * int(n))
+        if not required_locs:
+            continue
+
+        remaining[idx] = np.maximum(0.0, remaining[idx] - alloc * psize_req)
+
         out.append(dict(
             type="school", name=s["name"], location=[s["lon"], s["lat"]],
-            total_capacity=cap,
-            pop_size=max(10, min(100, cap // 25)),
+            total_capacity=psize_req * len(required_locs) + staff,
+            required_locs=required_locs,
+            pop_size=STUDENT_POP_SIZE,
+            pop_size_req=psize_req,
+            pop_size_remain=STAFF_POP_SIZE,
+            exponent=STAFF_EXPONENT,
             residential_split=0.0,
         ))
     return out
 
 
-def all_pois():
-    groups = [
-        ("airport", AIRPORT), ("university", UNIVERSITIES), ("military", MILITARY),
-        ("hospital", HOSPITALS), ("port", PORTS), ("shopping", SHOPPING),
-        ("attraction", ATTRACTIONS), ("resort", RESORTS), ("school", schools()),
-    ]
+# Everything except schools. These are applied first: several carry
+# merge_within, which deletes the LODES points they absorb, and school
+# catchments must be computed against the point list that survives that.
+def non_school_pois():
     pois = []
-    for _name, g in groups:
+    for g in (AIRPORT, UNIVERSITIES, MILITARY, HOSPITALS, PORTS, SHOPPING,
+              ATTRACTIONS, RESORTS):
         pois.extend(g)
     return pois
 
 
 if __name__ == "__main__":
+    import sys
+    demand = sys.argv[1] if len(sys.argv) > 1 else "CHS_demand/demand_data.json"
+    pts = [p for p in json.load(open(demand))["points"] if p["id"].startswith("merged")]
     groups = [
         ("airport", AIRPORT), ("university", UNIVERSITIES), ("military", MILITARY),
         ("hospital", HOSPITALS), ("port", PORTS), ("shopping", SHOPPING),
-        ("attraction", ATTRACTIONS), ("resort", RESORTS), ("school", schools()),
+        ("attraction", ATTRACTIONS), ("resort", RESORTS), ("school", schools(pts)),
     ]
-    total = 0
     print(f"{'group':<14}{'points':>8}{'capacity':>12}{'residents':>11}{'jobs':>10}")
+    total = 0
     for name, g in groups:
         cap = sum(p["total_capacity"] for p in g)
         res = sum(int(p["total_capacity"] * p.get("residential_split", 0.0)) for p in g)
         print(f"{name:<14}{len(g):>8}{cap:>12,}{res:>11,}{cap - res:>10,}")
         total += cap
-    print(f"{'TOTAL':<14}{len(all_pois()):>8}{total:>12,}")
+    print(f"{'TOTAL':<14}{sum(len(g) for _, g in groups):>8}{total:>12,}")
