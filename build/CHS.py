@@ -1,8 +1,14 @@
 """
 Rebuild of the Charleston, SC map (CHS) for Subway Builder using depot.
 
-Bounding box matches the original 1.0.0 release's PMTiles bounds so existing
-networks stay aligned:  -80.3018, 32.5526 -> -79.6701, 33.1133
+Bounding box covers the populated Charleston tri-county area (Charleston,
+Berkeley and Dorchester counties): -80.68, 32.47 -> -79.43, 33.43.
+
+Derived from data rather than eyeballed: it contains all 27 incorporated
+places in the three counties, 99.3% of the tri-county LODES activity by
+block group, and every barrier-island resort. The far NE marsh (Cape Romain)
+and the emptiest Francis Marion forest are trimmed, which keeps it to 3.4x
+the old map instead of the 4.5x a strict county rectangle would cost.
 
 Run a single stage:   python CHS.py <stage>
 Stages: extract | labels | buildings | roads | pmtiles | addlabels | all
@@ -17,12 +23,14 @@ OSMPBF = os.path.join(HERE, "south-carolina-latest.osm.pbf")
 
 obj = MapGen(
     city="CHS",
-    bbox=[-80.3018, 32.5526, -79.6701, 33.1133],
+    bbox=[-80.68, 32.47, -79.43, 33.43],
     osmpbf=OSMPBF,
     outputdir=HERE,
     # Charleston is a mid-size, low-rise metro: keep small buildings so the
     # historic peninsula stays dense, at defaults for filtering/simplification.
     building_index_filter_size=40,
+    # The old bbox's Overture pickle must not be reused for the larger box.
+    redownload_buildings=True,
     building_tile_filter_size=None,
     building_index_simplification=1,
     building_tile_simplification=1,

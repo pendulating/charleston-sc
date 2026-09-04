@@ -3,10 +3,16 @@
 Map of Charleston, South Carolina for [Subway Builder](https://subwaybuildermodded.com).
 Originally built by **PSWBSF** (Map Patcher + US Demand Generator); this fork
 rebuilds the map data with [depot](https://github.com/Subway-Builder-Modded/depot)
-so it carries the layers the game has expected since 1.4.
+so it carries the layers the game has expected since 1.4, and extends it to the
+whole populated tri-county area.
 
-The playable area is unchanged — `-80.3018, 32.5526 → -79.6701, 33.1133` — so
-networks built on 1.0.0 still line up.
+The playable area is `-80.68, 32.47 → -79.43, 33.43` — 117 × 106 km, covering
+Charleston, Berkeley and Dorchester counties. It was derived rather than
+eyeballed: it holds all 27 incorporated places in the three counties, 99.3% of
+tri-county LODES activity by block group, and every barrier-island resort,
+while trimming the empty Cape Romain marsh and the deepest Francis Marion
+forest. Through 1.1.0 the map covered only the inner 3,663 km², which left
+Moncks Corner and St. George outside the boundary.
 
 ## What ships
 
@@ -26,6 +32,7 @@ the archive).
 | `ocean_depth_index_contours.json.gz` | Depth contours |
 | `demand_data.json` | Population, jobs, and commutes |
 | `config.json` | Map metadata |
+| `.railyard_map/special_demand_*.json` | Special demand type and point schema |
 
 ## Building it
 
@@ -33,11 +40,19 @@ the archive).
 `build/` drive it:
 
 ```bash
-cd build
+cd us-demand                            # base LODES demand for the bbox
+python create_US_demand_file.py Charleston.json
+
+cd ../build
 python CHS.py all           # extract → buildings → roads → pmtiles → labels
-python CHS_demand.py all    # OSRM server → recompute commutes → config.json
+python CHS_demand.py all    # seed → special demand → OSRM → commutes → config
 python package.py           # assemble dist/Charleston.zip
 ```
+
+`us-demand/` is [slurry's US Demand Generator](https://github.com/rslurry/subwaybuilder-US-demand-data),
+cloned in and gitignored. It turns LODES origin-destination pairs into the base
+demand; depot only edits an existing demand file, so it cannot produce this
+part. Re-run it whenever the bbox changes, or the new area will have no demand.
 
 Each script also takes a single stage name if you want to re-run one step —
 `python CHS.py pmtiles`, `python CHS_demand.py routes`, and so on.
@@ -75,12 +90,46 @@ uv pip install --python .venv/bin/python ../depot
 `scikit-learn` is imported by `depot.demand`; the `h2` extra on `httpx` is
 needed by the Overture buildings fetch.
 
+### Special demand
+
+`build/special/pois.py` defines every special demand point and is applied
+through depot's `add_points`, which is also what emits the
+`.railyard_map/special_demand_*.json` schema the 1.0.0 and 1.1.0 maps shipped
+without.
+
+Two conventions govern the numbers there. `merge_within` folds the nearby LODES
+block point into the special point, and belongs anywhere the site is a
+workplace LODES already counts — a hospital, terminal, mall or campus —
+otherwise its staff are counted twice. `residential_split` is the share that
+*lives* at the point and travels out, which is how inbound tourism is modelled:
+an arriving air passenger or a beach-rental guest is a resident of that point
+for the day.
+
+So a point's capacity should be the trips LODES never sees. Airports carry
+passengers, not airport workers; universities carry students, not faculty;
+hospitals carry patients and visitors, not nurses. Schools are the deliberate
+exception — they carry students *and* staff without merging, so school
+employment is double-counted by choice.
+
+| Category | Points | Sizing |
+| --- | --- | --- |
+| Schools | 215 | NCES CCD (public) and PSS (private), 2021-22: real per-school enrollment, staff as teacher FTE × 1.9 |
+| Military | 6 | Joint Base Charleston, the Navy nuclear training commands, Coast Guard. Active duty is largely absent from LODES |
+| Universities | 5 | Student bodies carried from the 1.0.0 map |
+| Airport | 1 | Daily passengers, split evenly between departures and arrivals |
+| Resorts | 5 | Kiawah, Wild Dunes, Folly, Seabrook, Edisto — mostly residential, i.e. visitors |
+| Hospitals | 8 | Patient and visitor trips at ~2.5 per licensed bed, beds from OSM |
+| Ports | 5 | Gate traffic above terminal employment; Union Pier adds cruise arrivals |
+| Retail and attractions | 9 | Malls, the aquarium, City Market, the forts, Patriots Point, IAAM, Amtrak |
+
 ### Inputs
 
 - OSM: `south-carolina-latest.osm.pbf` from [Geofabrik](https://download.geofabrik.de/north-america/us/south-carolina.html)
 - Buildings: Overture Maps, fetched by depot
 - Bathymetry: GEBCO 2026 sub-ice grid, via CEDA OPeNDAP
-- Demand: inherited from the 1.0.0 release (2023 LODES), commutes recomputed
+- Demand: LODES 2023 origin-destination pairs via the US Demand Generator
+- Schools: NCES Common Core of Data and Private School Universe Survey
+- Boundaries: Census TIGER counties and block groups, for deriving the bbox
 
 ### OSRM port
 

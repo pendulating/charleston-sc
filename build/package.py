@@ -20,9 +20,15 @@ DEMANDDIR = os.path.join(HERE, CITY + "_demand")
 OUT = os.path.join(HERE, "dist", "Charleston.zip")
 
 # (source path, name inside the zip, required?)
+# The .railyard_map entries are the special-demand schema; they are the one
+# place a nested path is correct, and they match what depot's own author ships.
 CONTENTS = [
     (os.path.join(DEMANDDIR, "config.json"), "config.json", True),
     (os.path.join(DEMANDDIR, "demand_data.json"), "demand_data.json", True),
+    (os.path.join(DEMANDDIR, ".railyard_map", "special_demand_points.json"),
+     ".railyard_map/special_demand_points.json", True),
+    (os.path.join(DEMANDDIR, ".railyard_map", "special_demand_types.json"),
+     ".railyard_map/special_demand_types.json", True),
     (os.path.join(MAPDIR, f"{CITY}.pmtiles"), f"{CITY}.pmtiles", True),
     (os.path.join(MAPDIR, f"{CITY}_foundations.pmtiles"), f"{CITY}_foundations.pmtiles", False),
     (os.path.join(MAPDIR, "buildings_index.bin.gz"), "buildings_index.bin.gz", True),

@@ -1,0 +1,2081 @@
+[
+ {
+  "name": "MacDougall High",
+  "lon": -80.291006,
+  "lat": 33.169113,
+  "students": 4,
+  "staff": 6,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Harleyville Elementary",
+  "lon": -80.379036,
+  "lat": 33.154295,
+  "students": 226,
+  "staff": 32,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "St. George Middle",
+  "lon": -80.577543,
+  "lat": 33.19486,
+  "students": 282,
+  "staff": 48,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "William Memorial Elementary",
+  "lon": -80.589468,
+  "lat": 33.183155,
+  "students": 574,
+  "staff": 93,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Woodland High",
+  "lon": -80.492451,
+  "lat": 33.167572,
+  "students": 612,
+  "staff": 95,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Harleyville-Ridgeville Middle",
+  "lon": -80.379036,
+  "lat": 33.154295,
+  "students": 169,
+  "staff": 34,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Clay Hill Elementary",
+  "lon": -80.312634,
+  "lat": 33.092604,
+  "students": 164,
+  "staff": 23,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Mount Holly Elementary",
+  "lon": -80.014563,
+  "lat": 32.977689,
+  "students": 555,
+  "staff": 72,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Devon Forest Elementary",
+  "lon": -80.075227,
+  "lat": 33.038746,
+  "students": 970,
+  "staff": 118,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Moncks Corner Elementary",
+  "lon": -79.978483,
+  "lat": 33.195983,
+  "students": 597,
+  "staff": 61,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Berkeley Elementary",
+  "lon": -80.055433,
+  "lat": 33.205145,
+  "students": 619,
+  "staff": 70,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Boulder Bluff Elementary",
+  "lon": -80.026341,
+  "lat": 33.023583,
+  "students": 633,
+  "staff": 86,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Cainhoy Elementary",
+  "lon": -79.852164,
+  "lat": 33.021066,
+  "students": 154,
+  "staff": 25,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Cross Elementary",
+  "lon": -80.167293,
+  "lat": 33.30077,
+  "students": 348,
+  "staff": 40,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "College Park Elementary",
+  "lon": -80.090161,
+  "lat": 33.016028,
+  "students": 833,
+  "staff": 110,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Timberland High",
+  "lon": -79.890857,
+  "lat": 33.337134,
+  "students": 704,
+  "staff": 87,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "J. K. Gourdin Elementary",
+  "lon": -79.990705,
+  "lat": 33.425267,
+  "students": 119,
+  "staff": 17,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Henry E. Bonner Elementary",
+  "lon": -79.895629,
+  "lat": 33.265394,
+  "students": 828,
+  "staff": 95,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "St. Stephen Elementary",
+  "lon": -79.928795,
+  "lat": 33.398519,
+  "students": 291,
+  "staff": 48,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Whitesville Elementary",
+  "lon": -80.049342,
+  "lat": 33.149944,
+  "students": 1031,
+  "staff": 108,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Westview Elementary",
+  "lon": -80.047605,
+  "lat": 33.004358,
+  "students": 560,
+  "staff": 63,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Hanahan Middle",
+  "lon": -79.994223,
+  "lat": 32.907554,
+  "students": 793,
+  "staff": 95,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Sedgefield Middle",
+  "lon": -80.012152,
+  "lat": 32.978161,
+  "students": 986,
+  "staff": 116,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "St. Stephen Middle",
+  "lon": -79.933883,
+  "lat": 33.405489,
+  "students": 209,
+  "staff": 30,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "College Park Middle",
+  "lon": -80.090258,
+  "lat": 33.018942,
+  "students": 714,
+  "staff": 86,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Berkeley High",
+  "lon": -80.025462,
+  "lat": 33.201671,
+  "students": 1776,
+  "staff": 163,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Cross High",
+  "lon": -80.163785,
+  "lat": 33.351386,
+  "students": 294,
+  "staff": 48,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Goose Creek High",
+  "lon": -80.016449,
+  "lat": 32.973399,
+  "students": 1981,
+  "staff": 213,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Hanahan High",
+  "lon": -80.008103,
+  "lat": 32.915545,
+  "students": 1040,
+  "staff": 127,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Hanahan Elementary",
+  "lon": -80.028632,
+  "lat": 32.9348,
+  "students": 923,
+  "staff": 114,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Westview Primary",
+  "lon": -80.04915,
+  "lat": 33.007168,
+  "students": 668,
+  "staff": 76,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Goose Creek Elementary",
+  "lon": -80.032358,
+  "lat": 32.973109,
+  "students": 945,
+  "staff": 120,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Marrington Middle School of the Arts",
+  "lon": -79.973459,
+  "lat": 32.968567,
+  "students": 400,
+  "staff": 48,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Howe Hall AIMS Elementary",
+  "lon": -80.028519,
+  "lat": 32.979887,
+  "students": 418,
+  "staff": 48,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Marrington Elementary",
+  "lon": -79.975942,
+  "lat": 32.96806,
+  "students": 430,
+  "staff": 57,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Sangaree Middle",
+  "lon": -80.107852,
+  "lat": 33.02716,
+  "students": 826,
+  "staff": 93,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Berkeley Middle",
+  "lon": -79.995834,
+  "lat": 33.199959,
+  "students": 1403,
+  "staff": 116,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Macedonia Middle",
+  "lon": -79.896654,
+  "lat": 33.268704,
+  "students": 383,
+  "staff": 49,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Sangaree Elementary",
+  "lon": -80.108588,
+  "lat": 33.035156,
+  "students": 659,
+  "staff": 78,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Westview Middle",
+  "lon": -80.048247,
+  "lat": 33.005431,
+  "students": 886,
+  "staff": 108,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Stratford High",
+  "lon": -80.084803,
+  "lat": 33.014376,
+  "students": 2653,
+  "staff": 304,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Sangaree Intermediate",
+  "lon": -80.106298,
+  "lat": 33.034969,
+  "students": 568,
+  "staff": 57,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Daniel Island School",
+  "lon": -79.909936,
+  "lat": 32.848706,
+  "students": 1170,
+  "staff": 141,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Cane Bay High",
+  "lon": -80.122268,
+  "lat": 33.102104,
+  "students": 2158,
+  "staff": 230,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Cane Bay Elementary",
+  "lon": -80.121031,
+  "lat": 33.108076,
+  "students": 1263,
+  "staff": 129,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Berkeley County Middle College High",
+  "lon": -80.04548,
+  "lat": 33.170841,
+  "students": 101,
+  "staff": 8,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Cane Bay Middle",
+  "lon": -80.120273,
+  "lat": 33.106466,
+  "students": 1487,
+  "staff": 154,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Nexton Elementary",
+  "lon": -80.149213,
+  "lat": 33.064298,
+  "students": 1025,
+  "staff": 114,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Philip Simmons Middle",
+  "lon": -79.860467,
+  "lat": 32.912938,
+  "students": 428,
+  "staff": 49,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Philip Simmons Elementary",
+  "lon": -79.860467,
+  "lat": 32.912938,
+  "students": 525,
+  "staff": 65,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Philip Simmons High",
+  "lon": -79.850871,
+  "lat": 32.917031,
+  "students": 771,
+  "staff": 101,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Bowen's Corner Elementary",
+  "lon": -80.004023,
+  "lat": 32.946507,
+  "students": 779,
+  "staff": 91,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Foxbank Elementary",
+  "lon": -80.034732,
+  "lat": 33.099067,
+  "students": 1028,
+  "staff": 112,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Charleston School of the Arts",
+  "lon": -80.000996,
+  "lat": 32.88428,
+  "students": 1061,
+  "staff": 135,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Academic Magnet High",
+  "lon": -80.000996,
+  "lat": 32.88428,
+  "students": 719,
+  "staff": 80,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Chicora Elementary",
+  "lon": -79.970186,
+  "lat": 32.852511,
+  "students": 320,
+  "staff": 63,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "A. C. Corcoran Elementary",
+  "lon": -80.059616,
+  "lat": 32.96049,
+  "students": 767,
+  "staff": 97,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Jane Edwards Elementary",
+  "lon": -80.299909,
+  "lat": 32.580834,
+  "students": 68,
+  "staff": 23,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Mary Ford Early Childhood Learning and Family Center",
+  "lon": -79.978017,
+  "lat": 32.849095,
+  "students": 294,
+  "staff": 46,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "W. B. Goodwin Elementary",
+  "lon": -80.048337,
+  "lat": 32.860636,
+  "students": 431,
+  "staff": 70,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Minnie Hughes Elementary",
+  "lon": -80.374368,
+  "lat": 32.700341,
+  "students": 186,
+  "staff": 30,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Hunley Park Elementary",
+  "lon": -80.073051,
+  "lat": 32.892469,
+  "students": 410,
+  "staff": 61,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Ladson Elementary",
+  "lon": -80.105878,
+  "lat": 32.985422,
+  "students": 851,
+  "staff": 114,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Lambs Elementary",
+  "lon": -80.064151,
+  "lat": 32.885694,
+  "students": 423,
+  "staff": 63,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Memminger Elementary",
+  "lon": -79.935718,
+  "lat": 32.780846,
+  "students": 387,
+  "staff": 72,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Midland Park Primary",
+  "lon": -80.041143,
+  "lat": 32.919855,
+  "students": 450,
+  "staff": 46,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "E.B. Ellington Elementary",
+  "lon": -80.211357,
+  "lat": 32.784895,
+  "students": 353,
+  "staff": 70,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Mitchell Elementary",
+  "lon": -79.947721,
+  "lat": 32.794585,
+  "students": 222,
+  "staff": 46,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Jennie Moore Elementary",
+  "lon": -79.792947,
+  "lat": 32.851802,
+  "students": 1004,
+  "staff": 120,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Morningside Middle",
+  "lon": -80.001573,
+  "lat": 32.877038,
+  "students": 567,
+  "staff": 101,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Mt. Pleasant Academy",
+  "lon": -79.863112,
+  "lat": 32.780007,
+  "students": 658,
+  "staff": 72,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Murray-LaSaine Montessori",
+  "lon": -79.985948,
+  "lat": 32.743384,
+  "students": 363,
+  "staff": 44,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "North Charleston Elementary",
+  "lon": -79.982775,
+  "lat": 32.88471,
+  "students": 302,
+  "staff": 70,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Oakland Elementary",
+  "lon": -80.03837,
+  "lat": 32.787181,
+  "students": 530,
+  "staff": 76,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Malcolm C. Hursey Montessori",
+  "lon": -79.990709,
+  "lat": 32.875165,
+  "students": 424,
+  "staff": 63,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Matilda F. Dunston Elementary",
+  "lon": -80.009422,
+  "lat": 32.899578,
+  "students": 436,
+  "staff": 65,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Edith L. Frierson Elementary",
+  "lon": -80.182427,
+  "lat": 32.640757,
+  "students": 148,
+  "staff": 25,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Sanders-Clyde Elementary",
+  "lon": -79.937718,
+  "lat": 32.801149,
+  "students": 390,
+  "staff": 80,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Pepperhill Elementary",
+  "lon": -80.076373,
+  "lat": 32.937261,
+  "students": 448,
+  "staff": 74,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "James Simons Montessori",
+  "lon": -79.94956,
+  "lat": 32.800886,
+  "students": 360,
+  "staff": 48,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Springfield Elementary",
+  "lon": -80.059851,
+  "lat": 32.836687,
+  "students": 621,
+  "staff": 93,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "St. Andrew's School of Math and Science",
+  "lon": -79.98131,
+  "lat": 32.777871,
+  "students": 766,
+  "staff": 91,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Angel Oak Elementary",
+  "lon": -80.102822,
+  "lat": 32.723376,
+  "students": 772,
+  "staff": 95,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Stiles Point Elementary",
+  "lon": -79.929045,
+  "lat": 32.737696,
+  "students": 817,
+  "staff": 86,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Stono Park Elementary",
+  "lon": -80.016205,
+  "lat": 32.779915,
+  "students": 399,
+  "staff": 57,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Sullivan's Island Elementary",
+  "lon": -79.839594,
+  "lat": 32.759366,
+  "students": 475,
+  "staff": 65,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Mamie P. Whitesides Elementary",
+  "lon": -79.834095,
+  "lat": 32.80939,
+  "students": 834,
+  "staff": 89,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Charleston Progressive",
+  "lon": -79.936711,
+  "lat": 32.791032,
+  "students": 213,
+  "staff": 46,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "C. E. Williams Middle School for Creative and Scientific Art",
+  "lon": -80.078469,
+  "lat": 32.814966,
+  "students": 1172,
+  "staff": 165,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Baptist Hill High",
+  "lon": -80.261947,
+  "lat": 32.727957,
+  "students": 552,
+  "staff": 91,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "North Charleston High",
+  "lon": -79.978733,
+  "lat": 32.880895,
+  "students": 768,
+  "staff": 167,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Wando High",
+  "lon": -79.759186,
+  "lat": 32.885527,
+  "students": 2596,
+  "staff": 289,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "St. Johns High",
+  "lon": -80.098504,
+  "lat": 32.724739,
+  "students": 387,
+  "staff": 59,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "RB Stall High",
+  "lon": -80.080187,
+  "lat": 32.923086,
+  "students": 1952,
+  "staff": 234,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Charles Pinckney Elementary",
+  "lon": -79.78827,
+  "lat": 32.876289,
+  "students": 635,
+  "staff": 72,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Thomas C. Cario Middle",
+  "lon": -79.787564,
+  "lat": 32.878574,
+  "students": 1125,
+  "staff": 120,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "West Ashley High",
+  "lon": -80.074886,
+  "lat": 32.819554,
+  "students": 1935,
+  "staff": 211,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "James Island Elementary",
+  "lon": -79.975881,
+  "lat": 32.702784,
+  "students": 582,
+  "staff": 70,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Charleston Development Academy",
+  "lon": -79.95466,
+  "lat": 32.789997,
+  "students": 139,
+  "staff": 25,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "East Cooper Montessori Charter",
+  "lon": -79.853154,
+  "lat": 32.797471,
+  "students": 432,
+  "staff": 59,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Greg Mathis Charter High",
+  "lon": -79.973091,
+  "lat": 32.844534,
+  "students": 58,
+  "staff": 11,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Laurel Hill Primary",
+  "lon": -79.783418,
+  "lat": 32.875191,
+  "students": 739,
+  "staff": 84,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Drayton Hall Elementary",
+  "lon": -80.072817,
+  "lat": 32.853459,
+  "students": 632,
+  "staff": 76,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "James Island Charter High",
+  "lon": -79.934228,
+  "lat": 32.731429,
+  "students": 1589,
+  "staff": 201,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Northwoods Middle",
+  "lon": -80.057434,
+  "lat": 32.942515,
+  "students": 738,
+  "staff": 89,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Harbor View Elementary",
+  "lon": -79.968643,
+  "lat": 32.75611,
+  "students": 639,
+  "staff": 82,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Haut Gap Middle",
+  "lon": -80.077147,
+  "lat": 32.72072,
+  "students": 444,
+  "staff": 61,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Laing Middle",
+  "lon": -79.79519,
+  "lat": 32.850273,
+  "students": 1012,
+  "staff": 110,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Moultrie Middle",
+  "lon": -79.872236,
+  "lat": 32.790578,
+  "students": 1119,
+  "staff": 118,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Burke High",
+  "lon": -79.953888,
+  "lat": 32.793517,
+  "students": 352,
+  "staff": 112,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "James B. Edwards Elementary",
+  "lon": -79.853748,
+  "lat": 32.81849,
+  "students": 763,
+  "staff": 93,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Military Magnet Academy",
+  "lon": -79.967851,
+  "lat": 32.850547,
+  "students": 428,
+  "staff": 80,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "St. James Santee Elementary-Middle",
+  "lon": -79.538961,
+  "lat": 33.061904,
+  "students": 182,
+  "staff": 36,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Ashley River Creative Arts Elementary",
+  "lon": -80.022371,
+  "lat": 32.800759,
+  "students": 612,
+  "staff": 86,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Buist Academy",
+  "lon": -79.932423,
+  "lat": 32.787011,
+  "students": 548,
+  "staff": 68,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Mt. Zion Elementary",
+  "lon": -80.044098,
+  "lat": 32.67735,
+  "students": 258,
+  "staff": 38,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Belle Hall Elementary",
+  "lon": -79.855779,
+  "lat": 32.847265,
+  "students": 666,
+  "staff": 76,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Orange Grove Charter School",
+  "lon": -80.001201,
+  "lat": 32.82121,
+  "students": 1167,
+  "staff": 141,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Charleston Charter School for Math and Science",
+  "lon": -79.950435,
+  "lat": 32.802869,
+  "students": 547,
+  "staff": 95,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Jerry Zucker Middle School of Science",
+  "lon": -80.062499,
+  "lat": 32.876132,
+  "students": 524,
+  "staff": 97,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Pattison's Academy for Comprehensive Education",
+  "lon": -80.021103,
+  "lat": 32.790892,
+  "students": 47,
+  "staff": 21,
+  "level": 4,
+  "sector": "public"
+ },
+ {
+  "name": "Pinehurst Elementary",
+  "lon": -80.055943,
+  "lat": 32.942686,
+  "students": 656,
+  "staff": 108,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Montessori Community School",
+  "lon": -80.058289,
+  "lat": 32.835551,
+  "students": 273,
+  "staff": 32,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "North Charleston Creative Arts Elementary",
+  "lon": -79.997917,
+  "lat": 32.88702,
+  "students": 397,
+  "staff": 70,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Carolina Voyager Charter",
+  "lon": -80.021103,
+  "lat": 32.790892,
+  "students": 371,
+  "staff": 59,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Meeting Street Elementary",
+  "lon": -80.00527,
+  "lat": 32.858642,
+  "students": 1133,
+  "staff": 266,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Allegro Charter School of Music",
+  "lon": -80.002424,
+  "lat": 32.862475,
+  "students": 229,
+  "staff": 57,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Simmons Pinckney Middle",
+  "lon": -79.952556,
+  "lat": 32.794209,
+  "students": 219,
+  "staff": 51,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Deer Park Middle",
+  "lon": -80.048931,
+  "lat": 32.96345,
+  "students": 328,
+  "staff": 42,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Carolina Park Elementary",
+  "lon": -79.762405,
+  "lat": 32.889816,
+  "students": 978,
+  "staff": 101,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Camp Road Middle",
+  "lon": -79.972521,
+  "lat": 32.734449,
+  "students": 864,
+  "staff": 95,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Lucy Garrett Beckham High",
+  "lon": -79.845623,
+  "lat": 32.825677,
+  "students": 1673,
+  "staff": 177,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Northside Elementary",
+  "lon": -80.616503,
+  "lat": 32.948316,
+  "students": 452,
+  "staff": 55,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Black Street Early Childhood Center",
+  "lon": -80.649605,
+  "lat": 32.892982,
+  "students": 309,
+  "staff": 42,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Cottageville Elementary",
+  "lon": -80.472956,
+  "lat": 32.941349,
+  "students": 465,
+  "staff": 55,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Forest Hills Elementary",
+  "lon": -80.678798,
+  "lat": 32.912621,
+  "students": 469,
+  "staff": 63,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Colleton County High",
+  "lon": -80.654232,
+  "lat": 32.949377,
+  "students": 1497,
+  "staff": 122,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Colleton County Middle",
+  "lon": -80.639249,
+  "lat": 32.938871,
+  "students": 1121,
+  "staff": 112,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Fort Dorchester High",
+  "lon": -80.111133,
+  "lat": 32.926243,
+  "students": 2312,
+  "staff": 245,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Beech Hill Elementary",
+  "lon": -80.227351,
+  "lat": 32.950174,
+  "students": 1101,
+  "staff": 118,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Gregg Middle",
+  "lon": -80.216592,
+  "lat": 32.9901,
+  "students": 850,
+  "staff": 110,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Knightsville Elementary",
+  "lon": -80.237147,
+  "lat": 33.008318,
+  "students": 699,
+  "staff": 86,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Summerville Elementary",
+  "lon": -80.183029,
+  "lat": 33.009629,
+  "students": 528,
+  "staff": 68,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "James H. Spann Elementary",
+  "lon": -80.179722,
+  "lat": 33.009461,
+  "students": 576,
+  "staff": 82,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Rollings Middle School of the Arts",
+  "lon": -80.182265,
+  "lat": 33.010353,
+  "students": 799,
+  "staff": 87,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Newington Elementary",
+  "lon": -80.206734,
+  "lat": 32.98803,
+  "students": 758,
+  "staff": 93,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Summerville High",
+  "lon": -80.218677,
+  "lat": 32.994213,
+  "students": 3308,
+  "staff": 308,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Alston Middle",
+  "lon": -80.182591,
+  "lat": 33.03173,
+  "students": 822,
+  "staff": 104,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Fort Dorchester Elementary",
+  "lon": -80.137885,
+  "lat": 32.937064,
+  "students": 892,
+  "staff": 114,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Flowertown Elementary",
+  "lon": -80.204863,
+  "lat": 32.988911,
+  "students": 853,
+  "staff": 108,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Charles B. DuBose Middle",
+  "lon": -80.237531,
+  "lat": 33.033301,
+  "students": 950,
+  "staff": 114,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Oakbrook Elementary",
+  "lon": -80.136737,
+  "lat": 32.96062,
+  "students": 595,
+  "staff": 72,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Oakbrook Middle",
+  "lon": -80.137449,
+  "lat": 32.959165,
+  "students": 1006,
+  "staff": 116,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Windsor Hill Arts Infused Elementary",
+  "lon": -80.101708,
+  "lat": 32.936621,
+  "students": 693,
+  "staff": 101,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Eagle Nest Elementary",
+  "lon": -80.124789,
+  "lat": 32.909273,
+  "students": 680,
+  "staff": 89,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "William M. Reeves Elementary",
+  "lon": -80.240793,
+  "lat": 33.033616,
+  "students": 914,
+  "staff": 108,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "River Oaks Middle",
+  "lon": -80.12386,
+  "lat": 32.909979,
+  "students": 849,
+  "staff": 110,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Ashley Ridge High",
+  "lon": -80.233281,
+  "lat": 32.925229,
+  "students": 2542,
+  "staff": 228,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Joseph R. Pye Elementary",
+  "lon": -80.117506,
+  "lat": 32.957112,
+  "students": 823,
+  "staff": 99,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Dr. Eugene Sires Elementary",
+  "lon": -80.155491,
+  "lat": 32.981855,
+  "students": 858,
+  "staff": 101,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Alston-Bailey Elementary",
+  "lon": -80.18495,
+  "lat": 33.03281,
+  "students": 715,
+  "staff": 89,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Sand Hill Elementary",
+  "lon": -80.266006,
+  "lat": 32.95149,
+  "students": 1133,
+  "staff": 120,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "East Edisto Middle",
+  "lon": -80.22759,
+  "lat": 32.9533,
+  "students": 879,
+  "staff": 97,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "Sampit Elementary",
+  "lon": -79.446843,
+  "lat": 33.363574,
+  "students": 255,
+  "staff": 38,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Palmetto Scholars Academy",
+  "lon": -80.077453,
+  "lat": 32.89938,
+  "students": 507,
+  "staff": 65,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Cape Romain Environmental Education Charter School",
+  "lon": -79.473424,
+  "lat": 33.0907,
+  "students": 191,
+  "staff": 30,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Charleston  Advancement Academy High School",
+  "lon": -79.961973,
+  "lat": 32.732936,
+  "students": 424,
+  "staff": 21,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Compass Collegiate Academy",
+  "lon": -79.948727,
+  "lat": 32.797927,
+  "students": 100,
+  "staff": 11,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "GREEN  Charter School of the Lowcountry",
+  "lon": -80.045253,
+  "lat": 32.966217,
+  "students": 196,
+  "staff": 38,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Learn4Life High School-Charleston",
+  "lon": -80.023617,
+  "lat": 32.90859,
+  "students": 117,
+  "staff": 8,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Lowcountry Acceleration Academy",
+  "lon": -80.021066,
+  "lat": 32.902137,
+  "students": 242,
+  "staff": 11,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Lowcountry Leadership Charter School",
+  "lon": -80.222627,
+  "lat": 32.73435,
+  "students": 516,
+  "staff": 78,
+  "level": 4,
+  "sector": "public"
+ },
+ {
+  "name": "Oceanside Collegiate Academy",
+  "lon": -79.774048,
+  "lat": 32.894137,
+  "students": 651,
+  "staff": 44,
+  "level": 3,
+  "sector": "public"
+ },
+ {
+  "name": "Mevers School of Excellence",
+  "lon": -80.000393,
+  "lat": 33.014245,
+  "students": 932,
+  "staff": 112,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Berkeley Preparatory Academy",
+  "lon": -80.128034,
+  "lat": 33.146633,
+  "students": 708,
+  "staff": 110,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Lowcountry Connection Academy",
+  "lon": -80.168571,
+  "lat": 32.96808,
+  "students": 528,
+  "staff": 30,
+  "level": 4,
+  "sector": "public"
+ },
+ {
+  "name": "Gates School",
+  "lon": -80.022915,
+  "lat": 32.879876,
+  "students": 109,
+  "staff": 32,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Holly Hill Elementary",
+  "lon": -80.423156,
+  "lat": 33.333256,
+  "students": 326,
+  "staff": 46,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Holly Hill-Roberts Middle",
+  "lon": -80.400109,
+  "lat": 33.321829,
+  "students": 418,
+  "staff": 57,
+  "level": 2,
+  "sector": "public"
+ },
+ {
+  "name": "St. James-Gaillard Elementary",
+  "lon": -80.333512,
+  "lat": 33.389049,
+  "students": 235,
+  "staff": 32,
+  "level": 1,
+  "sector": "public"
+ },
+ {
+  "name": "Christ Our King-Stella Mans School",
+  "lon": -79.86345,
+  "lat": 32.795684,
+  "students": 575,
+  "staff": 104,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "The Charleston Catholic School",
+  "lon": -79.947651,
+  "lat": 32.80005,
+  "students": 171,
+  "staff": 32,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Divine Redeemer School",
+  "lon": -80.013811,
+  "lat": 32.91925,
+  "students": 89,
+  "staff": 18,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Nativity School",
+  "lon": -79.969124,
+  "lat": 32.726211,
+  "students": 89,
+  "staff": 22,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Blessed Sacrament School",
+  "lon": -79.981853,
+  "lat": 32.782046,
+  "students": 191,
+  "staff": 61,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Coastal Christian Preparatory School",
+  "lon": -79.863373,
+  "lat": 32.786588,
+  "students": 130,
+  "staff": 29,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Trident Academy",
+  "lon": -79.853801,
+  "lat": 32.82843,
+  "students": 50,
+  "staff": 22,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Colleton Preparatory Academy",
+  "lon": -80.661881,
+  "lat": 32.93575,
+  "students": 364,
+  "staff": 64,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "First Baptist School Of Charleston",
+  "lon": -79.930388,
+  "lat": 32.773838,
+  "students": 410,
+  "staff": 83,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Dorchester Academy",
+  "lon": -80.549861,
+  "lat": 33.18633,
+  "students": 295,
+  "staff": 56,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Porter-Gaud School",
+  "lon": -79.964141,
+  "lat": 32.773705,
+  "students": 1039,
+  "staff": 201,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Addlestone Hebrew Academy",
+  "lon": -80.018941,
+  "lat": 32.81233,
+  "students": 72,
+  "staff": 22,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "St John'S Christian Academy",
+  "lon": -80.018881,
+  "lat": 33.19917,
+  "students": 358,
+  "staff": 59,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Charleston Collegiate School",
+  "lon": -80.064531,
+  "lat": 32.71132,
+  "students": 269,
+  "staff": 62,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Charleston Day School",
+  "lon": -79.935054,
+  "lat": 32.778355,
+  "students": 267,
+  "staff": 55,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Ashley Hall School",
+  "lon": -79.944771,
+  "lat": 32.78642,
+  "students": 561,
+  "staff": 131,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Northside Christian School",
+  "lon": -80.0546,
+  "lat": 32.9441,
+  "students": 201,
+  "staff": 69,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Summerville Catholic School",
+  "lon": -80.175851,
+  "lat": 33.00859,
+  "students": 184,
+  "staff": 33,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Mason Preparatory School",
+  "lon": -79.947339,
+  "lat": 32.779213,
+  "students": 303,
+  "staff": 68,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Cathedral Academy",
+  "lon": -80.092114,
+  "lat": 32.924631,
+  "students": 319,
+  "staff": 61,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Mt Pleasant Presbyterian Church Learning  Center",
+  "lon": -79.878928,
+  "lat": 32.789291,
+  "students": 5,
+  "staff": 4,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Ridge Christian Academy",
+  "lon": -80.110951,
+  "lat": 33.04095,
+  "students": 111,
+  "staff": 45,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "O'Quinn Schools Of Porter-Gaud - Mount Pleasant",
+  "lon": -79.879305,
+  "lat": 32.810706,
+  "students": 48,
+  "staff": 11,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "North Walterboro Christian Academy",
+  "lon": -80.661871,
+  "lat": 32.93205,
+  "students": 104,
+  "staff": 23,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Owens Christian Academy",
+  "lon": -79.974171,
+  "lat": 32.85852,
+  "students": 19,
+  "staff": 6,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Trinity Montessori School",
+  "lon": -79.997561,
+  "lat": 32.81683,
+  "students": 17,
+  "staff": 9,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "The Cooper School",
+  "lon": -79.983091,
+  "lat": 32.78781,
+  "students": 136,
+  "staff": 30,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Montessori School Of Johns Island",
+  "lon": -80.108371,
+  "lat": 32.73226,
+  "students": 2,
+  "staff": 2,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Harvest Time International Academy",
+  "lon": -79.942371,
+  "lat": 32.80281,
+  "students": 8,
+  "staff": 2,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Sundrops Montessori School",
+  "lon": -79.889364,
+  "lat": 32.80044,
+  "students": 68,
+  "staff": 70,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "University School Of The Lowcountry",
+  "lon": -79.870581,
+  "lat": 32.79237,
+  "students": 80,
+  "staff": 24,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Pinewood Preparatory School",
+  "lon": -80.241311,
+  "lat": 33.02433,
+  "students": 607,
+  "staff": 97,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Ne Miles Early Childhood Development Center",
+  "lon": -79.935677,
+  "lat": 32.781616,
+  "students": 9,
+  "staff": 4,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Oak Grove Montessori",
+  "lon": -79.975841,
+  "lat": 32.77989,
+  "students": 12,
+  "staff": 2,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Charis Academy",
+  "lon": -80.172807,
+  "lat": 33.017527,
+  "students": 14,
+  "staff": 6,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Holly Hill Academy",
+  "lon": -80.412161,
+  "lat": 33.33806,
+  "students": 250,
+  "staff": 57,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Charleston Bilingual Academy",
+  "lon": -79.994084,
+  "lat": 32.885523,
+  "students": 113,
+  "staff": 20,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Sundrops Montessori - Daniel Island",
+  "lon": -79.9169,
+  "lat": 32.900643,
+  "students": 7,
+  "staff": 4,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "James Island Christian School",
+  "lon": -79.975692,
+  "lat": 32.759145,
+  "students": 165,
+  "staff": 31,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Palmetto Christian Academy",
+  "lon": -79.755264,
+  "lat": 32.879637,
+  "students": 610,
+  "staff": 150,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Sundrops Montessori Bridge Campus",
+  "lon": -79.805718,
+  "lat": 33.014439,
+  "students": 70,
+  "staff": 36,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Trinity Classical Academy",
+  "lon": -80.188664,
+  "lat": 33.013944,
+  "students": 117,
+  "staff": 22,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Charleston Classical School",
+  "lon": -79.984584,
+  "lat": 32.90193,
+  "students": 14,
+  "staff": 5,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Faith Christian School & Daycare",
+  "lon": -80.126011,
+  "lat": 33.0221,
+  "students": 277,
+  "staff": 51,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Charles Towne Montessori School",
+  "lon": -80.003331,
+  "lat": 32.78292,
+  "students": 46,
+  "staff": 11,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Palmetto Christian Academy",
+  "lon": -79.856781,
+  "lat": 32.84949,
+  "students": 605,
+  "staff": 102,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Bethany Child Development Center",
+  "lon": -80.180081,
+  "lat": 33.01693,
+  "students": 16,
+  "staff": 5,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Adventist Christian Academy Of Charleston",
+  "lon": -80.053811,
+  "lat": 32.79408,
+  "students": 25,
+  "staff": 4,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Riverpointe Christian Academy",
+  "lon": -80.042421,
+  "lat": 32.83112,
+  "students": 30,
+  "staff": 10,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "Crowfield Academy",
+  "lon": -80.051671,
+  "lat": 33.00203,
+  "students": 6,
+  "staff": 2,
+  "level": null,
+  "sector": "private"
+ },
+ {
+  "name": "St Andrew'S Day School",
+  "lon": -79.875561,
+  "lat": 32.78827,
+  "students": 15,
+  "staff": 2,
+  "level": null,
+  "sector": "private"
+ }
+]

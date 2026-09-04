@@ -10,3 +10,12 @@ build/CHS/
 build/CHS_demand/
 build/source/
 build/*.osm.pbf
+
+# US Demand Generator is cloned in as its own checkout
+us-demand/
+
+# old-bbox build outputs kept around while iterating
+build/CHS_oldbbox_v1.1.0/
+
+__pycache__/
+*.pyc
