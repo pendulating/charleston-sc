@@ -85,23 +85,28 @@ UNIVERSITIES = [
 # region's largest employers. Active-duty personnel are largely absent from
 # LODES, which counts jobs covered by state unemployment insurance, so these
 # are added with only a tight merge radius.
+#
+# exponent 0.8 rather than depot's 1.2 default: personnel commute in from
+# across the metro, and 0.8 reproduces the LODES median of 13.9 km exactly,
+# where the default gave 11.9.
+MIL_EXPONENT = 0.8
 MILITARY = [
-    dict(type="military_base", name="Joint Base Charleston - Air Base", code="JBCS",
+    dict(type="military_base", name="Joint Base Charleston - Air Base", code="JBCS", exponent=MIL_EXPONENT,
          location=[-80.0523, 32.8972], total_capacity=10600, pop_size=100,
          residential_split=0.208, merge_within=400),
-    dict(type="military_base", name="Joint Base Charleston - Weapons Station", code="JBCN",
+    dict(type="military_base", name="Joint Base Charleston - Weapons Station", code="JBCN", exponent=MIL_EXPONENT,
          location=[-80.0548, 32.9037], total_capacity=10600, pop_size=100,
          residential_split=0.208, merge_within=400),
-    dict(type="military_base", name="Naval Weapons Station Charleston", code="NWS",
+    dict(type="military_base", name="Naval Weapons Station Charleston", code="NWS", exponent=MIL_EXPONENT,
          location=[-79.9366, 32.9579], total_capacity=3500, pop_size=50,
          residential_split=0.20, merge_within=400),
-    dict(type="military_base", name="Nuclear Power Training Unit", code="NPTU",
+    dict(type="military_base", name="Nuclear Power Training Unit", code="NPTU", exponent=MIL_EXPONENT,
          location=[-79.9305, 32.9440], total_capacity=12000, pop_size=100,
          residential_split=0.0, merge_within=400),
-    dict(type="military_base", name="Naval Nuclear Power Training Command", code="NPTC",
+    dict(type="military_base", name="Naval Nuclear Power Training Command", code="NPTC", exponent=MIL_EXPONENT,
          location=[-79.9678, 32.9658], total_capacity=14200, pop_size=100,
          residential_split=0.211, merge_within=400),
-    dict(type="military_base", name="US Coast Guard Base Charleston", code="CGC",
+    dict(type="military_base", name="US Coast Guard Base Charleston", code="CGC", exponent=MIL_EXPONENT,
          location=[-79.9376, 32.8475], total_capacity=7000, pop_size=100,
          residential_split=0.20, merge_within=400),
 ]
@@ -204,20 +209,28 @@ ATTRACTIONS = [
 # island for the day and travel out of it, so these skew heavily residential.
 # No merge: these are real towns whose own residents are already in LODES and
 # should stay as their own points.
+#
+# exponent 1.2 rather than depot's 2.0 default for resorts. At 2.0 the median
+# resort worker lived 0.3 km from the resort, because the islands have almost
+# no residents of their own and a steep decay hands everything to the handful
+# that are there. Service staff on Kiawah and Seabrook are priced off the
+# islands entirely and drive in from Johns Island and West Ashley; 1.2 puts
+# them at a 23 km median, which is what that commute really looks like.
+RST_EXPONENT = 1.2
 RESORTS = [
-    dict(type="resort", name="Kiawah Island", code="KIAW",
+    dict(type="resort", name="Kiawah Island", code="KIAW", exponent=RST_EXPONENT,
          location=[-80.0848, 32.6082], total_capacity=3000, pop_size=50,
          residential_split=0.80),
-    dict(type="resort", name="Wild Dunes, Isle of Palms", code="WD",
+    dict(type="resort", name="Wild Dunes, Isle of Palms", code="WD", exponent=RST_EXPONENT,
          location=[-79.7384, 32.8046], total_capacity=2500, pop_size=50,
          residential_split=0.80),
-    dict(type="resort", name="Folly Beach", code="FOLLY",
+    dict(type="resort", name="Folly Beach", code="FOLLY", exponent=RST_EXPONENT,
          location=[-79.9408, 32.6555], total_capacity=2000, pop_size=50,
          residential_split=0.70),
-    dict(type="resort", name="Seabrook Island", code="SEAB",
+    dict(type="resort", name="Seabrook Island", code="SEAB", exponent=RST_EXPONENT,
          location=[-80.1707, 32.5771], total_capacity=1200, pop_size=25,
          residential_split=0.80),
-    dict(type="resort", name="Edisto Beach", code="EDIS",
+    dict(type="resort", name="Edisto Beach", code="EDIS", exponent=RST_EXPONENT,
          location=[-80.3348, 32.4794], total_capacity=800, pop_size=25,
          residential_split=0.80),
 ]
@@ -233,7 +246,11 @@ CATCHMENT_M = {1: round(5 * MILE_M), 2: round(8 * MILE_M), 3: round(12 * MILE_M)
 CATCHMENT_DEFAULT_M = round(8 * MILE_M)     # ungraded, private, "other"
 STUDENT_POP_SIZE = 15
 STAFF_POP_SIZE = 10
-STAFF_EXPONENT = 1.5      # teachers commute in from well beyond the zone
+# Teachers are not zoned and Charleston is not transit-oriented -- people drive
+# a long way to work here. Calibrated against the LODES commutes in the base
+# demand, which are the real thing: this puts staff at a 13.7 km median
+# against the real 13.9. The depot default of 2.5 gave 9.5 km.
+STAFF_EXPONENT = 1.2
 # Ceiling on the share of a residential node's LODES residents that may be
 # sent to school. LODES counts workers, not people, and school-age children
 # are roughly half a metro's worker count, so anything approaching 1.0 is a
@@ -419,13 +436,15 @@ def schools(base_points, resident_baseline=None):
     return out
 
 
-# Everything except schools. These are applied first: several carry
-# merge_within, which deletes the LODES points they absorb, and school
-# catchments must be computed against the point list that survives that.
+# Everything except the airport, lodging and schools. These are applied first:
+# several carry merge_within, which deletes the LODES points they absorb, and
+# school catchments must be computed against the point list that survives that.
+# The airport goes in on its own beforehand and lodging afterwards, because
+# lodging's required_locs have to resolve to an AIR_CHS that already exists.
 def non_school_pois():
     pois = []
-    for g in (AIRPORT, UNIVERSITIES, MILITARY, HOSPITALS, PORTS, SHOPPING,
-              ATTRACTIONS, RESORTS, lodging()):
+    for g in (UNIVERSITIES, MILITARY, HOSPITALS, PORTS, SHOPPING,
+              ATTRACTIONS, RESORTS):
         pois.extend(g)
     return pois
 

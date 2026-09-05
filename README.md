@@ -145,6 +145,38 @@ rather than 603%, and a median school fed by 40 residential nodes rather than
 7. Summerville High draws from 213. Staff are still placed by gravity, since
 teachers are not zoned.
 
+#### Calibrating the distance decay
+
+depot places special demand by gravity, weighting a residential node by
+`residents / distance ** exponent`, and ships a default exponent per type.
+Those defaults are steep for a metro like this one. Charleston is not
+transit-oriented — people drive a long way to work — and the base demand
+already contains the evidence: the LODES commutes in it are real Charleston
+journeys, at a 13.9 km median and 34.8 km 90th percentile.
+
+Measured against that, the worker flows were all far too tight, so their
+exponents are set explicitly rather than left at the default:
+
+| flow | exponent | median commute | |
+| --- | --- | --- | --- |
+| School staff | 2.5 → 1.2 | 9.5 → 13.7 km | teachers are not zoned |
+| Military personnel | 1.2 → 0.8 | 11.9 → 13.9 km | they commute from across the metro |
+| Resort staff | 2.0 → 1.2 | 0.3 → 23 km | see below |
+
+The resort figure was the clearest defect. At the default exponent of 2.0 the
+median resort worker lived 300 metres from the resort, because the barrier
+islands have almost no residents of their own and a steep decay hands the
+entire staff to the handful that are there. Service staff on Kiawah and
+Seabrook are priced off the islands and drive in from Johns Island and West
+Ashley, which is what 1.2 reproduces.
+
+Not every category was changed. Where a point's capacity is patients,
+shoppers or visitors rather than staff — hospitals, malls, museums — the
+shorter trips are correct, since non-work travel genuinely is shorter than
+commuting, and those sites' actual employees arrive through `merge_within`
+carrying their real LODES commutes. Pupils keep their short trips too, because
+they are zoned.
+
 #### Airport arrivals
 
 Half of the airport's passengers are arrivals, and they are split two ways.

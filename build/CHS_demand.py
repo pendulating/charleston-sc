@@ -65,12 +65,23 @@ def stage_special():
     before_pts, before_pops = len(dd["points"]), len(dd["pops"])
     before_size = sum(p["size"] for p in dd["pops"])
 
-    # Non-school POIs first: several merge nearby LODES points and delete them,
-    # and school catchments have to be drawn against what survives that.
+    # Order matters. The airport goes in on its own first, because the lodging
+    # clusters' required_locs must resolve to an AIR_CHS that already exists --
+    # add_points only merges its new points into the list once it returns, so a
+    # combined call would bind them to the nearest base node instead, silently.
+    print("adding the airport")
+    dd.add_points(POIS.AIRPORT)
+
     other = POIS.non_school_pois()
-    print(f"adding {len(other)} non-school special demand points")
+    print(f"adding {len(other)} other non-school special demand points")
     dd.add_points(other)
 
+    lod = POIS.lodging()
+    print(f"adding {len(lod)} lodging clusters")
+    dd.add_points(lod)
+
+    # Schools last: the merges above delete the LODES points they absorb, and
+    # catchments have to be drawn against the point list that survives.
     sch = POIS.schools(_base_points(dd), _resident_baseline())
     print(f"adding {len(sch)} school points")
     dd.add_points(sch)
@@ -162,7 +173,7 @@ def stage_config():
         description="Revive the historic downtown of the oldest city in "
                     "South Carolina",
         creator="PSWBSF",
-        version="1.2.2",
+        version="1.2.3",
         country="US",
         initial_view_state=[-79.9381, 32.7885],
     )
