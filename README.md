@@ -92,6 +92,19 @@ needed by the Overture buildings fetch.
 
 ### Special demand
 
+Two traps are worth knowing before editing `special/pois.py`. Point ids are
+built from a POI's `code`, falling back to its name, and a collision silently
+merges two points into one — there are two Palmetto Christian Academies, so
+schools carry their NCES id. And `merge_within` fails silently when it is
+smaller than the distance to the nearest LODES block: the radius has to be
+sized against real geography or the point quietly ends up with no employment
+at all, which is what happened to the airport at 700 m against a 954 m gap.
+
+`package.py` runs a preflight that refuses to build an archive with unrouted
+pops, duplicate point ids, a stale or duplicated special-demand schema, or a
+config population that disagrees with the demand. Every one of those checks
+exists because that failure actually shipped.
+
 `build/special/pois.py` defines every special demand point and is applied
 through depot's `add_points`, which is also what emits the
 `.railyard_map/special_demand_*.json` schema the 1.0.0 and 1.1.0 maps shipped
@@ -140,10 +153,25 @@ its current count — by the time schools are added, the other special demand ha
 already assigned workers to live at these nodes, and one node goes from 8 LODES
 residents to 193.
 
-The result is 9 nodes over 100% rather than 172, a 95th percentile of 74%
-rather than 603%, and a median school fed by 40 residential nodes rather than
-7. Summerville High draws from 213. Staff are still placed by gravity, since
-teachers are not zoned.
+Staff go through the same seat-capped allocation, but drawn metro-wide rather
+than from the zone, since teachers are not zoned. Leaving them to depot's own
+gravity draw was the last thing that could overload a node: that draw has no
+notion of capacity, so a node with three residents picked by chance received a
+whole pop. It also barred teachers from living anywhere in their own school's
+attendance zone, because depot zeroes a point's required locations out of the
+gravity pool — an artefact of the mechanism rather than a modelling choice,
+and one that flattered the distance figures.
+
+They are sampled rather than apportioned. Apportioning over a metro-wide pool
+floors almost every share to zero and hands the pops to the highest-weight
+candidates, which under a distance decay means the nearest ones: it becomes
+"pick the closest N" and collapses the commute distribution to a 1.9 km
+median. Pupils keep the apportionment, since they are confined to a zone and
+weighted only by residents, with no distance term to bias it.
+
+The result is **no node over 100%** — the worst now sends 75% of its residents
+to school, against 3,990% before — a 95th percentile of 70% rather than 603%,
+and a median school fed by 37 residential nodes rather than 7.
 
 #### Calibrating the distance decay
 
@@ -159,7 +187,7 @@ exponents are set explicitly rather than left at the default:
 
 | flow | exponent | median commute | |
 | --- | --- | --- | --- |
-| School staff | 2.5 → 1.2 | 9.5 → 13.7 km | teachers are not zoned |
+| School staff | 2.5 → 0.8 | 9.5 → 13.5 km | teachers are not zoned |
 | Military personnel | 1.2 → 0.8 | 11.9 → 13.9 km | they commute from across the metro |
 | Resort staff | 2.0 → 1.2 | 0.3 → 23 km | see below |
 
@@ -200,11 +228,11 @@ airport.
 
 | Category | Points | Sizing |
 | --- | --- | --- |
-| Schools | 216 | NCES CCD (public) and PSS (private), 2021-22: real per-school enrollment, staff as teacher FTE × 1.9. Pupils placed by 5/8/12-mile attendance zone, not gravity — see below |
+| Schools | 214 | NCES CCD 2022-23 (public) and PSS 2021-22 (private): real per-school enrollment, staff as teacher FTE × 1.9. Fully-virtual schools excluded. Pupils placed by 5/8/12-mile attendance zone, not gravity — see below |
 | Military | 6 | Joint Base Charleston, the Navy nuclear training commands, Coast Guard. Active duty is largely absent from LODES |
 | Universities | 5 | Student bodies carried from the 1.0.0 map |
 | Airport | 1 | 6.1M passengers a year = 16,712/day, split evenly. Arrivals route to hotels, mostly downtown |
-| Lodging | 58 | Overnight visitors where they sleep: OSM lodging, rooms × 70% occupancy × 1.9 guests, gridded into clusters |
+| Lodging | 67 | Overnight visitors where they sleep: OSM lodging, rooms × 70% occupancy × 1.9 guests, gridded into clusters |
 | Resorts | 5 | Kiawah, Wild Dunes, Folly, Seabrook, Edisto — mostly residential, i.e. visitors |
 | Hospitals | 8 | Patient and visitor trips at ~2.5 per licensed bed, beds from OSM |
 | Ports | 5 | Gate traffic above terminal employment; Union Pier adds cruise arrivals |
@@ -217,7 +245,11 @@ airport.
 - Bathymetry: GEBCO 2026 sub-ice grid, via CEDA OPeNDAP
 - Demand: LODES 2023 origin-destination pairs via the US Demand Generator
 - Schools: NCES Common Core of Data and Private School Universe Survey
-- Lodging: OSM `tourism=hotel/motel/guest_house/hostel/apartment` with room counts
+- Lodging: OSM `tourism=hotel/motel/guest_house/hostel/apartment` with room counts.
+  Note OSM maps most hotels twice, once as a node and once as the building
+  outline, so `fetch_lodging.py` collapses same-named lodging within 300 m —
+  without it the room count, and therefore the whole tourism layer, roughly
+  doubles.
 - Boundaries: Census TIGER counties and block groups, for deriving the bbox
 
 ### OSRM port

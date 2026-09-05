@@ -1,6 +1,7 @@
 [
  {
   "name": "MacDougall High",
+  "code": "P450000101376",
   "lon": -80.291006,
   "lat": 33.169113,
   "students": 4,
@@ -10,6 +11,7 @@
  },
  {
   "name": "Harleyville Elementary",
+  "code": "P450000200435",
   "lon": -80.379036,
   "lat": 33.154295,
   "students": 226,
@@ -19,6 +21,7 @@
  },
  {
   "name": "St. George Middle",
+  "code": "P450000200439",
   "lon": -80.577543,
   "lat": 33.19486,
   "students": 282,
@@ -28,6 +31,7 @@
  },
  {
   "name": "William Memorial Elementary",
+  "code": "P450000200444",
   "lon": -80.589468,
   "lat": 33.183155,
   "students": 574,
@@ -37,6 +41,7 @@
  },
  {
   "name": "Woodland High",
+  "code": "P450000200445",
   "lon": -80.492451,
   "lat": 33.167572,
   "students": 612,
@@ -46,6 +51,7 @@
  },
  {
   "name": "Harleyville-Ridgeville Middle",
+  "code": "P450000201597",
   "lon": -80.379036,
   "lat": 33.154295,
   "students": 169,
@@ -55,6 +61,7 @@
  },
  {
   "name": "Clay Hill Elementary",
+  "code": "P450000201600",
   "lon": -80.312634,
   "lat": 33.092604,
   "students": 164,
@@ -64,6 +71,7 @@
  },
  {
   "name": "Mount Holly Elementary",
+  "code": "P450117000003",
   "lon": -80.014563,
   "lat": 32.977689,
   "students": 555,
@@ -73,6 +81,7 @@
  },
  {
   "name": "Devon Forest Elementary",
+  "code": "P450117000035",
   "lon": -80.075227,
   "lat": 33.038746,
   "students": 970,
@@ -82,6 +91,7 @@
  },
  {
   "name": "Moncks Corner Elementary",
+  "code": "P450117000082",
   "lon": -79.978483,
   "lat": 33.195983,
   "students": 597,
@@ -91,6 +101,7 @@
  },
  {
   "name": "Berkeley Elementary",
+  "code": "P450117000154",
   "lon": -80.055433,
   "lat": 33.205145,
   "students": 619,
@@ -100,6 +111,7 @@
  },
  {
   "name": "Boulder Bluff Elementary",
+  "code": "P450117000155",
   "lon": -80.026341,
   "lat": 33.023583,
   "students": 633,
@@ -109,6 +121,7 @@
  },
  {
   "name": "Cainhoy Elementary",
+  "code": "P450117000156",
   "lon": -79.852164,
   "lat": 33.021066,
   "students": 154,
@@ -118,6 +131,7 @@
  },
  {
   "name": "Cross Elementary",
+  "code": "P450117000157",
   "lon": -80.167293,
   "lat": 33.30077,
   "students": 348,
@@ -127,6 +141,7 @@
  },
  {
   "name": "College Park Elementary",
+  "code": "P450117000158",
   "lon": -80.090161,
   "lat": 33.016028,
   "students": 833,
@@ -136,6 +151,7 @@
  },
  {
   "name": "Timberland High",
+  "code": "P450117000160",
   "lon": -79.890857,
   "lat": 33.337134,
   "students": 704,
@@ -145,6 +161,7 @@
  },
  {
   "name": "J. K. Gourdin Elementary",
+  "code": "P450117000161",
   "lon": -79.990705,
   "lat": 33.425267,
   "students": 119,
@@ -154,6 +171,7 @@
  },
  {
   "name": "Henry E. Bonner Elementary",
+  "code": "P450117000162",
   "lon": -79.895629,
   "lat": 33.265394,
   "students": 828,
@@ -163,6 +181,7 @@
  },
  {
   "name": "St. Stephen Elementary",
+  "code": "P450117000165",
   "lon": -79.928795,
   "lat": 33.398519,
   "students": 291,
@@ -172,6 +191,7 @@
  },
  {
   "name": "Whitesville Elementary",
+  "code": "P450117000166",
   "lon": -80.049342,
   "lat": 33.149944,
   "students": 1031,
@@ -181,6 +201,7 @@
  },
  {
   "name": "Westview Elementary",
+  "code": "P450117000167",
   "lon": -80.047605,
   "lat": 33.004358,
   "students": 560,
@@ -190,6 +211,7 @@
  },
  {
   "name": "Hanahan Middle",
+  "code": "P450117000169",
   "lon": -79.994223,
   "lat": 32.907554,
   "students": 793,
@@ -199,6 +221,7 @@
  },
  {
   "name": "Sedgefield Middle",
+  "code": "P450117000171",
   "lon": -80.012152,
   "lat": 32.978161,
   "students": 986,
@@ -208,6 +231,7 @@
  },
  {
   "name": "St. Stephen Middle",
+  "code": "P450117000172",
   "lon": -79.933883,
   "lat": 33.405489,
   "students": 209,
@@ -217,6 +241,7 @@
  },
  {
   "name": "College Park Middle",
+  "code": "P450117000173",
   "lon": -80.090258,
   "lat": 33.018942,
   "students": 714,
@@ -226,6 +251,7 @@
  },
  {
   "name": "Berkeley High",
+  "code": "P450117000174",
   "lon": -80.025462,
   "lat": 33.201671,
   "students": 1776,
@@ -235,6 +261,7 @@
  },
  {
   "name": "Cross High",
+  "code": "P450117000176",
   "lon": -80.163785,
   "lat": 33.351386,
   "students": 294,
@@ -244,6 +271,7 @@
  },
  {
   "name": "Goose Creek High",
+  "code": "P450117000177",
   "lon": -80.016449,
   "lat": 32.973399,
   "students": 1981,
@@ -253,6 +281,7 @@
  },
  {
   "name": "Hanahan High",
+  "code": "P450117000178",
   "lon": -80.008103,
   "lat": 32.915545,
   "students": 1040,
@@ -262,6 +291,7 @@
  },
  {
   "name": "Hanahan Elementary",
+  "code": "P450117000423",
   "lon": -80.028632,
   "lat": 32.9348,
   "students": 923,
@@ -271,6 +301,7 @@
  },
  {
   "name": "Westview Primary",
+  "code": "P450117000704",
   "lon": -80.04915,
   "lat": 33.007168,
   "students": 668,
@@ -280,6 +311,7 @@
  },
  {
   "name": "Goose Creek Elementary",
+  "code": "P450117000822",
   "lon": -80.032358,
   "lat": 32.973109,
   "students": 945,
@@ -289,6 +321,7 @@
  },
  {
   "name": "Marrington Middle School of the Arts",
+  "code": "P450117001158",
   "lon": -79.973459,
   "lat": 32.968567,
   "students": 400,
@@ -298,6 +331,7 @@
  },
  {
   "name": "Howe Hall AIMS Elementary",
+  "code": "P450117001159",
   "lon": -80.028519,
   "lat": 32.979887,
   "students": 418,
@@ -307,6 +341,7 @@
  },
  {
   "name": "Marrington Elementary",
+  "code": "P450117001161",
   "lon": -79.975942,
   "lat": 32.96806,
   "students": 430,
@@ -316,6 +351,7 @@
  },
  {
   "name": "Sangaree Middle",
+  "code": "P450117001166",
   "lon": -80.107852,
   "lat": 33.02716,
   "students": 826,
@@ -325,6 +361,7 @@
  },
  {
   "name": "Berkeley Middle",
+  "code": "P450117001207",
   "lon": -79.995834,
   "lat": 33.199959,
   "students": 1403,
@@ -334,6 +371,7 @@
  },
  {
   "name": "Macedonia Middle",
+  "code": "P450117001208",
   "lon": -79.896654,
   "lat": 33.268704,
   "students": 383,
@@ -343,6 +381,7 @@
  },
  {
   "name": "Sangaree Elementary",
+  "code": "P450117001209",
   "lon": -80.108588,
   "lat": 33.035156,
   "students": 659,
@@ -352,6 +391,7 @@
  },
  {
   "name": "Westview Middle",
+  "code": "P450117001210",
   "lon": -80.048247,
   "lat": 33.005431,
   "students": 886,
@@ -361,6 +401,7 @@
  },
  {
   "name": "Stratford High",
+  "code": "P450117001351",
   "lon": -80.084803,
   "lat": 33.014376,
   "students": 2653,
@@ -370,6 +411,7 @@
  },
  {
   "name": "Sangaree Intermediate",
+  "code": "P450117001403",
   "lon": -80.106298,
   "lat": 33.034969,
   "students": 568,
@@ -379,6 +421,7 @@
  },
  {
   "name": "Daniel Island School",
+  "code": "P450117001472",
   "lon": -79.909936,
   "lat": 32.848706,
   "students": 1170,
@@ -388,6 +431,7 @@
  },
  {
   "name": "Cane Bay High",
+  "code": "P450117001523",
   "lon": -80.122268,
   "lat": 33.102104,
   "students": 2158,
@@ -397,6 +441,7 @@
  },
  {
   "name": "Cane Bay Elementary",
+  "code": "P450117001537",
   "lon": -80.121031,
   "lat": 33.108076,
   "students": 1263,
@@ -406,6 +451,7 @@
  },
  {
   "name": "Berkeley County Middle College High",
+  "code": "P450117001556",
   "lon": -80.04548,
   "lat": 33.170841,
   "students": 101,
@@ -415,6 +461,7 @@
  },
  {
   "name": "Cane Bay Middle",
+  "code": "P450117001608",
   "lon": -80.120273,
   "lat": 33.106466,
   "students": 1487,
@@ -424,6 +471,7 @@
  },
  {
   "name": "Nexton Elementary",
+  "code": "P450117001658",
   "lon": -80.149213,
   "lat": 33.064298,
   "students": 1025,
@@ -433,6 +481,7 @@
  },
  {
   "name": "Philip Simmons Middle",
+  "code": "P450117001670",
   "lon": -79.860467,
   "lat": 32.912938,
   "students": 428,
@@ -442,6 +491,7 @@
  },
  {
   "name": "Philip Simmons Elementary",
+  "code": "P450117001671",
   "lon": -79.860467,
   "lat": 32.912938,
   "students": 525,
@@ -451,6 +501,7 @@
  },
  {
   "name": "Philip Simmons High",
+  "code": "P450117001681",
   "lon": -79.850871,
   "lat": 32.917031,
   "students": 771,
@@ -460,6 +511,7 @@
  },
  {
   "name": "Bowen's Corner Elementary",
+  "code": "P450117001682",
   "lon": -80.004023,
   "lat": 32.946507,
   "students": 779,
@@ -469,6 +521,7 @@
  },
  {
   "name": "Foxbank Elementary",
+  "code": "P450117001707",
   "lon": -80.034732,
   "lat": 33.099067,
   "students": 1028,
@@ -478,6 +531,7 @@
  },
  {
   "name": "Charleston School of the Arts",
+  "code": "P450144000083",
   "lon": -80.000996,
   "lat": 32.88428,
   "students": 1061,
@@ -487,6 +541,7 @@
  },
  {
   "name": "Academic Magnet High",
+  "code": "P450144000168",
   "lon": -80.000996,
   "lat": 32.88428,
   "students": 719,
@@ -496,6 +551,7 @@
  },
  {
   "name": "Chicora Elementary",
+  "code": "P450144000197",
   "lon": -79.970186,
   "lat": 32.852511,
   "students": 320,
@@ -505,6 +561,7 @@
  },
  {
   "name": "A. C. Corcoran Elementary",
+  "code": "P450144000199",
   "lon": -80.059616,
   "lat": 32.96049,
   "students": 767,
@@ -514,6 +571,7 @@
  },
  {
   "name": "Jane Edwards Elementary",
+  "code": "P450144000201",
   "lon": -80.299909,
   "lat": 32.580834,
   "students": 68,
@@ -523,6 +581,7 @@
  },
  {
   "name": "Mary Ford Early Childhood Learning and Family Center",
+  "code": "P450144000202",
   "lon": -79.978017,
   "lat": 32.849095,
   "students": 294,
@@ -532,6 +591,7 @@
  },
  {
   "name": "W. B. Goodwin Elementary",
+  "code": "P450144000204",
   "lon": -80.048337,
   "lat": 32.860636,
   "students": 431,
@@ -541,6 +601,7 @@
  },
  {
   "name": "Minnie Hughes Elementary",
+  "code": "P450144000205",
   "lon": -80.374368,
   "lat": 32.700341,
   "students": 186,
@@ -550,6 +611,7 @@
  },
  {
   "name": "Hunley Park Elementary",
+  "code": "P450144000206",
   "lon": -80.073051,
   "lat": 32.892469,
   "students": 410,
@@ -559,6 +621,7 @@
  },
  {
   "name": "Ladson Elementary",
+  "code": "P450144000207",
   "lon": -80.105878,
   "lat": 32.985422,
   "students": 851,
@@ -568,6 +631,7 @@
  },
  {
   "name": "Lambs Elementary",
+  "code": "P450144000208",
   "lon": -80.064151,
   "lat": 32.885694,
   "students": 423,
@@ -577,6 +641,7 @@
  },
  {
   "name": "Memminger Elementary",
+  "code": "P450144000210",
   "lon": -79.935718,
   "lat": 32.780846,
   "students": 387,
@@ -586,6 +651,7 @@
  },
  {
   "name": "Midland Park Primary",
+  "code": "P450144000211",
   "lon": -80.041143,
   "lat": 32.919855,
   "students": 450,
@@ -595,6 +661,7 @@
  },
  {
   "name": "E.B. Ellington Elementary",
+  "code": "P450144000212",
   "lon": -80.211357,
   "lat": 32.784895,
   "students": 353,
@@ -604,6 +671,7 @@
  },
  {
   "name": "Mitchell Elementary",
+  "code": "P450144000213",
   "lon": -79.947721,
   "lat": 32.794585,
   "students": 222,
@@ -613,6 +681,7 @@
  },
  {
   "name": "Jennie Moore Elementary",
+  "code": "P450144000214",
   "lon": -79.792947,
   "lat": 32.851802,
   "students": 1004,
@@ -622,6 +691,7 @@
  },
  {
   "name": "Morningside Middle",
+  "code": "P450144000215",
   "lon": -80.001573,
   "lat": 32.877038,
   "students": 567,
@@ -631,6 +701,7 @@
  },
  {
   "name": "Mt. Pleasant Academy",
+  "code": "P450144000216",
   "lon": -79.863112,
   "lat": 32.780007,
   "students": 658,
@@ -640,6 +711,7 @@
  },
  {
   "name": "Murray-LaSaine Montessori",
+  "code": "P450144000218",
   "lon": -79.985948,
   "lat": 32.743384,
   "students": 363,
@@ -649,6 +721,7 @@
  },
  {
   "name": "North Charleston Elementary",
+  "code": "P450144000219",
   "lon": -79.982775,
   "lat": 32.88471,
   "students": 302,
@@ -658,6 +731,7 @@
  },
  {
   "name": "Oakland Elementary",
+  "code": "P450144000220",
   "lon": -80.03837,
   "lat": 32.787181,
   "students": 530,
@@ -667,6 +741,7 @@
  },
  {
   "name": "Malcolm C. Hursey Montessori",
+  "code": "P450144000222",
   "lon": -79.990709,
   "lat": 32.875165,
   "students": 424,
@@ -676,6 +751,7 @@
  },
  {
   "name": "Matilda F. Dunston Elementary",
+  "code": "P450144000224",
   "lon": -80.009422,
   "lat": 32.899578,
   "students": 436,
@@ -685,6 +761,7 @@
  },
  {
   "name": "Edith L. Frierson Elementary",
+  "code": "P450144000225",
   "lon": -80.182427,
   "lat": 32.640757,
   "students": 148,
@@ -694,6 +771,7 @@
  },
  {
   "name": "Sanders-Clyde Elementary",
+  "code": "P450144000226",
   "lon": -79.937718,
   "lat": 32.801149,
   "students": 390,
@@ -703,6 +781,7 @@
  },
  {
   "name": "Pepperhill Elementary",
+  "code": "P450144000227",
   "lon": -80.076373,
   "lat": 32.937261,
   "students": 448,
@@ -712,6 +791,7 @@
  },
  {
   "name": "James Simons Montessori",
+  "code": "P450144000228",
   "lon": -79.94956,
   "lat": 32.800886,
   "students": 360,
@@ -721,6 +801,7 @@
  },
  {
   "name": "Springfield Elementary",
+  "code": "P450144000229",
   "lon": -80.059851,
   "lat": 32.836687,
   "students": 621,
@@ -730,6 +811,7 @@
  },
  {
   "name": "St. Andrew's School of Math and Science",
+  "code": "P450144000230",
   "lon": -79.98131,
   "lat": 32.777871,
   "students": 766,
@@ -739,6 +821,7 @@
  },
  {
   "name": "Angel Oak Elementary",
+  "code": "P450144000231",
   "lon": -80.102822,
   "lat": 32.723376,
   "students": 772,
@@ -748,6 +831,7 @@
  },
  {
   "name": "Stiles Point Elementary",
+  "code": "P450144000232",
   "lon": -79.929045,
   "lat": 32.737696,
   "students": 817,
@@ -757,6 +841,7 @@
  },
  {
   "name": "Stono Park Elementary",
+  "code": "P450144000233",
   "lon": -80.016205,
   "lat": 32.779915,
   "students": 399,
@@ -766,6 +851,7 @@
  },
  {
   "name": "Sullivan's Island Elementary",
+  "code": "P450144000234",
   "lon": -79.839594,
   "lat": 32.759366,
   "students": 475,
@@ -775,6 +861,7 @@
  },
  {
   "name": "Mamie P. Whitesides Elementary",
+  "code": "P450144000236",
   "lon": -79.834095,
   "lat": 32.80939,
   "students": 834,
@@ -784,6 +871,7 @@
  },
  {
   "name": "Charleston Progressive",
+  "code": "P450144000240",
   "lon": -79.936711,
   "lat": 32.791032,
   "students": 213,
@@ -793,6 +881,7 @@
  },
  {
   "name": "C. E. Williams Middle School for Creative and Scientific Art",
+  "code": "P450144000249",
   "lon": -80.078469,
   "lat": 32.814966,
   "students": 1172,
@@ -802,6 +891,7 @@
  },
  {
   "name": "Baptist Hill High",
+  "code": "P450144000250",
   "lon": -80.261947,
   "lat": 32.727957,
   "students": 552,
@@ -811,6 +901,7 @@
  },
  {
   "name": "North Charleston High",
+  "code": "P450144000251",
   "lon": -79.978733,
   "lat": 32.880895,
   "students": 768,
@@ -820,6 +911,7 @@
  },
  {
   "name": "Wando High",
+  "code": "P450144000261",
   "lon": -79.759186,
   "lat": 32.885527,
   "students": 2596,
@@ -829,6 +921,7 @@
  },
  {
   "name": "St. Johns High",
+  "code": "P450144000264",
   "lon": -80.098504,
   "lat": 32.724739,
   "students": 387,
@@ -838,6 +931,7 @@
  },
  {
   "name": "RB Stall High",
+  "code": "P450144000265",
   "lon": -80.080187,
   "lat": 32.923086,
   "students": 1952,
@@ -847,6 +941,7 @@
  },
  {
   "name": "Charles Pinckney Elementary",
+  "code": "P450144000429",
   "lon": -79.78827,
   "lat": 32.876289,
   "students": 635,
@@ -856,6 +951,7 @@
  },
  {
   "name": "Thomas C. Cario Middle",
+  "code": "P450144000430",
   "lon": -79.787564,
   "lat": 32.878574,
   "students": 1125,
@@ -865,6 +961,7 @@
  },
  {
   "name": "West Ashley High",
+  "code": "P450144000548",
   "lon": -80.074886,
   "lat": 32.819554,
   "students": 1935,
@@ -874,6 +971,7 @@
  },
  {
   "name": "James Island Elementary",
+  "code": "P450144000830",
   "lon": -79.975881,
   "lat": 32.702784,
   "students": 582,
@@ -883,6 +981,7 @@
  },
  {
   "name": "Charleston Development Academy",
+  "code": "P450144000838",
   "lon": -79.95466,
   "lat": 32.789997,
   "students": 139,
@@ -892,6 +991,7 @@
  },
  {
   "name": "East Cooper Montessori Charter",
+  "code": "P450144000856",
   "lon": -79.853154,
   "lat": 32.797471,
   "students": 432,
@@ -901,6 +1001,7 @@
  },
  {
   "name": "Greg Mathis Charter High",
+  "code": "P450144000857",
   "lon": -79.973091,
   "lat": 32.844534,
   "students": 58,
@@ -910,6 +1011,7 @@
  },
  {
   "name": "Laurel Hill Primary",
+  "code": "P450144000944",
   "lon": -79.783418,
   "lat": 32.875191,
   "students": 739,
@@ -919,6 +1021,7 @@
  },
  {
   "name": "Drayton Hall Elementary",
+  "code": "P450144001167",
   "lon": -80.072817,
   "lat": 32.853459,
   "students": 632,
@@ -928,6 +1031,7 @@
  },
  {
   "name": "James Island Charter High",
+  "code": "P450144001168",
   "lon": -79.934228,
   "lat": 32.731429,
   "students": 1589,
@@ -937,6 +1041,7 @@
  },
  {
   "name": "Northwoods Middle",
+  "code": "P450144001211",
   "lon": -80.057434,
   "lat": 32.942515,
   "students": 738,
@@ -946,6 +1051,7 @@
  },
  {
   "name": "Harbor View Elementary",
+  "code": "P450144001214",
   "lon": -79.968643,
   "lat": 32.75611,
   "students": 639,
@@ -955,6 +1061,7 @@
  },
  {
   "name": "Haut Gap Middle",
+  "code": "P450144001215",
   "lon": -80.077147,
   "lat": 32.72072,
   "students": 444,
@@ -964,6 +1071,7 @@
  },
  {
   "name": "Laing Middle",
+  "code": "P450144001217",
   "lon": -79.79519,
   "lat": 32.850273,
   "students": 1012,
@@ -973,6 +1081,7 @@
  },
  {
   "name": "Moultrie Middle",
+  "code": "P450144001218",
   "lon": -79.872236,
   "lat": 32.790578,
   "students": 1119,
@@ -982,6 +1091,7 @@
  },
  {
   "name": "Burke High",
+  "code": "P450144001328",
   "lon": -79.953888,
   "lat": 32.793517,
   "students": 352,
@@ -991,6 +1101,7 @@
  },
  {
   "name": "James B. Edwards Elementary",
+  "code": "P450144001329",
   "lon": -79.853748,
   "lat": 32.81849,
   "students": 763,
@@ -1000,6 +1111,7 @@
  },
  {
   "name": "Military Magnet Academy",
+  "code": "P450144001330",
   "lon": -79.967851,
   "lat": 32.850547,
   "students": 428,
@@ -1009,6 +1121,7 @@
  },
  {
   "name": "St. James Santee Elementary-Middle",
+  "code": "P450144001352",
   "lon": -79.538961,
   "lat": 33.061904,
   "students": 182,
@@ -1018,6 +1131,7 @@
  },
  {
   "name": "Ashley River Creative Arts Elementary",
+  "code": "P450144001363",
   "lon": -80.022371,
   "lat": 32.800759,
   "students": 612,
@@ -1027,6 +1141,7 @@
  },
  {
   "name": "Buist Academy",
+  "code": "P450144001382",
   "lon": -79.932423,
   "lat": 32.787011,
   "students": 548,
@@ -1036,6 +1151,7 @@
  },
  {
   "name": "Mt. Zion Elementary",
+  "code": "P450144001404",
   "lon": -80.044098,
   "lat": 32.67735,
   "students": 258,
@@ -1045,6 +1161,7 @@
  },
  {
   "name": "Belle Hall Elementary",
+  "code": "P450144001438",
   "lon": -79.855779,
   "lat": 32.847265,
   "students": 666,
@@ -1054,6 +1171,7 @@
  },
  {
   "name": "Orange Grove Charter School",
+  "code": "P450144001457",
   "lon": -80.001201,
   "lat": 32.82121,
   "students": 1167,
@@ -1063,6 +1181,7 @@
  },
  {
   "name": "Charleston Charter School for Math and Science",
+  "code": "P450144001505",
   "lon": -79.950435,
   "lat": 32.802869,
   "students": 547,
@@ -1072,6 +1191,7 @@
  },
  {
   "name": "Jerry Zucker Middle School of Science",
+  "code": "P450144001533",
   "lon": -80.062499,
   "lat": 32.876132,
   "students": 524,
@@ -1081,6 +1201,7 @@
  },
  {
   "name": "Pattison's Academy for Comprehensive Education",
+  "code": "P450144001553",
   "lon": -80.021103,
   "lat": 32.790892,
   "students": 47,
@@ -1090,6 +1211,7 @@
  },
  {
   "name": "Pinehurst Elementary",
+  "code": "P450144001562",
   "lon": -80.055943,
   "lat": 32.942686,
   "students": 656,
@@ -1099,6 +1221,7 @@
  },
  {
   "name": "Montessori Community School",
+  "code": "P450144001610",
   "lon": -80.058289,
   "lat": 32.835551,
   "students": 273,
@@ -1108,6 +1231,7 @@
  },
  {
   "name": "North Charleston Creative Arts Elementary",
+  "code": "P450144001611",
   "lon": -79.997917,
   "lat": 32.88702,
   "students": 397,
@@ -1117,6 +1241,7 @@
  },
  {
   "name": "Carolina Voyager Charter",
+  "code": "P450144001628",
   "lon": -80.021103,
   "lat": 32.790892,
   "students": 371,
@@ -1126,6 +1251,7 @@
  },
  {
   "name": "Meeting Street Elementary",
+  "code": "P450144001648",
   "lon": -80.00527,
   "lat": 32.858642,
   "students": 1133,
@@ -1135,6 +1261,7 @@
  },
  {
   "name": "Allegro Charter School of Music",
+  "code": "P450144001655",
   "lon": -80.002424,
   "lat": 32.862475,
   "students": 229,
@@ -1144,6 +1271,7 @@
  },
  {
   "name": "Simmons Pinckney Middle",
+  "code": "P450144001660",
   "lon": -79.952556,
   "lat": 32.794209,
   "students": 219,
@@ -1153,6 +1281,7 @@
  },
  {
   "name": "Deer Park Middle",
+  "code": "P450144001667",
   "lon": -80.048931,
   "lat": 32.96345,
   "students": 328,
@@ -1162,6 +1291,7 @@
  },
  {
   "name": "Carolina Park Elementary",
+  "code": "P450144001690",
   "lon": -79.762405,
   "lat": 32.889816,
   "students": 978,
@@ -1171,6 +1301,7 @@
  },
  {
   "name": "Camp Road Middle",
+  "code": "P450144001691",
   "lon": -79.972521,
   "lat": 32.734449,
   "students": 864,
@@ -1180,6 +1311,7 @@
  },
  {
   "name": "Lucy Garrett Beckham High",
+  "code": "P450144001746",
   "lon": -79.845623,
   "lat": 32.825677,
   "students": 1673,
@@ -1189,6 +1321,7 @@
  },
  {
   "name": "Northside Elementary",
+  "code": "P450183000189",
   "lon": -80.616503,
   "lat": 32.948316,
   "students": 452,
@@ -1198,6 +1331,7 @@
  },
  {
   "name": "Black Street Early Childhood Center",
+  "code": "P450183000333",
   "lon": -80.649605,
   "lat": 32.892982,
   "students": 309,
@@ -1207,6 +1341,7 @@
  },
  {
   "name": "Cottageville Elementary",
+  "code": "P450183000336",
   "lon": -80.472956,
   "lat": 32.941349,
   "students": 465,
@@ -1216,6 +1351,7 @@
  },
  {
   "name": "Forest Hills Elementary",
+  "code": "P450183000337",
   "lon": -80.678798,
   "lat": 32.912621,
   "students": 469,
@@ -1225,6 +1361,7 @@
  },
  {
   "name": "Colleton County High",
+  "code": "P450183000347",
   "lon": -80.654232,
   "lat": 32.949377,
   "students": 1497,
@@ -1234,6 +1371,7 @@
  },
  {
   "name": "Colleton County Middle",
+  "code": "P450183001586",
   "lon": -80.639249,
   "lat": 32.938871,
   "students": 1121,
@@ -1243,6 +1381,7 @@
  },
  {
   "name": "Fort Dorchester High",
+  "code": "P450201000007",
   "lon": -80.111133,
   "lat": 32.926243,
   "students": 2312,
@@ -1252,6 +1391,7 @@
  },
  {
   "name": "Beech Hill Elementary",
+  "code": "P450201000008",
   "lon": -80.227351,
   "lat": 32.950174,
   "students": 1101,
@@ -1261,6 +1401,7 @@
  },
  {
   "name": "Gregg Middle",
+  "code": "P450201000242",
   "lon": -80.216592,
   "lat": 32.9901,
   "students": 850,
@@ -1270,6 +1411,7 @@
  },
  {
   "name": "Knightsville Elementary",
+  "code": "P450201000395",
   "lon": -80.237147,
   "lat": 33.008318,
   "students": 699,
@@ -1279,6 +1421,7 @@
  },
  {
   "name": "Summerville Elementary",
+  "code": "P450201000397",
   "lon": -80.183029,
   "lat": 33.009629,
   "students": 528,
@@ -1288,6 +1431,7 @@
  },
  {
   "name": "James H. Spann Elementary",
+  "code": "P450201000398",
   "lon": -80.179722,
   "lat": 33.009461,
   "students": 576,
@@ -1297,6 +1441,7 @@
  },
  {
   "name": "Rollings Middle School of the Arts",
+  "code": "P450201000399",
   "lon": -80.182265,
   "lat": 33.010353,
   "students": 799,
@@ -1306,6 +1451,7 @@
  },
  {
   "name": "Newington Elementary",
+  "code": "P450201000400",
   "lon": -80.206734,
   "lat": 32.98803,
   "students": 758,
@@ -1315,6 +1461,7 @@
  },
  {
   "name": "Summerville High",
+  "code": "P450201000402",
   "lon": -80.218677,
   "lat": 32.994213,
   "students": 3308,
@@ -1324,6 +1471,7 @@
  },
  {
   "name": "Alston Middle",
+  "code": "P450201000403",
   "lon": -80.182591,
   "lat": 33.03173,
   "students": 822,
@@ -1333,6 +1481,7 @@
  },
  {
   "name": "Fort Dorchester Elementary",
+  "code": "P450201000715",
   "lon": -80.137885,
   "lat": 32.937064,
   "students": 892,
@@ -1342,6 +1491,7 @@
  },
  {
   "name": "Flowertown Elementary",
+  "code": "P450201001231",
   "lon": -80.204863,
   "lat": 32.988911,
   "students": 853,
@@ -1351,6 +1501,7 @@
  },
  {
   "name": "Charles B. DuBose Middle",
+  "code": "P450201001384",
   "lon": -80.237531,
   "lat": 33.033301,
   "students": 950,
@@ -1360,6 +1511,7 @@
  },
  {
   "name": "Oakbrook Elementary",
+  "code": "P450201001405",
   "lon": -80.136737,
   "lat": 32.96062,
   "students": 595,
@@ -1369,6 +1521,7 @@
  },
  {
   "name": "Oakbrook Middle",
+  "code": "P450201001406",
   "lon": -80.137449,
   "lat": 32.959165,
   "students": 1006,
@@ -1378,6 +1531,7 @@
  },
  {
   "name": "Windsor Hill Arts Infused Elementary",
+  "code": "P450201001447",
   "lon": -80.101708,
   "lat": 32.936621,
   "students": 693,
@@ -1387,6 +1541,7 @@
  },
  {
   "name": "Eagle Nest Elementary",
+  "code": "P450201001483",
   "lon": -80.124789,
   "lat": 32.909273,
   "students": 680,
@@ -1396,6 +1551,7 @@
  },
  {
   "name": "William M. Reeves Elementary",
+  "code": "P450201001488",
   "lon": -80.240793,
   "lat": 33.033616,
   "students": 914,
@@ -1405,6 +1561,7 @@
  },
  {
   "name": "River Oaks Middle",
+  "code": "P450201001489",
   "lon": -80.12386,
   "lat": 32.909979,
   "students": 849,
@@ -1414,6 +1571,7 @@
  },
  {
   "name": "Ashley Ridge High",
+  "code": "P450201001508",
   "lon": -80.233281,
   "lat": 32.925229,
   "students": 2542,
@@ -1423,6 +1581,7 @@
  },
  {
   "name": "Joseph R. Pye Elementary",
+  "code": "P450201001568",
   "lon": -80.117506,
   "lat": 32.957112,
   "students": 823,
@@ -1432,6 +1591,7 @@
  },
  {
   "name": "Dr. Eugene Sires Elementary",
+  "code": "P450201001673",
   "lon": -80.155491,
   "lat": 32.981855,
   "students": 858,
@@ -1441,6 +1601,7 @@
  },
  {
   "name": "Alston-Bailey Elementary",
+  "code": "P450201001674",
   "lon": -80.18495,
   "lat": 33.03281,
   "students": 715,
@@ -1450,6 +1611,7 @@
  },
  {
   "name": "Sand Hill Elementary",
+  "code": "P450201001675",
   "lon": -80.266006,
   "lat": 32.95149,
   "students": 1133,
@@ -1459,6 +1621,7 @@
  },
  {
   "name": "East Edisto Middle",
+  "code": "P450201001769",
   "lon": -80.22759,
   "lat": 32.9533,
   "students": 879,
@@ -1468,6 +1631,7 @@
  },
  {
   "name": "Sampit Elementary",
+  "code": "P450228000481",
   "lon": -79.446843,
   "lat": 33.363574,
   "students": 255,
@@ -1477,6 +1641,7 @@
  },
  {
   "name": "Palmetto Scholars Academy",
+  "code": "P450390101542",
   "lon": -80.077453,
   "lat": 32.89938,
   "students": 507,
@@ -1486,6 +1651,7 @@
  },
  {
   "name": "Cape Romain Environmental Education Charter School",
+  "code": "P450390101588",
   "lon": -79.473424,
   "lat": 33.0907,
   "students": 191,
@@ -1495,6 +1661,7 @@
  },
  {
   "name": "Charleston  Advancement Academy High School",
+  "code": "P450390101706",
   "lon": -79.961973,
   "lat": 32.732936,
   "students": 424,
@@ -1504,6 +1671,7 @@
  },
  {
   "name": "Compass Collegiate Academy",
+  "code": "P450390101738",
   "lon": -79.948727,
   "lat": 32.797927,
   "students": 100,
@@ -1513,6 +1681,7 @@
  },
  {
   "name": "GREEN  Charter School of the Lowcountry",
+  "code": "P450390101739",
   "lon": -80.045253,
   "lat": 32.966217,
   "students": 196,
@@ -1522,6 +1691,7 @@
  },
  {
   "name": "Learn4Life High School-Charleston",
+  "code": "P450390101740",
   "lon": -80.023617,
   "lat": 32.90859,
   "students": 117,
@@ -1530,16 +1700,8 @@
   "sector": "public"
  },
  {
-  "name": "Lowcountry Acceleration Academy",
-  "lon": -80.021066,
-  "lat": 32.902137,
-  "students": 242,
-  "staff": 11,
-  "level": 3,
-  "sector": "public"
- },
- {
   "name": "Lowcountry Leadership Charter School",
+  "code": "P450390901613",
   "lon": -80.222627,
   "lat": 32.73435,
   "students": 516,
@@ -1549,6 +1711,7 @@
  },
  {
   "name": "Oceanside Collegiate Academy",
+  "code": "P450390901663",
   "lon": -79.774048,
   "lat": 32.894137,
   "students": 651,
@@ -1558,6 +1721,7 @@
  },
  {
   "name": "Mevers School of Excellence",
+  "code": "P450390901686",
   "lon": -80.000393,
   "lat": 33.014245,
   "students": 932,
@@ -1567,6 +1731,7 @@
  },
  {
   "name": "Berkeley Preparatory Academy",
+  "code": "P450390901757",
   "lon": -80.128034,
   "lat": 33.146633,
   "students": 708,
@@ -1575,16 +1740,8 @@
   "sector": "public"
  },
  {
-  "name": "Lowcountry Connection Academy",
-  "lon": -80.168571,
-  "lat": 32.96808,
-  "students": 528,
-  "staff": 30,
-  "level": 4,
-  "sector": "public"
- },
- {
   "name": "Gates School",
+  "code": "P450390901760",
   "lon": -80.022915,
   "lat": 32.879876,
   "students": 109,
@@ -1594,6 +1751,7 @@
  },
  {
   "name": "Holly Hill Elementary",
+  "code": "P450391000853",
   "lon": -80.423156,
   "lat": 33.333256,
   "students": 326,
@@ -1603,6 +1761,7 @@
  },
  {
   "name": "Holly Hill-Roberts Middle",
+  "code": "P450391001289",
   "lon": -80.400109,
   "lat": 33.321829,
   "students": 418,
@@ -1612,6 +1771,7 @@
  },
  {
   "name": "St. James-Gaillard Elementary",
+  "code": "P450391001290",
   "lon": -80.333512,
   "lat": 33.389049,
   "students": 235,
@@ -1621,6 +1781,7 @@
  },
  {
   "name": "Christ Our King-Stella Mans School",
+  "code": "V01262724",
   "lon": -79.86345,
   "lat": 32.795684,
   "students": 575,
@@ -1630,6 +1791,7 @@
  },
  {
   "name": "The Charleston Catholic School",
+  "code": "V01262746",
   "lon": -79.947651,
   "lat": 32.80005,
   "students": 171,
@@ -1639,6 +1801,7 @@
  },
  {
   "name": "Divine Redeemer School",
+  "code": "V01262892",
   "lon": -80.013811,
   "lat": 32.91925,
   "students": 89,
@@ -1648,6 +1811,7 @@
  },
  {
   "name": "Nativity School",
+  "code": "V01262983",
   "lon": -79.969124,
   "lat": 32.726211,
   "students": 89,
@@ -1657,6 +1821,7 @@
  },
  {
   "name": "Blessed Sacrament School",
+  "code": "V01263003",
   "lon": -79.981853,
   "lat": 32.782046,
   "students": 191,
@@ -1666,6 +1831,7 @@
  },
  {
   "name": "Coastal Christian Preparatory School",
+  "code": "V01263251",
   "lon": -79.863373,
   "lat": 32.786588,
   "students": 130,
@@ -1675,6 +1841,7 @@
  },
  {
   "name": "Trident Academy",
+  "code": "V01263331",
   "lon": -79.853801,
   "lat": 32.82843,
   "students": 50,
@@ -1684,6 +1851,7 @@
  },
  {
   "name": "Colleton Preparatory Academy",
+  "code": "V01263353",
   "lon": -80.661881,
   "lat": 32.93575,
   "students": 364,
@@ -1693,6 +1861,7 @@
  },
  {
   "name": "First Baptist School Of Charleston",
+  "code": "V01263397",
   "lon": -79.930388,
   "lat": 32.773838,
   "students": 410,
@@ -1702,6 +1871,7 @@
  },
  {
   "name": "Dorchester Academy",
+  "code": "V01263477",
   "lon": -80.549861,
   "lat": 33.18633,
   "students": 295,
@@ -1711,6 +1881,7 @@
  },
  {
   "name": "Porter-Gaud School",
+  "code": "V01263513",
   "lon": -79.964141,
   "lat": 32.773705,
   "students": 1039,
@@ -1720,6 +1891,7 @@
  },
  {
   "name": "Addlestone Hebrew Academy",
+  "code": "V01263546",
   "lon": -80.018941,
   "lat": 32.81233,
   "students": 72,
@@ -1729,6 +1901,7 @@
  },
  {
   "name": "St John'S Christian Academy",
+  "code": "V01263615",
   "lon": -80.018881,
   "lat": 33.19917,
   "students": 358,
@@ -1738,6 +1911,7 @@
  },
  {
   "name": "Charleston Collegiate School",
+  "code": "V01264302",
   "lon": -80.064531,
   "lat": 32.71132,
   "students": 269,
@@ -1747,6 +1921,7 @@
  },
  {
   "name": "Charleston Day School",
+  "code": "V01264685",
   "lon": -79.935054,
   "lat": 32.778355,
   "students": 267,
@@ -1756,6 +1931,7 @@
  },
  {
   "name": "Ashley Hall School",
+  "code": "V01264776",
   "lon": -79.944771,
   "lat": 32.78642,
   "students": 561,
@@ -1765,6 +1941,7 @@
  },
  {
   "name": "Northside Christian School",
+  "code": "V01932269",
   "lon": -80.0546,
   "lat": 32.9441,
   "students": 201,
@@ -1774,6 +1951,7 @@
  },
  {
   "name": "Summerville Catholic School",
+  "code": "V02121646",
   "lon": -80.175851,
   "lat": 33.00859,
   "students": 184,
@@ -1783,6 +1961,7 @@
  },
  {
   "name": "Mason Preparatory School",
+  "code": "V02163074",
   "lon": -79.947339,
   "lat": 32.779213,
   "students": 303,
@@ -1792,6 +1971,7 @@
  },
  {
   "name": "Cathedral Academy",
+  "code": "VA0109124",
   "lon": -80.092114,
   "lat": 32.924631,
   "students": 319,
@@ -1801,6 +1981,7 @@
  },
  {
   "name": "Mt Pleasant Presbyterian Church Learning  Center",
+  "code": "VA0302893",
   "lon": -79.878928,
   "lat": 32.789291,
   "students": 5,
@@ -1810,6 +1991,7 @@
  },
  {
   "name": "Ridge Christian Academy",
+  "code": "VA0302901",
   "lon": -80.110951,
   "lat": 33.04095,
   "students": 111,
@@ -1819,6 +2001,7 @@
  },
  {
   "name": "O'Quinn Schools Of Porter-Gaud - Mount Pleasant",
+  "code": "VA0308040",
   "lon": -79.879305,
   "lat": 32.810706,
   "students": 48,
@@ -1828,6 +2011,7 @@
  },
  {
   "name": "North Walterboro Christian Academy",
+  "code": "VA0503241",
   "lon": -80.661871,
   "lat": 32.93205,
   "students": 104,
@@ -1837,6 +2021,7 @@
  },
  {
   "name": "Owens Christian Academy",
+  "code": "VA0503244",
   "lon": -79.974171,
   "lat": 32.85852,
   "students": 19,
@@ -1846,6 +2031,7 @@
  },
  {
   "name": "Trinity Montessori School",
+  "code": "VA0702087",
   "lon": -79.997561,
   "lat": 32.81683,
   "students": 17,
@@ -1855,6 +2041,7 @@
  },
  {
   "name": "The Cooper School",
+  "code": "VA0903344",
   "lon": -79.983091,
   "lat": 32.78781,
   "students": 136,
@@ -1864,6 +2051,7 @@
  },
  {
   "name": "Montessori School Of Johns Island",
+  "code": "VA0903366",
   "lon": -80.108371,
   "lat": 32.73226,
   "students": 2,
@@ -1873,6 +2061,7 @@
  },
  {
   "name": "Harvest Time International Academy",
+  "code": "VA1303170",
   "lon": -79.942371,
   "lat": 32.80281,
   "students": 8,
@@ -1882,6 +2071,7 @@
  },
  {
   "name": "Sundrops Montessori School",
+  "code": "VA1303208",
   "lon": -79.889364,
   "lat": 32.80044,
   "students": 68,
@@ -1891,6 +2081,7 @@
  },
  {
   "name": "University School Of The Lowcountry",
+  "code": "VA1390322",
   "lon": -79.870581,
   "lat": 32.79237,
   "students": 80,
@@ -1900,6 +2091,7 @@
  },
  {
   "name": "Pinewood Preparatory School",
+  "code": "VA1503539",
   "lon": -80.241311,
   "lat": 33.02433,
   "students": 607,
@@ -1909,6 +2101,7 @@
  },
  {
   "name": "Ne Miles Early Childhood Development Center",
+  "code": "VA1771502",
   "lon": -79.935677,
   "lat": 32.781616,
   "students": 9,
@@ -1918,6 +2111,7 @@
  },
  {
   "name": "Oak Grove Montessori",
+  "code": "VA1771504",
   "lon": -79.975841,
   "lat": 32.77989,
   "students": 12,
@@ -1927,6 +2121,7 @@
  },
  {
   "name": "Charis Academy",
+  "code": "VA1790456",
   "lon": -80.172807,
   "lat": 33.017527,
   "students": 14,
@@ -1936,6 +2131,7 @@
  },
  {
   "name": "Holly Hill Academy",
+  "code": "VA1904026",
   "lon": -80.412161,
   "lat": 33.33806,
   "students": 250,
@@ -1945,6 +2141,7 @@
  },
  {
   "name": "Charleston Bilingual Academy",
+  "code": "VA1990675",
   "lon": -79.994084,
   "lat": 32.885523,
   "students": 113,
@@ -1954,6 +2151,7 @@
  },
  {
   "name": "Sundrops Montessori - Daniel Island",
+  "code": "VA2171049",
   "lon": -79.9169,
   "lat": 32.900643,
   "students": 7,
@@ -1963,6 +2161,7 @@
  },
  {
   "name": "James Island Christian School",
+  "code": "VA2190717",
   "lon": -79.975692,
   "lat": 32.759145,
   "students": 165,
@@ -1972,6 +2171,7 @@
  },
  {
   "name": "Palmetto Christian Academy",
+  "code": "VA2190721",
   "lon": -79.755264,
   "lat": 32.879637,
   "students": 610,
@@ -1981,6 +2181,7 @@
  },
  {
   "name": "Sundrops Montessori Bridge Campus",
+  "code": "VA2190723",
   "lon": -79.805718,
   "lat": 33.014439,
   "students": 70,
@@ -1990,6 +2191,7 @@
  },
  {
   "name": "Trinity Classical Academy",
+  "code": "VA2190724",
   "lon": -80.188664,
   "lat": 33.013944,
   "students": 117,
@@ -1999,6 +2201,7 @@
  },
  {
   "name": "Charleston Classical School",
+  "code": "VA2200047",
   "lon": -79.984584,
   "lat": 32.90193,
   "students": 14,
@@ -2008,6 +2211,7 @@
  },
  {
   "name": "Faith Christian School & Daycare",
+  "code": "VA9303824",
   "lon": -80.126011,
   "lat": 33.0221,
   "students": 277,
@@ -2017,6 +2221,7 @@
  },
  {
   "name": "Charles Towne Montessori School",
+  "code": "VA9503726",
   "lon": -80.003331,
   "lat": 32.78292,
   "students": 46,
@@ -2026,6 +2231,7 @@
  },
  {
   "name": "Palmetto Christian Academy",
+  "code": "VA9703166",
   "lon": -79.856781,
   "lat": 32.84949,
   "students": 605,
@@ -2035,6 +2241,7 @@
  },
  {
   "name": "Bethany Child Development Center",
+  "code": "VA9903901",
   "lon": -80.180081,
   "lat": 33.01693,
   "students": 16,
@@ -2044,6 +2251,7 @@
  },
  {
   "name": "Adventist Christian Academy Of Charleston",
+  "code": "VAA000251",
   "lon": -80.053811,
   "lat": 32.79408,
   "students": 25,
@@ -2053,6 +2261,7 @@
  },
  {
   "name": "Riverpointe Christian Academy",
+  "code": "VK9305704",
   "lon": -80.042421,
   "lat": 32.83112,
   "students": 30,
@@ -2062,6 +2271,7 @@
  },
  {
   "name": "Crowfield Academy",
+  "code": "VK9305717",
   "lon": -80.051671,
   "lat": 33.00203,
   "students": 6,
@@ -2071,6 +2281,7 @@
  },
  {
   "name": "St Andrew'S Day School",
+  "code": "VK9305723",
   "lon": -79.875561,
   "lat": 32.78827,
   "students": 15,

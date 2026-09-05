@@ -20,6 +20,7 @@ original 1.0.0 map, which spot-checks clean against OSM.
 import json
 import math
 import os
+import zlib
 
 import numpy as np
 
@@ -58,7 +59,7 @@ AIRPORT = [
          total_capacity=_departures + _dispersing,
          pop_size=100,
          residential_split=_dispersing / (_departures + _dispersing),
-         merge_within=700),
+         merge_within=1100),
 ]
 
 # Student bodies carried over from the 1.0.0 map, which are plausible for these
@@ -84,7 +85,9 @@ UNIVERSITIES = [
 # Joint Base Charleston and the Navy's nuclear training pipeline are the
 # region's largest employers. Active-duty personnel are largely absent from
 # LODES, which counts jobs covered by state unemployment insurance, so these
-# are added with only a tight merge radius.
+# are added on top. The merge radius is deliberately tight and in practice
+# never fires -- the nearest blocks are 540 m or more out -- which is the
+# intended outcome here: the bases should not swallow neighbouring housing.
 #
 # exponent 0.8 rather than depot's 1.2 default: personnel commute in from
 # across the metro, and 0.8 reproduces the LODES median of 13.9 km exactly,
@@ -136,7 +139,7 @@ HOSPITALS = [
          merge_within=400),                                    # ~140 beds, est.
     dict(type="hospital", name="Summerville Medical Center", code="SUMM",
          location=[-80.1575, 32.9662], total_capacity=235, pop_size=25,
-         merge_within=400),                                    # 94 beds
+         merge_within=500),                                    # 94 beds
     dict(type="hospital", name="Roper St Francis Mount Pleasant Hospital", code="MP",
          location=[-79.7686, 32.8782], total_capacity=210, pop_size=25,
          merge_within=400),                                    # 85 beds
@@ -144,22 +147,23 @@ HOSPITALS = [
 
 # Terminal employment is in LODES and arrives here through the merge, so
 # capacity covers only the gate traffic on top of it -- drayage drivers whose
-# LODES workplace is their trucking firm, not the terminal. Union Pier is the
-# exception: cruise calls put arriving passengers on the pier, which is inbound
-# tourism and nowhere in LODES, hence the residential split.
+# LODES workplace is their trucking firm, not the terminal. Radii are sized to
+# reach each terminal's nearest block; at 500-600 m three of them never fired.
+# Union Pier is the exception: cruise calls put arriving passengers on the
+# pier, which is inbound tourism and nowhere in LODES, hence the split.
 PORTS = [
     dict(type="port", name="Wando Welch Terminal", code="WW",
          location=[-79.8814, 32.8330], total_capacity=400, pop_size=25,
          merge_within=600),
     dict(type="port", name="North Charleston Terminal", code="NCT",
          location=[-79.9619, 32.9056], total_capacity=300, pop_size=25,
-         merge_within=600),
+         merge_within=800),
     dict(type="port", name="Hugh K. Leatherman Terminal", code="HKL",
          location=[-79.9387, 32.8409], total_capacity=200, pop_size=25,
-         merge_within=600),
+         merge_within=700),
     dict(type="port", name="Columbus Street Terminal", code="CST",
          location=[-79.9298, 32.7955], total_capacity=150, pop_size=25,
-         merge_within=500),
+         merge_within=600),
     dict(type="port", name="Union Pier Cruise Terminal", code="UP",
          location=[-79.9259, 32.7832], total_capacity=400, pop_size=25,
          residential_split=0.5, merge_within=300),
@@ -190,7 +194,7 @@ ATTRACTIONS = [
          merge_within=150),
     dict(type="museum", name="Patriots Point Naval and Maritime Museum", code="PPT",
          location=[-79.9061, 32.7905], total_capacity=800, pop_size=25,
-         merge_within=300),
+         merge_within=400),
     dict(type="heritage_site", name="Fort Sumter Visitor Center", code="SUM",
          location=[-79.9252, 32.7905], total_capacity=700, pop_size=25,
          merge_within=150),
@@ -244,13 +248,22 @@ RESORTS = [
 MILE_M = 1609.344
 CATCHMENT_M = {1: round(5 * MILE_M), 2: round(8 * MILE_M), 3: round(12 * MILE_M)}
 CATCHMENT_DEFAULT_M = round(8 * MILE_M)     # ungraded, private, "other"
-STUDENT_POP_SIZE = 15
-STAFF_POP_SIZE = 10
+# One pop size for everyone a school pulls in. required_locs takes a single
+# pop size per point, and both pupils and staff go through it now, so they
+# have to share one.
+SCHOOL_POP_SIZE = 15
 # Teachers are not zoned and Charleston is not transit-oriented -- people drive
 # a long way to work here. Calibrated against the LODES commutes in the base
-# demand, which are the real thing: this puts staff at a 13.7 km median
-# against the real 13.9. The depot default of 2.5 gave 9.5 km.
-STAFF_EXPONENT = 1.2
+# demand, which are the real thing: this puts staff at a 14.0 km median
+# against the real 13.9.
+#
+# Note this is calibrated for a pool where every node is eligible. depot's own
+# gravity draw zeroes out a point's required_locs, which for a school means
+# teachers are barred from living anywhere in their own attendance zone -- an
+# artefact of the mechanism rather than a modelling choice, and one that
+# flattered the distance figures. Staff are allocated here instead, over the
+# whole metro, so the exponent has to be gentler to reach the same median.
+STAFF_EXPONENT = 0.8
 # Ceiling on the share of a residential node's LODES residents that may be
 # sent to school. LODES counts workers, not people, and school-age children
 # are roughly half a metro's worker count, so anything approaching 1.0 is a
@@ -276,6 +289,62 @@ def _largest_remainder(weights, total):
     if short > 0:
         for k in np.argsort(-(exact - alloc))[:short]:
             alloc[k] += 1
+    return alloc
+
+
+def _weighted_seat_sample(weights, seats, npops, seed):
+    """
+    Draw `npops` pops at random in proportion to `weights`, never exceeding a
+    candidate's `seats`.
+
+    Sampling rather than apportioning, because apportionment degenerates here.
+    `_largest_remainder` over a metro-wide pool floors almost every share to
+    zero and then hands the pops to the highest-weight candidates, which under
+    a distance decay means the nearest ones -- it turns into "pick the closest
+    N" and collapses the commute distribution. That is fine for pupils, who are
+    confined to a zone and weighted only by residents, but not for staff.
+
+    Seeded so a rebuild is reproducible.
+    """
+    rng = np.random.default_rng(seed)
+    w = np.asarray(weights, dtype=float).copy()
+    room = np.asarray(seats, dtype=int).copy()
+    w[room <= 0] = 0.0
+    alloc = np.zeros(w.size, dtype=int)
+    for _ in range(int(npops)):
+        total = w.sum()
+        if total <= 0:
+            break
+        i = int(rng.choice(w.size, p=w / total))
+        alloc[i] += 1
+        if alloc[i] >= room[i]:
+            w[i] = 0.0
+    return alloc
+
+
+def _seat_alloc(weights, seats, npops):
+    """
+    Hand out `npops` whole pops across candidates in proportion to `weights`,
+    never giving a candidate more than its `seats`. Overflow is redistributed
+    to whoever still has room, which is what keeps a three-resident node from
+    being handed a whole pop it cannot possibly house.
+    """
+    npops = min(int(npops), int(seats.sum()))
+    alloc = np.zeros(weights.size, dtype=int)
+    left = npops
+    while left > 0:
+        room = seats - alloc
+        open_ = room > 0
+        if not open_.any():
+            break
+        w = weights * open_
+        if w.sum() <= 0:
+            break
+        give = np.minimum(_largest_remainder(w / w.sum(), left), room)
+        if give.sum() == 0:                 # rounding stalled; fill directly
+            give[np.flatnonzero(open_)[:left]] = 1
+        alloc += give
+        left -= int(give.sum())
     return alloc
 
 
@@ -308,10 +377,19 @@ def lodging():
         for c in group:
             arrivals[c["code"]] = int(pool * c["visitors"] / total)
 
+    # Apportion whole pops rather than truncating per cluster: `int(pool*share)`
+    # followed by `// arrival_pop` on each of 60-odd clusters lost 11% of the
+    # arrivals outright.
     arrival_pop = 25
+    codes = [c["code"] for c in clusters]
+    weights = np.array([max(arrivals.get(k, 0), 0) for k in codes], dtype=float)
+    npops = int(round(sum(arrivals.values()) / arrival_pop))
+    pops_by_code = dict(zip(codes, _largest_remainder(weights / weights.sum(), npops))) \
+        if weights.sum() > 0 and npops > 0 else {k: 0 for k in codes}
+
     out = []
     for c in clusters:
-        nreq = arrivals.get(c["code"], 0) // arrival_pop
+        nreq = int(pops_by_code.get(c["code"], 0))
         capacity = c["visitors"] + nreq * arrival_pop
         out.append(dict(
             type="resort", name=f"Charleston lodging {c['code']}", code=c["code"],
@@ -346,8 +424,13 @@ def schools(base_points, resident_baseline=None):
     combination. Where a zone cannot supply its school the radius grows until
     it can.
 
-    Staff are left to the gravity model: teachers are not zoned, and they
-    commute in from across the metro.
+    Staff are drawn metro-wide instead of from the zone, since teachers are
+    not zoned, but through the same seat-capped allocation rather than depot's
+    own gravity draw. That draw has no notion of capacity: weighted only by
+    residents over distance, it would occasionally pick a node with three
+    residents and hand it a whole pop, which was the last thing overloading
+    nodes here. The gravity *weighting* is kept, and calibrated against the
+    real LODES commute distances -- see STAFF_EXPONENT.
 
     `resident_baseline` maps point id to its LODES resident count. It matters
     because by the time schools are added, the other special demand has already
@@ -372,64 +455,76 @@ def schools(base_points, resident_baseline=None):
     remaining = residents * NODE_CAP
 
     out = []
-    for s in sorted(entries, key=lambda x: -x["students"]):
+    for s in sorted(entries, key=lambda x: (-x["students"], x.get("code") or x["name"])):
         students, staff = s["students"], s["staff"]
+        seed_key = str(s.get("code") or s["name"])
         level = s.get("level")
         radius = CATCHMENT_M.get(level if level in CATCHMENT_M else None,
                                  CATCHMENT_DEFAULT_M)
 
-        npops = max(2, round(students / STUDENT_POP_SIZE))
-        psize_req = max(1, round(students / npops))
-
-        # Only nodes with room for a whole pop are eligible, so quantisation
-        # cannot push one past its cap. Grow the zone until enough of them
-        # exist to seat the school.
+        psize = SCHOOL_POP_SIZE
         dist = _haversine_m(s["lon"], s["lat"], locs[:, 0], locs[:, 1])
+        dist = np.where(dist == 0, 1e9, dist)
+        required_locs = []
+
+        # --- pupils: inside the attendance zone, in proportion to residents.
+        # Only nodes with room for a whole pop are eligible, so quantisation
+        # cannot push one past its cap. Grow the zone until enough exist.
+        npops = max(2, round(students / psize))
         mask = None
         for mult in (1.0, 1.5, 2.0, 3.0, 4.0, 6.0, 8.0, 12.0):
-            mask = (dist <= radius * mult) & (remaining >= psize_req)
-            if int((remaining[mask] // psize_req).sum()) >= npops:
+            mask = (dist <= radius * mult) & (remaining >= psize)
+            if int((remaining[mask] // psize).sum()) >= npops:
                 break
         idx = np.flatnonzero(mask)
-        if idx.size == 0:                       # nothing within reach at all
-            continue
+        n_pupil_pops = 0
+        if idx.size:
+            seats = (remaining[idx] // psize).astype(int)
+            alloc = _seat_alloc(remaining[idx], seats, npops)
+            n_pupil_pops = int(alloc.sum())
+            for i, n in zip(idx, alloc):
+                required_locs.extend([[float(locs[i][0]), float(locs[i][1])]] * int(n))
+            remaining[idx] = np.maximum(0.0, remaining[idx] - alloc * psize)
 
-        # Seats each node can take, then apportion by residents and clamp,
-        # redistributing anything that overflows onto nodes with room left.
-        seats = (remaining[idx] // psize_req).astype(int)
-        npops = min(npops, int(seats.sum()))
-        alloc = np.zeros(idx.size, dtype=int)
-        left = npops
-        while left > 0:
-            room = seats - alloc
-            open_ = room > 0
-            if not open_.any():
-                break
-            w = remaining[idx] * open_
-            if w.sum() <= 0:
-                break
-            give = _largest_remainder(w / w.sum(), left)
-            give = np.minimum(give, room)
-            if give.sum() == 0:                 # rounding stalled; fill directly
-                give[np.flatnonzero(open_)[:left]] = 1
-            alloc += give
-            left -= int(give.sum())
+        # --- staff: metro-wide, gravity-weighted, but seat-capped the same
+        # way. Left to depot's own gravity draw they were the last thing that
+        # could overload a node: the draw has no notion of capacity, so a
+        # three-resident node picked by chance received a whole pop.
+        nstaff = int(round(staff / psize))
+        if nstaff:
+            sidx = np.flatnonzero(remaining >= psize)
+            if sidx.size:
+                w = residents[sidx] / dist[sidx] ** STAFF_EXPONENT
+                w = np.nan_to_num(w, nan=0.0, posinf=0.0, neginf=0.0)
+                w[dist[sidx] > 200000] = 0.0
+                if w.sum() > 0:
+                    seats = (remaining[sidx] // psize).astype(int)
+                    # crc32, not hash(): str hashing is salted per process, so
+                    # hash() made every rebuild produce different allocations.
+                    alloc = _weighted_seat_sample(
+                        w, seats, nstaff, seed=zlib.crc32(seed_key.encode()))
+                    for i, n in zip(sidx, alloc):
+                        required_locs.extend([[float(locs[i][0]), float(locs[i][1])]] * int(n))
+                    remaining[sidx] = np.maximum(0.0, remaining[sidx] - alloc * psize)
 
-        required_locs = []
-        for i, n in zip(idx, alloc):
-            required_locs.extend([[float(locs[i][0]), float(locs[i][1])]] * int(n))
         if not required_locs:
             continue
 
-        remaining[idx] = np.maximum(0.0, remaining[idx] - alloc * psize_req)
-
         out.append(dict(
             type="school", name=s["name"], location=[s["lon"], s["lat"]],
-            total_capacity=psize_req * len(required_locs) + staff,
+            # School names are not unique -- there are two Palmetto Christian
+            # Academies -- and depot builds the point id from the code, falling
+            # back to the name. Without a code the second campus overwrites the
+            # first and sanitize silently merges their demand onto one point.
+            code=s.get("code"),
+            # QA only, ignored by depot: required_locs is pupils then staff,
+            # and nothing downstream can tell them apart once placed.
+            _n_pupil_pops=n_pupil_pops,
+            total_capacity=psize * len(required_locs),
             required_locs=required_locs,
-            pop_size=STUDENT_POP_SIZE,
-            pop_size_req=psize_req,
-            pop_size_remain=STAFF_POP_SIZE,
+            pop_size=psize,
+            pop_size_req=psize,
+            pop_size_remain=psize,
             exponent=STAFF_EXPONENT,
             residential_split=0.0,
         ))
@@ -442,8 +537,12 @@ def schools(base_points, resident_baseline=None):
 # The airport goes in on its own beforehand and lodging afterwards, because
 # lodging's required_locs have to resolve to an AIR_CHS that already exists.
 def non_school_pois():
+    # Hospitals before universities on purpose. Whichever POI is processed
+    # first wins the merge, and MUSC is both: with universities first, the
+    # 10.5k-job medical-centre block was absorbed by UNI_MUSC and the hospital
+    # point kept only its patients.
     pois = []
-    for g in (UNIVERSITIES, MILITARY, HOSPITALS, PORTS, SHOPPING,
+    for g in (HOSPITALS, UNIVERSITIES, MILITARY, PORTS, SHOPPING,
               ATTRACTIONS, RESORTS):
         pois.extend(g)
     return pois

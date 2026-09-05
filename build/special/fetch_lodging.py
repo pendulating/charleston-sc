@@ -35,7 +35,12 @@ FALLBACK_ROOMS = {"hotel": 90, "motel": 45, "guest_house": 4,
 OCCUPANCY = 0.70            # typical Charleston annual hotel occupancy
 GUESTS_PER_ROOM = 1.9
 CELL_DEG = 0.012            # ~1.1 km clustering grid
-MIN_CLUSTER_VISITORS = 150
+# OSM routinely maps a hotel twice, once as a POI node and once as the building
+# outline. Their representative points differ by tens of metres, so an
+# exact-coordinate dedup keeps both and doubles the rooms. Collapse same-named
+# lodging within this distance, preferring the entry that carries a rooms tag.
+DUP_NAME_KM = 0.3
+MIN_CLUSTER_VISITORS = 50
 # Beach resorts already carry their own visitors in pois.RESORTS.
 RESORT_LOCS = [(-80.0848, 32.6082), (-79.7384, 32.8046), (-79.9408, 32.6555),
                (-80.1707, 32.5771), (-80.3348, 32.4794)]
@@ -93,7 +98,27 @@ def extract(pbf):
                 rooms = None
             rows.append({"name": name, "type": props.get("tourism"),
                          "lon": c.x, "lat": c.y, "rooms": rooms})
-    return rows
+    return _dedupe(rows)
+
+
+def _dedupe(rows):
+    """Collapse the same property mapped more than once (node + building)."""
+    by_name = {}
+    for r in rows:
+        by_name.setdefault(r["name"].strip().casefold(), []).append(r)
+    out = []
+    for group in by_name.values():
+        kept = []
+        for r in group:
+            near = next((k for k in kept
+                         if _haversine_km(r["lon"], r["lat"],
+                                          k["lon"], k["lat"]) <= DUP_NAME_KM), None)
+            if near is None:
+                kept.append(r)
+            elif r["rooms"] and not near["rooms"]:
+                near.update(rooms=r["rooms"], lon=r["lon"], lat=r["lat"])
+        out.extend(kept)
+    return out
 
 
 def main(pbf):

@@ -8,7 +8,9 @@ flat -- Railyard requires a ZIP with no nested folders, and this builds the
 archive entry by entry so no __MACOSX sidecars can sneak in (the 1.0.0 release
 shipped one).
 """
+import gzip
 import hashlib
+import json
 import os
 import sys
 import zipfile
@@ -40,10 +42,65 @@ CONTENTS = [
 ]
 
 
+def preflight():
+    """
+    Refuse to ship a stale or internally inconsistent build. Every check here
+    corresponds to something that has actually gone wrong: an archive built
+    before the demand file it was meant to contain, a schema accumulating
+    duplicate entries from a surgical rebuild, and pops left unrouted.
+    """
+    problems = []
+
+    demand_path = os.path.join(DEMANDDIR, "demand_data.json")
+    with open(demand_path) as f:
+        demand = json.load(f)
+    pops, points = demand["pops"], demand["points"]
+
+    unrouted = [p for p in pops
+                if p.get("drivingSeconds", 0) <= 0 and p["residenceId"] != p["jobId"]]
+    if unrouted:
+        problems.append(f"{len(unrouted):,} pops have no route "
+                        f"(e.g. {unrouted[0]['id']}) -- run the routes stage")
+
+    ids = [p["id"] for p in points]
+    if len(ids) != len(set(ids)):
+        problems.append(f"{len(ids) - len(set(ids))} duplicate point ids")
+
+    schema_path = os.path.join(DEMANDDIR, ".railyard_map", "special_demand_points.json")
+    with open(schema_path) as f:
+        schema = json.load(f)["points"]
+    sids = [e["point_id"] for e in schema]
+    if len(sids) != len(set(sids)):
+        problems.append(f"schema has {len(sids) - len(set(sids))} duplicate point_ids "
+                        f"-- stale entries from a surgical rebuild")
+    live_pops = {p["id"] for p in pops}
+    dead = sum(1 for e in schema for pid in e.get("pop_ids", []) if pid not in live_pops)
+    if dead:
+        problems.append(f"schema references {dead:,} pop_ids that no longer exist")
+    live_points = set(ids)
+    orphan = [e["point_id"] for e in schema if e["point_id"] not in live_points]
+    if orphan:
+        problems.append(f"schema names {len(orphan)} points absent from the demand "
+                        f"(e.g. {orphan[0]})")
+
+    with open(os.path.join(DEMANDDIR, "config.json")) as f:
+        config = json.load(f)
+    total = sum(p["size"] for p in pops)
+    if config["population"] != total:
+        problems.append(f"config population {config['population']:,} != "
+                        f"demand total {total:,} -- re-run the config stage")
+
+    if problems:
+        raise SystemExit("preflight failed:\n  - " + "\n  - ".join(problems))
+    print(f"preflight ok: {len(points):,} points, {len(pops):,} pops, "
+          f"{total:,} people, schema clean")
+
+
 def main():
     missing = [n for src, n, req in CONTENTS if req and not os.path.exists(src)]
     if missing:
         raise SystemExit("missing required build outputs: " + ", ".join(missing))
+    preflight()
 
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     included, skipped = [], []

@@ -47,7 +47,69 @@ def stage_seed():
 
 
 def _load():
-    return DemandData(FDEMAND, map_code="CHS", bbox=BBOX, outputdir=OUTDIR)
+    dd = DemandData(FDEMAND, map_code="CHS", bbox=BBOX, outputdir=OUTDIR)
+    _guard_haversine(dd)
+    return dd
+
+
+def _guard_haversine(dd):
+    """
+    depot calls self._haversine_travel_time when OSRM reports NoRoute, but only
+    a module-level haversine_travel_time exists. One unroutable point would
+    raise AttributeError partway through calculate_routes and discard the whole
+    pass before save(). Bind the method so the fallback works as intended.
+    """
+    if not hasattr(dd, "_haversine_travel_time"):
+        from depot import demand as _demand
+        fn = getattr(_demand, "haversine_travel_time", None)
+        if fn is not None:
+            type(dd)._haversine_travel_time = staticmethod(fn)
+
+
+def _prune_schema(removed_ids):
+    """
+    Drop deleted points from the special-demand schema.
+
+    depot's save_schemas appends to whatever special_demand_points.json is
+    already on disk whenever the demand file already contains special demand.
+    del_points does not touch it, so a surgical stage leaves every replaced
+    point in the schema twice, along with pop_ids for pops that no longer
+    exist. Left alone this reached 530 entries for 313 points, with 9,317 dead
+    pop_ids, and package.py would have shipped it.
+    """
+    path = os.path.join(OUTDIR, ".railyard_map", "special_demand_points.json")
+    if not os.path.exists(path) or not removed_ids:
+        return
+    with open(path) as f:
+        schema = json.load(f)
+    before = len(schema.get("points", []))
+    schema["points"] = [p for p in schema.get("points", [])
+                        if p.get("point_id") not in set(removed_ids)]
+    with open(path, "w") as f:
+        json.dump(schema, f, indent=4)
+    print(f"pruned {before - len(schema['points'])} stale schema entries")
+
+
+def _drop_self_loops(dd):
+    """
+    Remove pops whose residence and job are the same point. They are
+    zero-length commutes that generate no travel, they get listed twice in that
+    point's popIds, and they are re-routed on every pass. Most come straight
+    from the LODES base; a few are created when a merge absorbs two points that
+    commuted to each other.
+    """
+    loops = {p["id"] for p in dd["pops"] if p["residenceId"] == p["jobId"]}
+    if not loops:
+        return
+    dd["pops"] = [p for p in dd["pops"] if p["id"] not in loops]
+    dd.update(dd.sanitize(dd))
+    # add_points snapshots each POI's pop_ids when it runs, so any self-loop a
+    # merge created is already recorded there and would survive into the schema
+    # as a reference to a pop that no longer exists.
+    for poi in getattr(dd, "added_special_demand_points", []):
+        if poi.get("pop_ids"):
+            poi["pop_ids"] = [i for i in poi["pop_ids"] if i not in loops]
+    print(f"dropped {len(loops):,} self-loop pops")
 
 
 def _base_points(dd):
@@ -85,6 +147,8 @@ def stage_special():
     sch = POIS.schools(_base_points(dd), _resident_baseline())
     print(f"adding {len(sch)} school points")
     dd.add_points(sch)
+
+    _drop_self_loops(dd)
     dd.save()
 
     after_size = sum(p["size"] for p in dd["pops"])
@@ -100,6 +164,7 @@ def stage_reschool():
     if old:
         print(f"removing {len(old)} existing school points")
         dd.del_points(point_ids=old)
+        _prune_schema(old)
         # del_points drops the pops but leaves each point's jobs/residents
         # totals stale, and the catchment allocator sizes against residents.
         # Without this the old intake still inflates them.
@@ -120,6 +185,7 @@ def stage_tourism():
     if stale:
         print(f"removing {len(stale)} existing tourism points")
         dd.del_points(point_ids=stale)
+        _prune_schema(stale)
         dd.update(dd.sanitize(dd))
     # Two calls, not one: add_points only merges its new points into the list
     # at the end of the call, so the lodging clusters' required_locs would not
@@ -173,7 +239,7 @@ def stage_config():
         description="Revive the historic downtown of the oldest city in "
                     "South Carolina",
         creator="PSWBSF",
-        version="1.2.3",
+        version="1.3.0",
         country="US",
         initial_view_state=[-79.9381, 32.7885],
     )

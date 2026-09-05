@@ -23,10 +23,14 @@ OUT = os.path.join(HERE, "schools.json")
 
 BBOX = [-80.68, 32.47, -79.43, 33.43]
 STAFF_PER_TEACHER = 1.9
-CCD_YEAR = 2022
+CCD_YEAR = 2022          # the 2022-23 school year
 CCD_URL = f"https://educationdata.urban.org/api/v1/schools/ccd/directory/{CCD_YEAR}/?fips=45"
 PSS_URL = "https://nces.ed.gov/surveys/pss/zip/pss2122_pu_csv.zip"
 CLOSED_STATUSES = {2, 6}          # closed, inactive
+# CCD `virtual`: 1 = exclusively virtual, 3 = not virtual. A fully virtual
+# school has an administrative address and no pupils travelling to it, so it
+# must not become a demand point.
+VIRTUAL_FULL = 1
 
 
 def inside(lon, lat):
@@ -45,11 +49,17 @@ def fetch_public():
                 continue
             if (s.get("school_status") or 0) in CLOSED_STATUSES:
                 continue
+            if s.get("virtual") == VIRTUAL_FULL:
+                continue
             enrollment = s.get("enrollment") or 0
             if enrollment <= 0:
                 continue
             out.append({
                 "name": (s["school_name"] or "").strip(),
+                # Names are not unique -- there are two Palmetto Christian
+                # Academies -- and the point id is built from the code, so
+                # without one the second campus overwrites the first.
+                "code": f"P{s['ncessch']}",
                 "lon": lon, "lat": lat,
                 "students": int(enrollment),
                 "staff": int(round((s.get("teachers_fte") or 0) * STAFF_PER_TEACHER)),
@@ -82,6 +92,7 @@ def fetch_private():
                 continue
             out.append({
                 "name": (row.get("PINST") or "").strip().title() or "Private School",
+                "code": f"V{(row.get('PPIN') or '').strip() or len(out)}",
                 "lon": lon, "lat": lat,
                 "students": students,
                 "staff": int(round(teachers * STAFF_PER_TEACHER)),
