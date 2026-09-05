@@ -46,6 +46,7 @@ python create_US_demand_file.py Charleston.json
 
 cd ../build
 python CHS.py all           # extract → buildings → roads → pmtiles → labels
+python simplify_ocean.py    # shrink the ocean depth index (see below)
 python CHS_demand.py all    # seed → special demand → OSRM → commutes → config
 python package.py           # assemble dist/Charleston.zip
 ```
@@ -238,6 +239,34 @@ airport.
 | Hospitals | 8 | Patient and visitor trips at ~2.5 per licensed bed, beds from OSM |
 | Ports | 5 | Gate traffic above terminal employment; Union Pier adds cruise arrivals |
 | Retail and attractions | 9 | Malls, the aquarium, City Market, the forts, Patriots Point, IAAM, Amtrak |
+
+### The ocean depth index needs simplifying after a rebuild
+
+`ocean_depth_index.json.gz` comes out of depot as the largest thing the game
+parses — 79 MB uncompressed, 98% of it polygon geometry. Almost all of that is
+the shallowest band. depot patches −5 m with `water_gaps`, "everywhere OSM
+says there is water but GEBCO left a gap", and GEBCO's global grid is about
+450 m, so every tidal creek and marsh channel in the Lowcountry arrives as
+hand-detailed shoreline: 81,134 polygons and 3.07M vertices for that one band.
+Deep water is nothing by comparison — the −30 m band is 190 polygons.
+
+That detail is far finer than anything consuming it. The index addresses water
+through a grid of 0.0027° cells, about 250 m a side, so shoreline resolved to
+a metre buys nothing.
+
+```bash
+python simplify_ocean.py          # after CHS.py pmtiles
+```
+
+Simplifies at ~9 m and rounds coordinates to ~1 m: 79.1 → 22.1 MB raw, 78%
+fewer vertices, total water area down 0.53%. Every polygon and hole is kept,
+so water stays water and no marsh becomes buildable land — only the outlines
+get coarser, by well under half a grid cell.
+
+It deliberately preserves polygon count and order. The `cells` array indexes
+into `depths` by position, so dropping or reordering entries would silently
+mis-address every cell referencing anything past the gap; `--check` verifies
+no cell points out of range and no ring is degenerate.
 
 ### Pop granularity
 

@@ -307,7 +307,7 @@ def stage_config():
         description="Revive the historic downtown of the oldest city in "
                     "South Carolina",
         creator="PSWBSF",
-        version="1.4.0",
+        version="1.4.1",
         country="US",
         initial_view_state=[-79.9381, 32.7885],
     )
