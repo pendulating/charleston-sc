@@ -33,6 +33,9 @@ BASE_DEMAND = os.path.join(HERE, os.pardir, "us-demand", "demand_data",
 OSMPBF = os.path.join(HERE, "south-carolina-latest.osm.pbf")
 BBOX = [-80.68, 32.47, -79.43, 33.43]
 OSRM_PORT = 5050
+# Matches the generator's MAXPOPSIZE. Pops larger than a trainload cannot be
+# carried, so merging must not produce them.
+MAXPOPSIZE = 200
 
 # depot embeds the full polyline of every commute in demand_data.json when it
 # routes. It is the single most expensive thing in the shipped map and almost
@@ -112,13 +115,39 @@ def _drop_self_loops(dd):
         return
     dd["pops"] = [p for p in dd["pops"] if p["id"] not in loops]
     dd.update(dd.sanitize(dd))
-    # add_points snapshots each POI's pop_ids when it runs, so any self-loop a
-    # merge created is already recorded there and would survive into the schema
-    # as a reference to a pop that no longer exists.
-    for poi in getattr(dd, "added_special_demand_points", []):
-        if poi.get("pop_ids"):
-            poi["pop_ids"] = [i for i in poi["pop_ids"] if i not in loops]
     print(f"dropped {len(loops):,} self-loop pops")
+
+
+def _resync_schema_popids(dd):
+    """
+    Rebuild each special point's pop_ids from the demand as it now stands.
+
+    add_points snapshots pop_ids at the moment it places a point, and
+    save_schemas writes that snapshot out. Anything that touches pops
+    afterwards -- dropping self-loops, merging identical commutes, re-splitting
+    at MAXPOPSIZE -- leaves the snapshot describing pops that no longer exist,
+    and misses the ones that replaced them. sanitize has already recomputed
+    every point's popIds from the pops, so take them from there rather than
+    trying to track each mutation.
+    """
+    by_id = {p["id"]: p for p in dd["points"]}
+    fixed = 0
+    for poi in getattr(dd, "added_special_demand_points", []):
+        pid = poi.get("point_id")
+        point = by_id.get(pid)
+        if point is None:
+            continue
+        # sanitize appends a pop id once per endpoint, so de-duplicate.
+        seen, ids = set(), []
+        for i in point.get("popIds", []):
+            if i not in seen:
+                seen.add(i)
+                ids.append(i)
+        if poi.get("pop_ids") != ids:
+            poi["pop_ids"] = ids
+            fixed += 1
+    if fixed:
+        print(f"resynced pop_ids for {fixed} special points")
 
 
 def _base_points(dd):
@@ -158,6 +187,18 @@ def stage_special():
     dd.add_points(sch)
 
     _drop_self_loops(dd)
+
+    # The allocators hand a residence node several pops bound for the same
+    # school or hotel; those are one commute, not several. Merging them takes a
+    # size-weighted mean of the route, then the split puts anything over a
+    # trainload back into separate pops.
+    before_merge = len(dd["pops"])
+    dd.merge_identical_commutes()
+    dd.enforce_max_pop_size(MAXPOPSIZE)
+    dd.update(dd.sanitize(dd))
+    print(f"merged identical commutes: {before_merge:,} -> {len(dd['pops']):,} pops")
+
+    _resync_schema_popids(dd)
     dd.save()
 
     after_size = sum(p["size"] for p in dd["pops"])
@@ -266,7 +307,7 @@ def stage_config():
         description="Revive the historic downtown of the oldest city in "
                     "South Carolina",
         creator="PSWBSF",
-        version="1.3.1",
+        version="1.4.0",
         country="US",
         initial_view_state=[-79.9381, 32.7885],
     )

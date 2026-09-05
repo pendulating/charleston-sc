@@ -239,6 +239,25 @@ airport.
 | Ports | 5 | Gate traffic above terminal employment; Union Pier adds cruise arrivals |
 | Retail and attractions | 9 | Malls, the aquarium, City Market, the forts, Patriots Point, IAAM, Amtrak |
 
+### Pop granularity
+
+The simulation cost scales with the number of pops, not the number of people,
+so the generator is tuned to land in the same range as other US LODES maps
+rather than at the finest granularity it will produce. Across the 50 US LODES
+maps in the registry the median is 13.8 people per pop, with Tampa at 26.5;
+this map sits at 17.7.
+
+Two settings do the work. `DISTANCE_THRESHOLD_NONCBD` is 0.2 in
+`us-demand/Charleston.json`, matching Tampa — at the 0.1 it was, the base
+layer came out at 5.1 people per pop and 53,586 pops on its own. And
+`CONSOLIDATE_POPS` merges the small ones. A finer `DISTANCE_THRESHOLD_CBD`
+still applies downtown, so the peninsula keeps its detail.
+
+`CHS_demand.py` then calls `merge_identical_commutes` after the special demand
+is placed, because the allocators hand one residence node several pops bound
+for the same school or hotel and those are one commute, not several, followed
+by `enforce_max_pop_size` so nothing exceeds a trainload.
+
 ### Driving paths are deliberately not shipped
 
 depot embeds the full polyline of every commute in `demand_data.json` when it
