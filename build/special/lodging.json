@@ -1,0 +1,466 @@
+[
+ {
+  "code": "L01",
+  "lon": -79.9327,
+  "lat": 32.7842,
+  "rooms": 5710,
+  "pois": 67,
+  "visitors": 7594
+ },
+ {
+  "code": "L02",
+  "lon": -80.01482,
+  "lat": 32.8684,
+  "rooms": 2400,
+  "pois": 32,
+  "visitors": 3192
+ },
+ {
+  "code": "L03",
+  "lon": -80.04996,
+  "lat": 32.93711,
+  "rooms": 2214,
+  "pois": 30,
+  "visitors": 2944
+ },
+ {
+  "code": "L04",
+  "lon": -79.95645,
+  "lat": 32.78571,
+  "rooms": 1909,
+  "pois": 13,
+  "visitors": 2538
+ },
+ {
+  "code": "L05",
+  "lon": -80.15159,
+  "lat": 33.03894,
+  "rooms": 1598,
+  "pois": 22,
+  "visitors": 2125
+ },
+ {
+  "code": "L06",
+  "lon": -79.94042,
+  "lat": 32.79374,
+  "rooms": 1253,
+  "pois": 14,
+  "visitors": 1666
+ },
+ {
+  "code": "L07",
+  "lon": -79.89486,
+  "lat": 32.80392,
+  "rooms": 1232,
+  "pois": 16,
+  "visitors": 1638
+ },
+ {
+  "code": "L08",
+  "lon": -80.04888,
+  "lat": 32.9326,
+  "rooms": 751,
+  "pois": 11,
+  "visitors": 998
+ },
+ {
+  "code": "L09",
+  "lon": -79.89634,
+  "lat": 32.8005,
+  "rooms": 693,
+  "pois": 9,
+  "visitors": 921
+ },
+ {
+  "code": "L10",
+  "lon": -80.04415,
+  "lat": 32.93773,
+  "rooms": 629,
+  "pois": 9,
+  "visitors": 836
+ },
+ {
+  "code": "L11",
+  "lon": -80.02401,
+  "lat": 32.86839,
+  "rooms": 616,
+  "pois": 8,
+  "visitors": 819
+ },
+ {
+  "code": "L12",
+  "lon": -79.93153,
+  "lat": 32.7765,
+  "rooms": 599,
+  "pois": 17,
+  "visitors": 796
+ },
+ {
+  "code": "L13",
+  "lon": -79.78888,
+  "lat": 32.78619,
+  "rooms": 539,
+  "pois": 7,
+  "visitors": 716
+ },
+ {
+  "code": "L14",
+  "lon": -79.82422,
+  "lat": 32.83151,
+  "rooms": 539,
+  "pois": 7,
+  "visitors": 716
+ },
+ {
+  "code": "L15",
+  "lon": -79.90357,
+  "lat": 32.79937,
+  "rooms": 504,
+  "pois": 4,
+  "visitors": 670
+ },
+ {
+  "code": "L16",
+  "lon": -80.03044,
+  "lat": 32.79137,
+  "rooms": 488,
+  "pois": 8,
+  "visitors": 649
+ },
+ {
+  "code": "L17",
+  "lon": -79.92533,
+  "lat": 32.77964,
+  "rooms": 486,
+  "pois": 4,
+  "visitors": 646
+ },
+ {
+  "code": "L18",
+  "lon": -79.96497,
+  "lat": 32.77732,
+  "rooms": 462,
+  "pois": 6,
+  "visitors": 614
+ },
+ {
+  "code": "L19",
+  "lon": -80.01384,
+  "lat": 32.87483,
+  "rooms": 462,
+  "pois": 6,
+  "visitors": 614
+ },
+ {
+  "code": "L20",
+  "lon": -80.07657,
+  "lat": 32.9763,
+  "rooms": 462,
+  "pois": 6,
+  "visitors": 614
+ },
+ {
+  "code": "L21",
+  "lon": -80.60469,
+  "lat": 33.19488,
+  "rooms": 411,
+  "pois": 7,
+  "visitors": 546
+ },
+ {
+  "code": "L22",
+  "lon": -80.03798,
+  "lat": 32.79152,
+  "rooms": 385,
+  "pois": 5,
+  "visitors": 512
+ },
+ {
+  "code": "L23",
+  "lon": -79.87934,
+  "lat": 32.81243,
+  "rooms": 385,
+  "pois": 5,
+  "visitors": 512
+ },
+ {
+  "code": "L24",
+  "lon": -80.00697,
+  "lat": 32.88168,
+  "rooms": 366,
+  "pois": 6,
+  "visitors": 486
+ },
+ {
+  "code": "L25",
+  "lon": -79.90623,
+  "lat": 32.78629,
+  "rooms": 328,
+  "pois": 6,
+  "visitors": 436
+ },
+ {
+  "code": "L26",
+  "lon": -80.15123,
+  "lat": 33.04444,
+  "rooms": 308,
+  "pois": 4,
+  "visitors": 409
+ },
+ {
+  "code": "L27",
+  "lon": -80.06215,
+  "lat": 32.97526,
+  "rooms": 308,
+  "pois": 4,
+  "visitors": 409
+ },
+ {
+  "code": "L28",
+  "lon": -80.09237,
+  "lat": 32.99977,
+  "rooms": 308,
+  "pois": 4,
+  "visitors": 409
+ },
+ {
+  "code": "L29",
+  "lon": -79.96442,
+  "lat": 32.77956,
+  "rooms": 308,
+  "pois": 4,
+  "visitors": 409
+ },
+ {
+  "code": "L30",
+  "lon": -79.84527,
+  "lat": 32.81908,
+  "rooms": 308,
+  "pois": 4,
+  "visitors": 409
+ },
+ {
+  "code": "L31",
+  "lon": -80.13886,
+  "lat": 33.03985,
+  "rooms": 308,
+  "pois": 4,
+  "visitors": 409
+ },
+ {
+  "code": "L32",
+  "lon": -79.83985,
+  "lat": 32.81789,
+  "rooms": 308,
+  "pois": 4,
+  "visitors": 409
+ },
+ {
+  "code": "L33",
+  "lon": -79.91182,
+  "lat": 32.86581,
+  "rooms": 308,
+  "pois": 4,
+  "visitors": 409
+ },
+ {
+  "code": "L34",
+  "lon": -80.00768,
+  "lat": 32.96901,
+  "rooms": 308,
+  "pois": 4,
+  "visitors": 409
+ },
+ {
+  "code": "L35",
+  "lon": -80.0277,
+  "lat": 32.78877,
+  "rooms": 276,
+  "pois": 4,
+  "visitors": 367
+ },
+ {
+  "code": "L36",
+  "lon": -80.13155,
+  "lat": 32.89918,
+  "rooms": 231,
+  "pois": 3,
+  "visitors": 307
+ },
+ {
+  "code": "L37",
+  "lon": -80.05142,
+  "lat": 32.79236,
+  "rooms": 199,
+  "pois": 3,
+  "visitors": 264
+ },
+ {
+  "code": "L38",
+  "lon": -79.97292,
+  "lat": 32.85307,
+  "rooms": 180,
+  "pois": 4,
+  "visitors": 239
+ },
+ {
+  "code": "L39",
+  "lon": -79.99465,
+  "lat": 32.87081,
+  "rooms": 180,
+  "pois": 4,
+  "visitors": 239
+ },
+ {
+  "code": "L40",
+  "lon": -79.94572,
+  "lat": 32.78661,
+  "rooms": 167,
+  "pois": 16,
+  "visitors": 222
+ },
+ {
+  "code": "L41",
+  "lon": -80.15436,
+  "lat": 33.04032,
+  "rooms": 154,
+  "pois": 2,
+  "visitors": 204
+ },
+ {
+  "code": "L42",
+  "lon": -80.03734,
+  "lat": 32.99478,
+  "rooms": 154,
+  "pois": 2,
+  "visitors": 204
+ },
+ {
+  "code": "L43",
+  "lon": -80.00941,
+  "lat": 32.87249,
+  "rooms": 154,
+  "pois": 2,
+  "visitors": 204
+ },
+ {
+  "code": "L44",
+  "lon": -80.02023,
+  "lat": 32.90745,
+  "rooms": 154,
+  "pois": 2,
+  "visitors": 204
+ },
+ {
+  "code": "L45",
+  "lon": -79.88225,
+  "lat": 32.79271,
+  "rooms": 154,
+  "pois": 2,
+  "visitors": 204
+ },
+ {
+  "code": "L46",
+  "lon": -79.81641,
+  "lat": 32.82285,
+  "rooms": 154,
+  "pois": 2,
+  "visitors": 204
+ },
+ {
+  "code": "L47",
+  "lon": -80.1491,
+  "lat": 32.60529,
+  "rooms": 154,
+  "pois": 2,
+  "visitors": 204
+ },
+ {
+  "code": "L48",
+  "lon": -80.00967,
+  "lat": 32.78666,
+  "rooms": 154,
+  "pois": 2,
+  "visitors": 204
+ },
+ {
+  "code": "L49",
+  "lon": -80.04368,
+  "lat": 32.6096,
+  "rooms": 154,
+  "pois": 2,
+  "visitors": 204
+ },
+ {
+  "code": "L50",
+  "lon": -80.01878,
+  "lat": 32.85473,
+  "rooms": 154,
+  "pois": 2,
+  "visitors": 204
+ },
+ {
+  "code": "L51",
+  "lon": -80.17722,
+  "lat": 33.01495,
+  "rooms": 154,
+  "pois": 2,
+  "visitors": 204
+ },
+ {
+  "code": "L52",
+  "lon": -79.84965,
+  "lat": 32.80958,
+  "rooms": 154,
+  "pois": 2,
+  "visitors": 204
+ },
+ {
+  "code": "L53",
+  "lon": -80.0173,
+  "lat": 32.84237,
+  "rooms": 154,
+  "pois": 2,
+  "visitors": 204
+ },
+ {
+  "code": "L54",
+  "lon": -79.92967,
+  "lat": 33.40844,
+  "rooms": 154,
+  "pois": 2,
+  "visitors": 204
+ },
+ {
+  "code": "L55",
+  "lon": -80.05787,
+  "lat": 32.90035,
+  "rooms": 154,
+  "pois": 2,
+  "visitors": 204
+ },
+ {
+  "code": "L56",
+  "lon": -79.98037,
+  "lat": 32.87595,
+  "rooms": 154,
+  "pois": 2,
+  "visitors": 204
+ },
+ {
+  "code": "L57",
+  "lon": -79.83559,
+  "lat": 32.83042,
+  "rooms": 154,
+  "pois": 2,
+  "visitors": 204
+ },
+ {
+  "code": "L58",
+  "lon": -80.30445,
+  "lat": 32.49796,
+  "rooms": 117,
+  "pois": 39,
+  "visitors": 155
+ }
+]

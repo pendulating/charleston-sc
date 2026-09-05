@@ -25,14 +25,14 @@ import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
-# Charleston International. PSWBSF modelled 6,900 daily departing passengers
-# and no arrivals, so the map had no inbound tourism at all. Mirroring that
-# figure gives the arrival side; ~13.8k daily passengers both ways is in line
-# with CHS's traffic. merge_within picks up the airport's own LODES workers,
-# so total_capacity here is passengers only.
+# Charleston International served 6.1M passengers in 2023, which is 16,712 a
+# day across both directions, so ~8,350 arriving and ~8,350 departing. PSWBSF
+# modelled 6,900 departing and no arrivals at all, so the map had a tourist
+# city with no inbound tourism. merge_within picks up the airport's own LODES
+# workers, so total_capacity here is passengers only.
 AIRPORT = [
     dict(type="airport", name="Charleston International Airport", code="CHS",
-         location=[-80.0369, 32.8845], total_capacity=13800, pop_size=100,
+         location=[-80.0369, 32.8845], total_capacity=16700, pop_size=100,
          residential_split=0.50, merge_within=700),
 ]
 
@@ -234,6 +234,32 @@ def _largest_remainder(weights, total):
     return alloc
 
 
+def lodging():
+    """
+    Overnight visitors, clustered by where they sleep (special/lodging.json,
+    built by fetch_lodging.py from OSM).
+
+    The airport only accounts for a slice of Charleston's tourism -- most
+    visitors drive in -- so modelling arrivals alone still leaves the city
+    emptier than it is. These are pure origin points: a visitor lives at their
+    hotel for the day and travels out to the peninsula, the beaches and the
+    forts, so the split is fully residential. Hotel staff are already in LODES
+    at their own block and are deliberately not merged in here, because a
+    cluster spans a whole district and merging would swallow unrelated demand.
+    """
+    out = []
+    for c in json.load(open(os.path.join(HERE, "lodging.json"))):
+        out.append(dict(
+            type="resort", name=f"Charleston lodging {c['code']}", code=c["code"],
+            location=[c["lon"], c["lat"]],
+            total_capacity=c["visitors"],
+            pop_size=25,
+            residential_split=1.0,
+            exponent=1.5,
+        ))
+    return out
+
+
 def schools(base_points, resident_baseline=None):
     """
     Schools from the NCES Common Core of Data (public) and Private School
@@ -349,7 +375,7 @@ def schools(base_points, resident_baseline=None):
 def non_school_pois():
     pois = []
     for g in (AIRPORT, UNIVERSITIES, MILITARY, HOSPITALS, PORTS, SHOPPING,
-              ATTRACTIONS, RESORTS):
+              ATTRACTIONS, RESORTS, lodging()):
         pois.extend(g)
     return pois
 
@@ -361,7 +387,8 @@ if __name__ == "__main__":
     groups = [
         ("airport", AIRPORT), ("university", UNIVERSITIES), ("military", MILITARY),
         ("hospital", HOSPITALS), ("port", PORTS), ("shopping", SHOPPING),
-        ("attraction", ATTRACTIONS), ("resort", RESORTS), ("school", schools(pts)),
+        ("attraction", ATTRACTIONS), ("resort", RESORTS), ("lodging", lodging()),
+        ("school", schools(pts)),
     ]
     print(f"{'group':<14}{'points':>8}{'capacity':>12}{'residents':>11}{'jobs':>10}")
     total = 0

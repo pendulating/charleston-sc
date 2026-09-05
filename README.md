@@ -148,7 +148,8 @@ rather than 603%, and a median school fed by 26 residential nodes rather than
 | Schools | 216 | NCES CCD (public) and PSS (private), 2021-22: real per-school enrollment, staff as teacher FTE × 1.9. Pupils placed by attendance zone, not gravity — see below |
 | Military | 6 | Joint Base Charleston, the Navy nuclear training commands, Coast Guard. Active duty is largely absent from LODES |
 | Universities | 5 | Student bodies carried from the 1.0.0 map |
-| Airport | 1 | Daily passengers, split evenly between departures and arrivals |
+| Airport | 1 | 6.1M passengers a year = 16,712/day, split evenly between departures and arrivals |
+| Lodging | 58 | Overnight visitors where they sleep: OSM lodging, rooms × 70% occupancy × 1.9 guests, gridded into clusters |
 | Resorts | 5 | Kiawah, Wild Dunes, Folly, Seabrook, Edisto — mostly residential, i.e. visitors |
 | Hospitals | 8 | Patient and visitor trips at ~2.5 per licensed bed, beds from OSM |
 | Ports | 5 | Gate traffic above terminal employment; Union Pier adds cruise arrivals |
@@ -161,6 +162,7 @@ rather than 603%, and a median school fed by 26 residential nodes rather than
 - Bathymetry: GEBCO 2026 sub-ice grid, via CEDA OPeNDAP
 - Demand: LODES 2023 origin-destination pairs via the US Demand Generator
 - Schools: NCES Common Core of Data and Private School Universe Survey
+- Lodging: OSM `tourism=hotel/motel/guest_house/hostel/apartment` with room counts
 - Boundaries: Census TIGER counties and block groups, for deriving the bbox
 
 ### OSRM port

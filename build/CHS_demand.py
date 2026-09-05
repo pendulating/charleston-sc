@@ -13,7 +13,7 @@ which the 1.0.0 and 1.1.0 maps never shipped -- without them the game has no
 type information for these points.
 
 Run a single stage:   python CHS_demand.py <stage>
-Stages: seed | special | osrm | routes | routes-new | reschool | config | all
+Stages: seed | special | osrm | routes | routes-new | reschool | tourism | config | all
 """
 import json
 import os
@@ -101,6 +101,23 @@ def stage_reschool():
           f"people {sum(p['size'] for p in dd['pops']):,}")
 
 
+def stage_tourism():
+    """Rescale the airport onto real passenger traffic and add lodging."""
+    dd = _load()
+    have = {p["id"] for p in dd["points"]}
+    stale = [i for i in have if i == "AIR_CHS" or i.startswith("RST_L")]
+    if stale:
+        print(f"removing {len(stale)} existing tourism points")
+        dd.del_points(point_ids=stale)
+        dd.update(dd.sanitize(dd))
+    pois = POIS.AIRPORT + POIS.lodging()
+    print(f"adding {len(pois)} tourism points")
+    dd.add_points(pois)
+    dd.save()
+    print(f"points {len(dd['points']):,}  pops {len(dd['pops']):,}  "
+          f"people {sum(p['size'] for p in dd['pops']):,}")
+
+
 def stage_routes_new():
     """Route only pops that have no route yet -- i.e. the ones just added."""
     dd = _load()
@@ -154,7 +171,7 @@ def stage_config():
 
 STAGES = {"seed": stage_seed, "special": stage_special, "osrm": stage_osrm,
           "routes": stage_routes, "routes-new": stage_routes_new,
-          "reschool": stage_reschool, "config": stage_config}
+          "reschool": stage_reschool, "tourism": stage_tourism, "config": stage_config}
 STAGES["all"] = lambda: [s() for s in (stage_seed, stage_special, stage_osrm,
                                        stage_routes, stage_config)]
 
