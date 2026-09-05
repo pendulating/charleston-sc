@@ -1,14 +1,15 @@
 """
 Rebuild of the Charleston, SC map (CHS) for Subway Builder using depot.
 
-Bounding box covers the populated Charleston tri-county area (Charleston,
-Berkeley and Dorchester counties): -80.68, 32.47 -> -79.43, 33.43.
+Bounding box matches the original 1.0.0 release: -80.3018, 32.5526 ->
+-79.6701, 33.1133, about 3,663 km2.
 
-Derived from data rather than eyeballed: it contains all 27 incorporated
-places in the three counties, 99.3% of the tri-county LODES activity by
-block group, and every barrier-island resort. The far NE marsh (Cape Romain)
-and the emptiest Francis Marion forest are trimmed, which keeps it to 3.4x
-the old map instead of the 4.5x a strict county rectangle would cost.
+1.2.0 through 1.4.1 covered the whole populated tri-county area, 3.4x this,
+which made the map heavy to play. Coordinates are absolute lat/lon, so
+reverting the extent leaves everything inside this box exactly where it was
+and a network built here still lines up. What falls away is the outer ring:
+Moncks Corner, St. George, McClellanville, Edisto Beach and the northern
+Berkeley and Dorchester countryside.
 
 Run a single stage:   python CHS.py <stage>
 Stages: extract | labels | buildings | roads | pmtiles | addlabels | all
@@ -23,7 +24,7 @@ OSMPBF = os.path.join(HERE, "south-carolina-latest.osm.pbf")
 
 obj = MapGen(
     city="CHS",
-    bbox=[-80.68, 32.47, -79.43, 33.43],
+    bbox=[-80.3018, 32.5526, -79.6701, 33.1133],
     osmpbf=OSMPBF,
     outputdir=HERE,
     # Charleston is a mid-size, low-rise metro: keep small buildings so the

@@ -19,3 +19,6 @@ build/CHS_oldbbox_v1.1.0/
 
 __pycache__/
 *.pyc
+
+# Prior-extent build outputs kept for reference, not shipped
+build/CHS_tricounty_v1.4.1/

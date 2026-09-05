@@ -26,6 +26,17 @@ import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
+# The map extent. POIs are written with real coordinates and filtered against
+# this rather than hand-pruned, so changing the bbox cannot silently leave a
+# point sitting off the edge of the map -- depot would place it, the game would
+# never reach it, and nothing would report the problem.
+BBOX = [-80.3018, 32.5526, -79.6701, 33.1133]
+
+
+def in_bbox(location):
+    return (BBOX[0] <= location[0] <= BBOX[2]
+            and BBOX[1] <= location[1] <= BBOX[3])
+
 # Charleston International served 6.1M passengers in 2023, which is 16,712 a
 # day across both directions, so ~8,350 arriving and ~8,350 departing. PSWBSF
 # modelled 6,900 departing and no arrivals at all, so the map had a tourist
@@ -389,6 +400,8 @@ def lodging():
 
     out = []
     for c in clusters:
+        if not in_bbox([c["lon"], c["lat"]]):
+            continue
         nreq = int(pops_by_code.get(c["code"], 0))
         capacity = c["visitors"] + nreq * arrival_pop
         out.append(dict(
@@ -445,7 +458,7 @@ def schools(base_points, resident_baseline=None):
     merge them away, so school employment is counted twice by design.
     """
     entries = [s for s in json.load(open(os.path.join(HERE, "schools.json")))
-               if s["students"] + s["staff"] >= 40]
+               if s["students"] + s["staff"] >= 40 and in_bbox([s["lon"], s["lat"]])]
 
     resident_baseline = resident_baseline or {}
     locs = np.array([p["location"] for p in base_points], dtype=float)
@@ -544,7 +557,7 @@ def non_school_pois():
     pois = []
     for g in (HOSPITALS, UNIVERSITIES, MILITARY, PORTS, SHOPPING,
               ATTRACTIONS, RESORTS):
-        pois.extend(g)
+        pois.extend(p for p in g if in_bbox(p["location"]))
     return pois
 
 

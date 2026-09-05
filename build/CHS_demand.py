@@ -31,7 +31,7 @@ FDEMAND = os.path.join(OUTDIR, "demand_data.json")
 BASE_DEMAND = os.path.join(HERE, os.pardir, "us-demand", "demand_data",
                            "Charleston", "demand_data.json")
 OSMPBF = os.path.join(HERE, "south-carolina-latest.osm.pbf")
-BBOX = [-80.68, 32.47, -79.43, 33.43]
+BBOX = [-80.3018, 32.5526, -79.6701, 33.1133]
 OSRM_PORT = 5050
 # Matches the generator's MAXPOPSIZE. Pops larger than a trainload cannot be
 # carried, so merging must not produce them.
@@ -307,7 +307,7 @@ def stage_config():
         description="Revive the historic downtown of the oldest city in "
                     "South Carolina",
         creator="PSWBSF",
-        version="1.4.1",
+        version="1.5.0",
         country="US",
         initial_view_state=[-79.9381, 32.7885],
     )

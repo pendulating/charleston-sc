@@ -21,7 +21,7 @@ import zipfile
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "schools.json")
 
-BBOX = [-80.68, 32.47, -79.43, 33.43]
+BBOX = [-80.3018, 32.5526, -79.6701, 33.1133]
 STAFF_PER_TEACHER = 1.9
 CCD_YEAR = 2022          # the 2022-23 school year
 CCD_URL = f"https://educationdata.urban.org/api/v1/schools/ccd/directory/{CCD_YEAR}/?fips=45"

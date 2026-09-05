@@ -1,75 +1,5 @@
 [
  {
-  "name": "MacDougall High",
-  "code": "P450000101376",
-  "lon": -80.291006,
-  "lat": 33.169113,
-  "students": 4,
-  "staff": 6,
-  "level": 3,
-  "sector": "public"
- },
- {
-  "name": "Harleyville Elementary",
-  "code": "P450000200435",
-  "lon": -80.379036,
-  "lat": 33.154295,
-  "students": 226,
-  "staff": 32,
-  "level": 1,
-  "sector": "public"
- },
- {
-  "name": "St. George Middle",
-  "code": "P450000200439",
-  "lon": -80.577543,
-  "lat": 33.19486,
-  "students": 282,
-  "staff": 48,
-  "level": 2,
-  "sector": "public"
- },
- {
-  "name": "William Memorial Elementary",
-  "code": "P450000200444",
-  "lon": -80.589468,
-  "lat": 33.183155,
-  "students": 574,
-  "staff": 93,
-  "level": 1,
-  "sector": "public"
- },
- {
-  "name": "Woodland High",
-  "code": "P450000200445",
-  "lon": -80.492451,
-  "lat": 33.167572,
-  "students": 612,
-  "staff": 95,
-  "level": 3,
-  "sector": "public"
- },
- {
-  "name": "Harleyville-Ridgeville Middle",
-  "code": "P450000201597",
-  "lon": -80.379036,
-  "lat": 33.154295,
-  "students": 169,
-  "staff": 34,
-  "level": 2,
-  "sector": "public"
- },
- {
-  "name": "Clay Hill Elementary",
-  "code": "P450000201600",
-  "lon": -80.312634,
-  "lat": 33.092604,
-  "students": 164,
-  "staff": 23,
-  "level": 1,
-  "sector": "public"
- },
- {
   "name": "Mount Holly Elementary",
   "code": "P450117000003",
   "lon": -80.014563,
@@ -86,26 +16,6 @@
   "lat": 33.038746,
   "students": 970,
   "staff": 118,
-  "level": 1,
-  "sector": "public"
- },
- {
-  "name": "Moncks Corner Elementary",
-  "code": "P450117000082",
-  "lon": -79.978483,
-  "lat": 33.195983,
-  "students": 597,
-  "staff": 61,
-  "level": 1,
-  "sector": "public"
- },
- {
-  "name": "Berkeley Elementary",
-  "code": "P450117000154",
-  "lon": -80.055433,
-  "lat": 33.205145,
-  "students": 619,
-  "staff": 70,
   "level": 1,
   "sector": "public"
  },
@@ -130,72 +40,12 @@
   "sector": "public"
  },
  {
-  "name": "Cross Elementary",
-  "code": "P450117000157",
-  "lon": -80.167293,
-  "lat": 33.30077,
-  "students": 348,
-  "staff": 40,
-  "level": 1,
-  "sector": "public"
- },
- {
   "name": "College Park Elementary",
   "code": "P450117000158",
   "lon": -80.090161,
   "lat": 33.016028,
   "students": 833,
   "staff": 110,
-  "level": 1,
-  "sector": "public"
- },
- {
-  "name": "Timberland High",
-  "code": "P450117000160",
-  "lon": -79.890857,
-  "lat": 33.337134,
-  "students": 704,
-  "staff": 87,
-  "level": 3,
-  "sector": "public"
- },
- {
-  "name": "J. K. Gourdin Elementary",
-  "code": "P450117000161",
-  "lon": -79.990705,
-  "lat": 33.425267,
-  "students": 119,
-  "staff": 17,
-  "level": 1,
-  "sector": "public"
- },
- {
-  "name": "Henry E. Bonner Elementary",
-  "code": "P450117000162",
-  "lon": -79.895629,
-  "lat": 33.265394,
-  "students": 828,
-  "staff": 95,
-  "level": 1,
-  "sector": "public"
- },
- {
-  "name": "St. Stephen Elementary",
-  "code": "P450117000165",
-  "lon": -79.928795,
-  "lat": 33.398519,
-  "students": 291,
-  "staff": 48,
-  "level": 1,
-  "sector": "public"
- },
- {
-  "name": "Whitesville Elementary",
-  "code": "P450117000166",
-  "lon": -80.049342,
-  "lat": 33.149944,
-  "students": 1031,
-  "staff": 108,
   "level": 1,
   "sector": "public"
  },
@@ -230,16 +80,6 @@
   "sector": "public"
  },
  {
-  "name": "St. Stephen Middle",
-  "code": "P450117000172",
-  "lon": -79.933883,
-  "lat": 33.405489,
-  "students": 209,
-  "staff": 30,
-  "level": 2,
-  "sector": "public"
- },
- {
   "name": "College Park Middle",
   "code": "P450117000173",
   "lon": -80.090258,
@@ -247,26 +87,6 @@
   "students": 714,
   "staff": 86,
   "level": 2,
-  "sector": "public"
- },
- {
-  "name": "Berkeley High",
-  "code": "P450117000174",
-  "lon": -80.025462,
-  "lat": 33.201671,
-  "students": 1776,
-  "staff": 163,
-  "level": 3,
-  "sector": "public"
- },
- {
-  "name": "Cross High",
-  "code": "P450117000176",
-  "lon": -80.163785,
-  "lat": 33.351386,
-  "students": 294,
-  "staff": 48,
-  "level": 3,
   "sector": "public"
  },
  {
@@ -360,26 +180,6 @@
   "sector": "public"
  },
  {
-  "name": "Berkeley Middle",
-  "code": "P450117001207",
-  "lon": -79.995834,
-  "lat": 33.199959,
-  "students": 1403,
-  "staff": 116,
-  "level": 2,
-  "sector": "public"
- },
- {
-  "name": "Macedonia Middle",
-  "code": "P450117001208",
-  "lon": -79.896654,
-  "lat": 33.268704,
-  "students": 383,
-  "staff": 49,
-  "level": 2,
-  "sector": "public"
- },
- {
   "name": "Sangaree Elementary",
   "code": "P450117001209",
   "lon": -80.108588,
@@ -447,16 +247,6 @@
   "students": 1263,
   "staff": 129,
   "level": 1,
-  "sector": "public"
- },
- {
-  "name": "Berkeley County Middle College High",
-  "code": "P450117001556",
-  "lon": -80.04548,
-  "lat": 33.170841,
-  "students": 101,
-  "staff": 8,
-  "level": 3,
   "sector": "public"
  },
  {
@@ -596,16 +386,6 @@
   "lat": 32.860636,
   "students": 431,
   "staff": 70,
-  "level": 1,
-  "sector": "public"
- },
- {
-  "name": "Minnie Hughes Elementary",
-  "code": "P450144000205",
-  "lon": -80.374368,
-  "lat": 32.700341,
-  "students": 186,
-  "staff": 30,
   "level": 1,
   "sector": "public"
  },
@@ -1120,16 +900,6 @@
   "sector": "public"
  },
  {
-  "name": "St. James Santee Elementary-Middle",
-  "code": "P450144001352",
-  "lon": -79.538961,
-  "lat": 33.061904,
-  "students": 182,
-  "staff": 36,
-  "level": 1,
-  "sector": "public"
- },
- {
   "name": "Ashley River Creative Arts Elementary",
   "code": "P450144001363",
   "lon": -80.022371,
@@ -1317,66 +1087,6 @@
   "students": 1673,
   "staff": 177,
   "level": 3,
-  "sector": "public"
- },
- {
-  "name": "Northside Elementary",
-  "code": "P450183000189",
-  "lon": -80.616503,
-  "lat": 32.948316,
-  "students": 452,
-  "staff": 55,
-  "level": 1,
-  "sector": "public"
- },
- {
-  "name": "Black Street Early Childhood Center",
-  "code": "P450183000333",
-  "lon": -80.649605,
-  "lat": 32.892982,
-  "students": 309,
-  "staff": 42,
-  "level": 1,
-  "sector": "public"
- },
- {
-  "name": "Cottageville Elementary",
-  "code": "P450183000336",
-  "lon": -80.472956,
-  "lat": 32.941349,
-  "students": 465,
-  "staff": 55,
-  "level": 1,
-  "sector": "public"
- },
- {
-  "name": "Forest Hills Elementary",
-  "code": "P450183000337",
-  "lon": -80.678798,
-  "lat": 32.912621,
-  "students": 469,
-  "staff": 63,
-  "level": 1,
-  "sector": "public"
- },
- {
-  "name": "Colleton County High",
-  "code": "P450183000347",
-  "lon": -80.654232,
-  "lat": 32.949377,
-  "students": 1497,
-  "staff": 122,
-  "level": 3,
-  "sector": "public"
- },
- {
-  "name": "Colleton County Middle",
-  "code": "P450183001586",
-  "lon": -80.639249,
-  "lat": 32.938871,
-  "students": 1121,
-  "staff": 112,
-  "level": 2,
   "sector": "public"
  },
  {
@@ -1630,16 +1340,6 @@
   "sector": "public"
  },
  {
-  "name": "Sampit Elementary",
-  "code": "P450228000481",
-  "lon": -79.446843,
-  "lat": 33.363574,
-  "students": 255,
-  "staff": 38,
-  "level": 1,
-  "sector": "public"
- },
- {
   "name": "Palmetto Scholars Academy",
   "code": "P450390101542",
   "lon": -80.077453,
@@ -1647,16 +1347,6 @@
   "students": 507,
   "staff": 65,
   "level": 3,
-  "sector": "public"
- },
- {
-  "name": "Cape Romain Environmental Education Charter School",
-  "code": "P450390101588",
-  "lon": -79.473424,
-  "lat": 33.0907,
-  "students": 191,
-  "staff": 30,
-  "level": 1,
   "sector": "public"
  },
  {
@@ -1730,51 +1420,11 @@
   "sector": "public"
  },
  {
-  "name": "Berkeley Preparatory Academy",
-  "code": "P450390901757",
-  "lon": -80.128034,
-  "lat": 33.146633,
-  "students": 708,
-  "staff": 110,
-  "level": 1,
-  "sector": "public"
- },
- {
   "name": "Gates School",
   "code": "P450390901760",
   "lon": -80.022915,
   "lat": 32.879876,
   "students": 109,
-  "staff": 32,
-  "level": 1,
-  "sector": "public"
- },
- {
-  "name": "Holly Hill Elementary",
-  "code": "P450391000853",
-  "lon": -80.423156,
-  "lat": 33.333256,
-  "students": 326,
-  "staff": 46,
-  "level": 1,
-  "sector": "public"
- },
- {
-  "name": "Holly Hill-Roberts Middle",
-  "code": "P450391001289",
-  "lon": -80.400109,
-  "lat": 33.321829,
-  "students": 418,
-  "staff": 57,
-  "level": 2,
-  "sector": "public"
- },
- {
-  "name": "St. James-Gaillard Elementary",
-  "code": "P450391001290",
-  "lon": -80.333512,
-  "lat": 33.389049,
-  "students": 235,
   "staff": 32,
   "level": 1,
   "sector": "public"
@@ -1850,32 +1500,12 @@
   "sector": "private"
  },
  {
-  "name": "Colleton Preparatory Academy",
-  "code": "V01263353",
-  "lon": -80.661881,
-  "lat": 32.93575,
-  "students": 364,
-  "staff": 64,
-  "level": null,
-  "sector": "private"
- },
- {
   "name": "First Baptist School Of Charleston",
   "code": "V01263397",
   "lon": -79.930388,
   "lat": 32.773838,
   "students": 410,
   "staff": 83,
-  "level": null,
-  "sector": "private"
- },
- {
-  "name": "Dorchester Academy",
-  "code": "V01263477",
-  "lon": -80.549861,
-  "lat": 33.18633,
-  "students": 295,
-  "staff": 56,
   "level": null,
   "sector": "private"
  },
@@ -1896,16 +1526,6 @@
   "lat": 32.81233,
   "students": 72,
   "staff": 22,
-  "level": null,
-  "sector": "private"
- },
- {
-  "name": "St John'S Christian Academy",
-  "code": "V01263615",
-  "lon": -80.018881,
-  "lat": 33.19917,
-  "students": 358,
-  "staff": 59,
   "level": null,
   "sector": "private"
  },
@@ -2006,16 +1626,6 @@
   "lat": 32.810706,
   "students": 48,
   "staff": 11,
-  "level": null,
-  "sector": "private"
- },
- {
-  "name": "North Walterboro Christian Academy",
-  "code": "VA0503241",
-  "lon": -80.661871,
-  "lat": 32.93205,
-  "students": 104,
-  "staff": 23,
   "level": null,
   "sector": "private"
  },
@@ -2126,16 +1736,6 @@
   "lat": 33.017527,
   "students": 14,
   "staff": 6,
-  "level": null,
-  "sector": "private"
- },
- {
-  "name": "Holly Hill Academy",
-  "code": "VA1904026",
-  "lon": -80.412161,
-  "lat": 33.33806,
-  "students": 250,
-  "staff": 57,
   "level": null,
   "sector": "private"
  },

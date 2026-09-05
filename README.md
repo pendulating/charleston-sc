@@ -6,13 +6,18 @@ rebuilds the map data with [depot](https://github.com/Subway-Builder-Modded/depo
 so it carries the layers the game has expected since 1.4, and extends it to the
 whole populated tri-county area.
 
-The playable area is `-80.68, 32.47 → -79.43, 33.43` — 117 × 106 km, covering
-Charleston, Berkeley and Dorchester counties. It was derived rather than
-eyeballed: it holds all 27 incorporated places in the three counties, 99.3% of
-tri-county LODES activity by block group, and every barrier-island resort,
-while trimming the empty Cape Romain marsh and the deepest Francis Marion
-forest. Through 1.1.0 the map covered only the inner 3,663 km², which left
-Moncks Corner and St. George outside the boundary.
+The playable area is `-80.3018, 32.5526 → -79.6701, 33.1133`, about
+3,663 km² — the same extent the map has had since 1.0.0.
+
+1.2.0 through 1.4.1 covered the whole populated tri-county area, 3.4× this.
+It was defensible on coverage — it reached Moncks Corner and St. George, which
+this box does not — but it made the map heavy enough to be worth reverting.
+Coordinates are absolute lat/lon and nothing is stored relative to the bbox,
+so changing the extent moves nothing: a network built inside this box lines up
+across either version. Only what lay in the outer ring falls off the map.
+
+`build/CHS_tricounty_v1.4.1/` keeps the wider build if it is ever wanted back;
+switching is a matter of the `BBOX` constants and re-running the pipeline.
 
 ## What ships
 
