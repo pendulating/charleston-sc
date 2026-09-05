@@ -31,6 +31,7 @@ the archive).
 | `ocean_depth_index.json.gz` | Bathymetry — gates underwater track building |
 | `ocean_depth_index_contours.json.gz` | Depth contours |
 | `demand_data.json` | Population, jobs, and commutes |
+| | (without embedded `drivingPath` geometry — see below) |
 | `config.json` | Map metadata |
 | `.railyard_map/special_demand_*.json` | Special demand type and point schema |
 
@@ -237,6 +238,20 @@ airport.
 | Hospitals | 8 | Patient and visitor trips at ~2.5 per licensed bed, beds from OSM |
 | Ports | 5 | Gate traffic above terminal employment; Union Pier adds cruise arrivals |
 | Retail and attractions | 9 | Malls, the aquarium, City Market, the forts, Patriots Point, IAAM, Amtrak |
+
+### Driving paths are deliberately not shipped
+
+depot embeds the full polyline of every commute in `demand_data.json` when it
+routes. At 43 vertices a pop that made the file 74 MB, 85% of it path
+geometry — 1.1 KB per pop against a 0.18 KB median across 274 registry maps,
+a 6× outlier and by far the most expensive thing in the map.
+
+The game does not read them from there anyway. It asks for one path at a time
+over `map://paths/{cityCode}/{popId}`, which Railyard's map loader intercepts
+and serves. So `INCLUDE_DRIVING_PATHS` in `CHS_demand.py` is off, and
+`drivingSeconds`/`drivingDistance`, which the simulation does need, are kept.
+`python CHS_demand.py strip-paths` removes them from an already-routed file
+without re-routing.
 
 ### Inputs
 

@@ -13,7 +13,7 @@ which the 1.0.0 and 1.1.0 maps never shipped -- without them the game has no
 type information for these points.
 
 Run a single stage:   python CHS_demand.py <stage>
-Stages: seed | special | osrm | routes | routes-new | reschool | tourism | config | all
+Stages: seed | special | osrm | routes | routes-new | reschool | tourism | strip-paths | config | all
 """
 import json
 import os
@@ -33,6 +33,15 @@ BASE_DEMAND = os.path.join(HERE, os.pardir, "us-demand", "demand_data",
 OSMPBF = os.path.join(HERE, "south-carolina-latest.osm.pbf")
 BBOX = [-80.68, 32.47, -79.43, 33.43]
 OSRM_PORT = 5050
+
+# depot embeds the full polyline of every commute in demand_data.json when it
+# routes. It is the single most expensive thing in the shipped map and almost
+# nobody else does it: at 43 vertices a pop it made the file 74 MB, 85% of it
+# path geometry, or 1.1 KB per pop against a 0.18 KB median across 274 registry
+# maps. The game does not read them from here anyway -- it asks for a path one
+# pop at a time over map://paths/{cityCode}/{popId}, which Railyard serves.
+# Keeping drivingSeconds and drivingDistance, which the simulation does need.
+INCLUDE_DRIVING_PATHS = False
 
 os.makedirs(OUTDIR, exist_ok=True)
 
@@ -207,7 +216,8 @@ def stage_routes_new():
     todo = sum(1 for p in dd["pops"] if p.get("drivingSeconds", 0) <= 0)
     print(f"{todo:,} of {len(dd['pops']):,} pops need routing")
     dd.calculate_routes(routing_method="osrm", osrm_port=OSRM_PORT,
-                        recalculate_routes=False, include_driving_paths=True)
+                        recalculate_routes=False,
+                        include_driving_paths=INCLUDE_DRIVING_PATHS)
     dd.save()
     dd.print_stats()
 
@@ -226,9 +236,26 @@ def stage_routes():
     dd = _load()
     dd.print_stats()
     dd.calculate_routes(routing_method="osrm", osrm_port=OSRM_PORT,
-                        recalculate_routes=True, include_driving_paths=True)
+                        recalculate_routes=True,
+                        include_driving_paths=INCLUDE_DRIVING_PATHS)
     dd.save()
     dd.print_stats()
+
+
+def stage_strip_paths():
+    """Drop embedded drivingPath geometry from an already-routed demand file."""
+    with open(FDEMAND) as f:
+        d = json.load(f)
+    before = os.path.getsize(FDEMAND)
+    n = sum(1 for p in d["pops"] if "drivingPath" in p)
+    for p in d["pops"]:
+        p.pop("drivingPath", None)
+    with open(FDEMAND, "w") as f:
+        json.dump(d, f, separators=(",", ":"))
+    after = os.path.getsize(FDEMAND)
+    print(f"stripped drivingPath from {n:,} pops")
+    print(f"  demand_data.json {before/1048576:.1f} MB -> {after/1048576:.1f} MB "
+          f"({(before-after)/before:.0%} smaller)")
 
 
 def stage_config():
@@ -239,7 +266,7 @@ def stage_config():
         description="Revive the historic downtown of the oldest city in "
                     "South Carolina",
         creator="PSWBSF",
-        version="1.3.0",
+        version="1.3.1",
         country="US",
         initial_view_state=[-79.9381, 32.7885],
     )
@@ -254,7 +281,8 @@ def stage_config():
 
 STAGES = {"seed": stage_seed, "special": stage_special, "osrm": stage_osrm,
           "routes": stage_routes, "routes-new": stage_routes_new,
-          "reschool": stage_reschool, "tourism": stage_tourism, "config": stage_config}
+          "reschool": stage_reschool, "tourism": stage_tourism,
+          "strip-paths": stage_strip_paths, "config": stage_config}
 STAGES["all"] = lambda: [s() for s in (stage_seed, stage_special, stage_osrm,
                                        stage_routes, stage_config)]
 
