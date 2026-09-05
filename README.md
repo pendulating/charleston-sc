@@ -127,8 +127,9 @@ Schools are the one category whose destination has a legally defined
 catchment, so they are placed explicitly instead. Every residential node inside
 the attendance zone is passed as a `required_locs` entry, repeated in
 proportion to its residents, which spreads intake across the zone the way
-zoning actually works. Radii are 3 km for primary, 5 km for middle and 8 km
-for high schools, growing only when a zone cannot supply its school.
+zoning actually works. Radii are 5 miles for primary, 8 for middle and 12 for
+high schools — South Carolina districts are county-wide and rural zones run
+long — growing further only when a zone cannot supply its school.
 
 Two constraints keep it honest. Nodes are allocated whole pops only when they
 have headroom for one, so quantisation cannot push a node past its cap; and
@@ -139,16 +140,38 @@ its current count — by the time schools are added, the other special demand ha
 already assigned workers to live at these nodes, and one node goes from 8 LODES
 residents to 193.
 
-The result is 19 nodes over 100% rather than 172, a 95th percentile of 81%
-rather than 603%, and a median school fed by 26 residential nodes rather than
-7. Staff are still placed by gravity, since teachers are not zoned.
+The result is 9 nodes over 100% rather than 172, a 95th percentile of 74%
+rather than 603%, and a median school fed by 40 residential nodes rather than
+7. Summerville High draws from 213. Staff are still placed by gravity, since
+teachers are not zoned.
+
+#### Airport arrivals
+
+Half of the airport's passengers are arrivals, and they are split two ways.
+Thirty per cent disperse across the metro by gravity — residents coming home,
+people staying with family, business trips to the North Charleston office
+parks. The other 70% are visitors heading for a hotel, and 70% of those go to
+the downtown peninsula. Weighting them by room count alone would send only 37%
+downtown, because the airport strip and North Charleston hold a lot of rooms
+serving business and Boeing traffic, but leisure visitors flying into
+Charleston overwhelmingly stay on the peninsula.
+
+That flow is written from the hotel end, not the airport end: each lodging
+cluster carries `required_locs` entries pointing back at the airport, so those
+pops take the airport as their residence and the hotel as their destination.
+It has to be expressed that way because `required_locs` only shapes a point's
+inbound job pops, never its outbound residents. It also means the airport must
+be added in its own `add_points` call before the clusters — the function only
+merges new points into the list when it returns, so a combined call would
+silently bind those required locations to whatever base node sits nearest the
+airport.
 
 | Category | Points | Sizing |
 | --- | --- | --- |
-| Schools | 216 | NCES CCD (public) and PSS (private), 2021-22: real per-school enrollment, staff as teacher FTE × 1.9. Pupils placed by attendance zone, not gravity — see below |
+| Schools | 216 | NCES CCD (public) and PSS (private), 2021-22: real per-school enrollment, staff as teacher FTE × 1.9. Pupils placed by 5/8/12-mile attendance zone, not gravity — see below |
 | Military | 6 | Joint Base Charleston, the Navy nuclear training commands, Coast Guard. Active duty is largely absent from LODES |
 | Universities | 5 | Student bodies carried from the 1.0.0 map |
-| Airport | 1 | 6.1M passengers a year = 16,712/day, split evenly between departures and arrivals |
+| Airport | 1 | 6.1M passengers a year = 16,712/day, split evenly. Arrivals route to hotels, mostly downtown |
 | Lodging | 58 | Overnight visitors where they sleep: OSM lodging, rooms × 70% occupancy × 1.9 guests, gridded into clusters |
 | Resorts | 5 | Kiawah, Wild Dunes, Folly, Seabrook, Edisto — mostly residential, i.e. visitors |
 | Hospitals | 8 | Patient and visitor trips at ~2.5 per licensed bed, beds from OSM |

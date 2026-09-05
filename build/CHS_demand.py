@@ -110,9 +110,15 @@ def stage_tourism():
         print(f"removing {len(stale)} existing tourism points")
         dd.del_points(point_ids=stale)
         dd.update(dd.sanitize(dd))
-    pois = POIS.AIRPORT + POIS.lodging()
-    print(f"adding {len(pois)} tourism points")
-    dd.add_points(pois)
+    # Two calls, not one: add_points only merges its new points into the list
+    # at the end of the call, so the lodging clusters' required_locs would not
+    # resolve to AIR_CHS if they went in together -- they would silently bind
+    # to whatever base node sits nearest the airport instead.
+    print("adding the airport")
+    dd.add_points(POIS.AIRPORT)
+    lod = POIS.lodging()
+    print(f"adding {len(lod)} lodging clusters")
+    dd.add_points(lod)
     dd.save()
     print(f"points {len(dd['points']):,}  pops {len(dd['pops']):,}  "
           f"people {sum(p['size'] for p in dd['pops']):,}")
@@ -156,7 +162,7 @@ def stage_config():
         description="Revive the historic downtown of the oldest city in "
                     "South Carolina",
         creator="PSWBSF",
-        version="1.2.1",
+        version="1.2.2",
         country="US",
         initial_view_state=[-79.9381, 32.7885],
     )

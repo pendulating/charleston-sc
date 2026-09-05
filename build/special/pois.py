@@ -30,10 +30,35 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 # modelled 6,900 departing and no arrivals at all, so the map had a tourist
 # city with no inbound tourism. merge_within picks up the airport's own LODES
 # workers, so total_capacity here is passengers only.
+AIRPORT_LOC = [-80.0369, 32.8845]
+DAILY_PASSENGERS = 16700          # 6.1M a year, both directions
+ARRIVALS = DAILY_PASSENGERS // 2
+# Share of arriving passengers who are visitors heading for a hotel. The rest
+# -- residents coming home, people staying with family, business trips to the
+# North Charleston office parks -- disperse across the metro by gravity.
+ARRIVALS_TO_LODGING = 0.70
+# Of those hotel-bound visitors, the share going to the downtown peninsula.
+# Weighting purely by room count would send only 37% there, because the airport
+# strip and North Charleston hold a lot of rooms serving business and Boeing
+# traffic. Leisure visitors flying into Charleston overwhelmingly stay on the
+# peninsula, so that is where the arrivals go.
+PENINSULA_SHARE = 0.70
+PENINSULA_BBOX = (-79.97, 32.76, -79.90, 32.82)
+
+_lodging_bound = int(ARRIVALS * ARRIVALS_TO_LODGING)
+_dispersing = ARRIVALS - _lodging_bound
+_departures = DAILY_PASSENGERS - ARRIVALS
+
+# total_capacity is departures plus the dispersing arrivals. The hotel-bound
+# arrivals hang off the lodging clusters instead, via required_locs pointing
+# back here, so they still land as residents of the airport.
 AIRPORT = [
     dict(type="airport", name="Charleston International Airport", code="CHS",
-         location=[-80.0369, 32.8845], total_capacity=16700, pop_size=100,
-         residential_split=0.50, merge_within=700),
+         location=AIRPORT_LOC,
+         total_capacity=_departures + _dispersing,
+         pop_size=100,
+         residential_split=_dispersing / (_departures + _dispersing),
+         merge_within=700),
 ]
 
 # Student bodies carried over from the 1.0.0 map, which are plausible for these
@@ -200,9 +225,12 @@ RESORTS = [
 
 # Attendance-zone radius by NCES school level. Schools are the one category
 # where the destination has a legally defined catchment, and pupils come from
-# inside it in rough proportion to how many people live there.
-CATCHMENT_M = {1: 3000, 2: 5000, 3: 8000}   # primary / middle / high
-CATCHMENT_DEFAULT_M = 5000                  # ungraded, private, "other"
+# inside it in rough proportion to how many people live there. South Carolina
+# districts are county-wide and rural zones run long, so these are generous:
+# 5, 8 and 12 miles.
+MILE_M = 1609.344
+CATCHMENT_M = {1: round(5 * MILE_M), 2: round(8 * MILE_M), 3: round(12 * MILE_M)}
+CATCHMENT_DEFAULT_M = round(8 * MILE_M)     # ungraded, private, "other"
 STUDENT_POP_SIZE = 15
 STAFF_POP_SIZE = 10
 STAFF_EXPONENT = 1.5      # teachers commute in from well beyond the zone
@@ -247,14 +275,36 @@ def lodging():
     at their own block and are deliberately not merged in here, because a
     cluster spans a whole district and merging would swallow unrelated demand.
     """
+    clusters = json.load(open(os.path.join(HERE, "lodging.json")))
+
+    def on_peninsula(c):
+        x0, y0, x1, y1 = PENINSULA_BBOX
+        return x0 <= c["lon"] <= x1 and y0 <= c["lat"] <= y1
+
+    downtown = [c for c in clusters if on_peninsula(c)]
+    elsewhere = [c for c in clusters if not on_peninsula(c)]
+    downtown_pool = int(_lodging_bound * PENINSULA_SHARE)
+    arrivals = {}
+    for group, pool in ((downtown, downtown_pool),
+                        (elsewhere, _lodging_bound - downtown_pool)):
+        total = sum(c["visitors"] for c in group) or 1
+        for c in group:
+            arrivals[c["code"]] = int(pool * c["visitors"] / total)
+
+    arrival_pop = 25
     out = []
-    for c in json.load(open(os.path.join(HERE, "lodging.json"))):
+    for c in clusters:
+        nreq = arrivals.get(c["code"], 0) // arrival_pop
+        capacity = c["visitors"] + nreq * arrival_pop
         out.append(dict(
             type="resort", name=f"Charleston lodging {c['code']}", code=c["code"],
             location=[c["lon"], c["lat"]],
-            total_capacity=c["visitors"],
+            total_capacity=capacity,
+            required_locs=[list(AIRPORT_LOC)] * nreq,
             pop_size=25,
-            residential_split=1.0,
+            pop_size_req=arrival_pop,
+            pop_size_remain=25,
+            residential_split=(c["visitors"] / capacity) if capacity else 0.0,
             exponent=1.5,
         ))
     return out
